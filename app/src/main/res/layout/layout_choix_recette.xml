@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".choixRecette_activity"
+    android:background="@color/Black">
+    
+    <Button
+    android:id="@+id/buttonCableSimple"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="314dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginStart="30dp"
+    android:text="Câblage simple"
+    android:textColor="@color/Orange"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+    
+    <Button
+    android:id="@+id/buttonCableComplexe"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="30dp"
+    android:layout_marginRight="30dp"
+    android:textColor="@color/Orange"
+    android:text="Câblage complexe"
+    app:layout_constraintBaseline_toBaselineOf="@+id/buttonCableSimple"
+    app:layout_constraintEnd_toEndOf="parent" />
+    
+    <Button
+    android:id="@+id/buttonRackage"
+    android:layout_width="130dp"
+    android:layout_height="50dp"
+    android:layout_marginLeft="30dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="80dp"
+    android:textColor="@color/Orange"
+    android:text="Rackage"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/buttonCableSimple" />
+    
+    <Button
+    android:id="@+id/buttonJ4"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginTop="80dp"
+    android:textColor="@color/Orange"
+    android:text="J4"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/buttonCableComplexe" />
+    
+    <Button
+    android:id="@+id/button26e"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="30dp"
+    android:layout_marginStart="30dp"
+    android:layout_marginTop="80dp"
+    android:text="26E"
+    android:textColor="@color/Orange"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/buttonRackage" />
+    
+    <Button
+    android:id="@+id/buttonIncident"
+    android:layout_width="130dp"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="30dp"
+    android:layout_marginRight="30dp"
+    android:layout_marginTop="80dp"
+    android:text="Incident"
+    android:textColor="@color/Orange"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/buttonJ4" />
+    
+    <TextView
+    android:id="@+id/titreChoixRecette"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginBottom="48dp"
+    android:layout_marginEnd="67dp"
+    android:layout_marginLeft="67dp"
+    android:layout_marginRight="67dp"
+    android:layout_marginStart="67dp"
+    android:layout_marginTop="34dp"
+    android:text="Choix du type de recette"
+    android:textAlignment="center"
+    android:textColor="@color/Orange"
+    android:textSize="24sp"
+    app:layout_constraintBottom_toTopOf="@+id/buttonCableSimple"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent" />
+    
+</android.support.constraint.ConstraintLayout>
+
