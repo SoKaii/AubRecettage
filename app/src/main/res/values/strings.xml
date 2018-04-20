@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">AubRecettage</string>
+    <string name="background">Background</string>
+    <string name="nouvelle_recette">NOUVELLE RECETTE</string>
+    <string name="consulter_recettes">CONSULTER RECETTES</string>
+    <string name="recettage_aubervilliers">Recettage Aubervilliers</string>
+    <string name="todo">TODO</string>
+</resources>
