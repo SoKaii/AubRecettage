@@ -46,5 +46,5 @@ public class Home_activity extends AppCompatActivity {
     }
 
 
-    public native stringFromJNI();
+    //public native stringFromJNI();
 }
