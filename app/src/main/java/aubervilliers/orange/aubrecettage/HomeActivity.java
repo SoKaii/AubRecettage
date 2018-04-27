@@ -26,10 +26,10 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_home);
 
-        mTitreHome = (TextView) findViewById(R.id.titreHome);
+        //mTitreHome = (TextView) findViewById(R.id.titreHome);
         //mBackgroundBlack = (ImageView) findViewById(R.id.backgroundBlack);
         mNewRecette = (Button) findViewById(R.id.newRecette);
-        mConsultRecette = (Button) findViewById(R.id.consultRecette);
+        //mConsultRecette = (Button) findViewById(R.id.consultRecette);
         //mLogoOrange = (ImageView) findViewById(R.id.logoOrange);
 
         mNewRecette.setOnClickListener(new View.OnClickListener()
