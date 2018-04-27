@@ -17,11 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".choixRecette_activity" />
-<<<<<<< HEAD
-        <activity android:name=".cablageSimple_activity"></activity>
-=======
-        <activity android:name=".infosTicket_activity"></activity>
->>>>>>> develop
+        <activity android:name=".cablageSimple_activity"/>
+        <activity android:name=".infosTicket_activity"/>
     </application>
 
 </manifest>
