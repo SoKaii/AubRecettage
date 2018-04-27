@@ -22,14 +22,15 @@
         app:layout_constraintBottom_toTopOf="@+id/vNumeroTicket"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/vNumeroTicket"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="380dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:text="Numéro de ticket"
         android:textColor="@color/Orange"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +39,7 @@
 
     <EditText
         android:id="@+id/eNumeroTicket"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:background="@color/White"
@@ -53,7 +54,7 @@
         android:id="@+id/vRealisateur"
         android:layout_width="wrap_content"
         android:layout_height="16dp"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="35dp"
         android:text="Réalisateur du ticket"
         android:textColor="@color/Orange"
@@ -62,7 +63,7 @@
 
     <EditText
         android:id="@+id/eRealisateur"
-        android:layout_width="wrap_content"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="30dp"
@@ -78,9 +79,9 @@
         android:id="@+id/vSalle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="37dp"
-        android:text="Numéro de salle"
+        android:text="nom des salles"
         android:textColor="@color/Orange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vRealisateur" />
@@ -102,10 +103,10 @@
     <TextView
         android:id="@+id/vPositionBaie"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_height="15dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="37dp"
-        android:text="Position de la baie"
+        android:text="Positions des baies"
         android:textColor="@color/Orange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vSalle" />
@@ -127,10 +128,10 @@
     <TextView
         android:id="@+id/vNumero26e"
         android:layout_width="wrap_content"
-        android:layout_height="14dp"
-        android:layout_marginStart="20dp"
+        android:layout_height="21dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="39dp"
-        android:text="Numéro 26E de l'équipement"
+        android:text="Numéros 26E des l'équipements"
         android:textColor="@color/Orange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vPositionBaie" />
@@ -140,7 +141,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="30dp"
         android:background="@color/White"
         android:ems="10"
         android:inputType="textPersonName"
@@ -148,6 +149,17 @@
         android:textColor="@color/Orange"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ePositionBaie" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:text="Commencer la recette"
+        android:textColor="@color/Orange"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 </android.support.constraint.ConstraintLayout>
