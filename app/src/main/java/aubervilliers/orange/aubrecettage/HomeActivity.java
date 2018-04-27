@@ -26,6 +26,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_home);
 
+        //test pull request
+
         //mTitreHome = (TextView) findViewById(R.id.titreHome);
         //mBackgroundBlack = (ImageView) findViewById(R.id.backgroundBlack);
         mNewRecette = (Button) findViewById(R.id.newRecette);
