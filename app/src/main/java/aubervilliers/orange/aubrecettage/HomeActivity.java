@@ -8,7 +8,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Home_activity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     private TextView mTitreHome;
     private ImageView mBackgroundBlack;
@@ -22,23 +22,22 @@ public class Home_activity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_home);
 
         mTitreHome = (TextView) findViewById(R.id.titreHome);
-        mBackgroundBlack = (ImageView) findViewById(R.id.backgroundBlack);
+        //mBackgroundBlack = (ImageView) findViewById(R.id.backgroundBlack);
         mNewRecette = (Button) findViewById(R.id.newRecette);
         mConsultRecette = (Button) findViewById(R.id.consultRecette);
-        mLogoOrange = (ImageView) findViewById(R.id.logoOrange);
+        //mLogoOrange = (ImageView) findViewById(R.id.logoOrange);
 
         mNewRecette.setOnClickListener(new View.OnClickListener()
         { @Override
         public void onClick(View v)
             {
 
-                Intent intent = new Intent(Home_activity.this , choixRecette_activity.class);
+                Intent intent = new Intent(HomeActivity.this , ChoixRecetteActivity.class);
                 startActivity(intent);
             }
         });

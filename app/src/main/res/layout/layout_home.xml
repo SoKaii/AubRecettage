@@ -1,93 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Home_activity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context=".HomeActivity"
+    android:orientation="vertical"
+    android:background="@android:color/black">
 
-    <ImageView
-        android:id="@+id/backgroundBlack"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/todo"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0"
-        android:background="@color/Black" />
 
     <TextView
         android:id="@+id/titreHome"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="400dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="17dp"
-        android:text="@string/recettage_aubervilliers"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/newRecette"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/newRecette"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginStart="16dp"
-        android:baselineAligned="false"
-        android:lineSpacingExtra="8sp"
-        android:text="@string/nouvelle_recette"
-        android:textAlignment="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/recettage_aubervilliers"
+        android:gravity="center_horizontal"
         android:textColor="@android:color/holo_orange_dark"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/consultRecette"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logoOrange" />
+        android:textSize="24sp" />
 
-    <Button
-        android:id="@+id/consultRecette"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="152dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="10dp"
-        android:layout_marginEnd="16dp"
-        android:baselineAligned="false"
-        android:text="@string/consulter_recettes"
-        android:textAlignment="center"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/newRecette"
-        app:layout_constraintTop_toBottomOf="@+id/logoOrange"
-        app:layout_constraintVertical_bias="1.0" />
 
     <ImageView
-        android:id="@+id/logoOrange"
-        android:layout_width="174dp"
+        android:id="@+id/backgroundBlack"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="68dp"
-        android:layout_marginTop="132dp"
-        android:contentDescription="@string/todo"
+        android:layout_weight="1"
         android:src="@drawable/logoorange"
-        app:layout_constraintBottom_toTopOf="@+id/newRecette"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:contentDescription="@string/todo"
+        android:scaleType="centerInside"
+        android:layout_margin="50dp"/>
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+
+        <Button
+            android:id="@+id/newRecette"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/nouvelle_recette"
+            android:gravity="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/consultRecette"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/consulter_recettes"
+            android:gravity="center"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</LinearLayout>

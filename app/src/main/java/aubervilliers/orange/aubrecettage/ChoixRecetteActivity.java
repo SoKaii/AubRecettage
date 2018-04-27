@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class choixRecette_activity extends AppCompatActivity
-{
+public class ChoixRecetteActivity extends AppCompatActivity {
+    
     private TextView mtitreChoixRecette;
     private Button mbuttonCableSimple;
     private Button mbuttonCableComplexe;
@@ -18,8 +18,7 @@ public class choixRecette_activity extends AppCompatActivity
     private Button mbuttonIncident;
     
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_choix_recette);
         mtitreChoixRecette = (TextView) findViewById(R.id.titreChoixRecette);
@@ -35,7 +34,7 @@ public class choixRecette_activity extends AppCompatActivity
         public void onClick(View v)
         {
 
-            Intent intent = new Intent(choixRecette_activity.this , cablageSimple_activity.class);
+            Intent intent = new Intent(ChoixRecetteActivity.this , CablageSimpleActivity.class);
             startActivity(intent);
         }
         });

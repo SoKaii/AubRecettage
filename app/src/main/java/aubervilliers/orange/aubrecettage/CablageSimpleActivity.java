@@ -3,7 +3,7 @@ package aubervilliers.orange.aubrecettage;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class cablageSimple_activity extends AppCompatActivity {
+public class CablageSimpleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

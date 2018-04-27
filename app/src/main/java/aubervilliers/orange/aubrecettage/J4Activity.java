@@ -3,7 +3,7 @@ package aubervilliers.orange.aubrecettage;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class j4_activity extends AppCompatActivity {
+public class J4Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
