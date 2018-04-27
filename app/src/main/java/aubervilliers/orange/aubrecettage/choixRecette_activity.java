@@ -1,5 +1,6 @@
 package aubervilliers.orange.aubrecettage;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -30,12 +31,13 @@ public class choixRecette_activity extends AppCompatActivity
         mbuttonIncident = (Button) findViewById(R.id.buttonIncident);
         
         mbuttonCableSimple.setOnClickListener(new View.OnClickListener()
-                                              {
-            @Override
-            public void onClick(View v)
-            {
-                System.exit(0);
-            }
+        { @Override
+        public void onClick(View v)
+        {
+
+            Intent intent = new Intent(choixRecette_activity.this , cablageSimple_activity.class);
+            startActivity(intent);
+        }
         });
         
         
