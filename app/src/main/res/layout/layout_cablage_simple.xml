@@ -1,80 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Black"
-    tools:context=".CablageSimpleActivity">
+    tools:context=".CablageSimpleActivity"
+    android:orientation="vertical">
 
     <TextView
-        android:id="@+id/titreCablageSimple"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="36dp"
-        android:layout_marginEnd="67dp"
-        android:layout_marginStart="67dp"
-        android:layout_marginTop="34dp"
+        android:id="@+id/titreChoixRecette"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Câblage simple"
-        android:textAlignment="center"
+        android:gravity="center"
         android:textColor="@color/Orange"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/vNumeroTicket"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:textSize="24sp"/>
 
-    <TextView
-        android:id="@+id/vNumeroTicket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="380dp"
-        android:layout_marginStart="15dp"
-        android:text="Numéro de ticket"
-        android:textColor="@color/Orange"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titreCablageSimple" />
-
-    <EditText
-        android:id="@+id/eNumeroTicket"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:background="@color/White"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/Orange"
-        app:layout_constraintBaseline_toBaselineOf="@+id/vNumeroTicket"
-        app:layout_constraintEnd_toEndOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal|center_vertical">
 
     <TextView
         android:id="@+id/vRealisateur"
-        android:layout_width="wrap_content"
-        android:layout_height="16dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="35dp"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
         android:text="Réalisateur du ticket"
-        android:textColor="@color/Orange"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vNumeroTicket" />
+        android:textColor="@color/Orange" />
+
+
 
     <EditText
         android:id="@+id/eRealisateur"
-        android:layout_width="150dp"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="5dp"
         android:background="@color/White"
         android:ems="10"
         android:inputType="textPersonName"
         android:text=""
         android:imeOptions="actionNext"
-        android:textColor="@color/Orange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eNumeroTicket" />
+        android:textColor="@color/Orange" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/eNumeroTicket"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@color/White"
+        android:inputType="textPersonName"
+        android:text=""
+        android:textColor="@color/Orange" />
+
 
     <TextView
         android:id="@+id/vSalle"
@@ -86,6 +67,14 @@
         android:textColor="@color/Orange"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vRealisateur" />
+
+    <TextView
+        android:id="@+id/vNumeroTicket"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:text="Numéro de ticket"
+        android:textColor="@color/Orange" />
 
     <EditText
         android:id="@+id/editText3"
@@ -163,4 +152,4 @@
         app:layout_constraintStart_toStartOf="parent" />
 
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

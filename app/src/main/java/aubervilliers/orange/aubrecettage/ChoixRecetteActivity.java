@@ -21,7 +21,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_choix_recette);
-        mtitreChoixRecette = (TextView) findViewById(R.id.titreChoixRecette);
+
         mbuttonCableSimple = (Button) findViewById(R.id.buttonCableSimple);
         mbuttonCableComplexe = (Button) findViewById(R.id.buttonCableComplexe);
         mbuttonRackage = (Button) findViewById(R.id.buttonRackage);
@@ -38,6 +38,24 @@ public class ChoixRecetteActivity extends AppCompatActivity {
             startActivity(intent);
         }
         });
+
+        mbuttonRackage.setOnClickListener(new View.OnClickListener()
+        { @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(ChoixRecetteActivity.this , RackageActivity.class);
+            startActivity(intent);
+        }
+        });
+
+        mbuttonJ4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChoixRecetteActivity.this, J4Activity.class);
+                startActivity(intent);
+            }
+        });
+
+
         
         
     }

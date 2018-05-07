@@ -5,4 +5,11 @@
     <string name="consulter_recettes">CONSULTER RECETTES</string>
     <string name="recettage_aubervilliers">Recettage Aubervilliers</string>
     <string name="todo">TODO</string>
+    <string name="rackage">Rackage</string>
+    <string name="r_alisateur_du_ticket">Réalisateur du ticket :</string>
+    <string name="nom_de_la_salle">Nom de la salle :</string>
+    <string name="commencer_la_recette">Commencer la recette</string>
+    <string name="n_26e_de_l_quipement">N° 26E de l\'équipement :</string>
+    <string name="callepinage_de_la_baie">Callepinage de la baie :</string>
+    <string name="num_ro_de_ticket">Numéro de ticket :</string>
 </resources>
