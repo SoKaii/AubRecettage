@@ -9,18 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity">
+        <activity android:name=".InfosTickets.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ChoixRecetteActivity" />
-        <activity android:name=".CablageSimpleActivity" />
-        <activity android:name=".CablageSimpleActivity" />
-        <activity android:name=".J4Activity" />
-        <activity android:name=".RackageActivity"></activity>
+        <activity android:name=".InfosTickets.ChoixRecetteActivity" />
+        <activity android:name=".InfosTickets.CablageSimpleActivity" />
+        <activity android:name=".InfosTickets.CablageSimpleActivity" />
+        <activity android:name=".InfosTickets.J4Activity" />
+        <activity android:name=".InfosTickets.RackageActivity" />
+        <activity android:name=".InfosTickets.CablageComplexeActivity" />
+        <activity android:name=".InfosTickets.E26Activity" />
+        <activity android:name=".InfosTickets.IncidentActivity"></activity>
     </application>
 
 </manifest>
