@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import aubervilliers.orange.aubrecettage.R;
 
-public class IncidentActivity extends AppCompatActivity {
+public class InfosJ4Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_incident);
+        setContentView(R.layout.layout_infos_j4);
     }
 }

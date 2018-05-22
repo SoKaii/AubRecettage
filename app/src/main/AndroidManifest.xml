@@ -17,13 +17,13 @@
             </intent-filter>
         </activity>
         <activity android:name=".InfosTickets.ChoixRecetteActivity" />
-        <activity android:name=".InfosTickets.CablageSimpleActivity" />
-        <activity android:name=".InfosTickets.CablageSimpleActivity" />
-        <activity android:name=".InfosTickets.J4Activity" />
-        <activity android:name=".InfosTickets.RackageActivity" />
-        <activity android:name=".InfosTickets.CablageComplexeActivity" />
-        <activity android:name=".InfosTickets.E26Activity" />
-        <activity android:name=".InfosTickets.IncidentActivity"></activity>
+        <activity android:name=".InfosTickets.InfosCablageSimpleActivity" />
+        <activity android:name=".InfosTickets.InfosCablageSimpleActivity" />
+        <activity android:name=".InfosTickets.InfosJ4Activity" />
+        <activity android:name=".InfosTickets.InfosRackageActivity" />
+        <activity android:name=".InfosTickets.InfosCablageComplexeActivity" />
+        <activity android:name=".InfosTickets.InfosE26Activity" />
+        <activity android:name=".InfosTickets.InfosIncidentActivity"></activity>
     </application>
 
 </manifest>

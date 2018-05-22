@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import aubervilliers.orange.aubrecettage.R;
 
-public class J4Activity extends AppCompatActivity {
+public class InfosCablageSimpleActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_j4);
+        setContentView(R.layout.layout_infos_cablage_simple);
     }
 }
