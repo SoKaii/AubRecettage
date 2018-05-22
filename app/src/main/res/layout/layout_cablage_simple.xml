@@ -9,147 +9,134 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/titreChoixRecette"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Câblage simple"
+        android:text="Cablage Simple"
         android:gravity="center"
         android:textColor="@color/Orange"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        android:layout_marginTop="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:orientation="horizontal"
-        android:layout_gravity="center_horizontal|center_vertical">
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginTop="10dp">
 
-    <TextView
-        android:id="@+id/vRealisateur"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="10dp"
-        android:text="Réalisateur du ticket"
-        android:textColor="@color/Orange" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/num_ro_de_ticket"
+            android:textColor="@color/Orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="5dp"
+            android:background="@color/White"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/Orange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/r_alisateur_du_ticket"
+            android:textColor="@color/Orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/White"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/Orange" />
 
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/nom_de_la_salle"
+            android:textColor="@color/Orange"
+            android:textSize="16sp" />
 
-    <EditText
-        android:id="@+id/eRealisateur"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:background="@color/White"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:imeOptions="actionNext"
-        android:textColor="@color/Orange" />
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/White"
+            android:ems="10"
+            android:layout_marginEnd="5dp"
+            android:inputType="text"
+            android:textColor="@color/Orange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/callepinage_de_la_baie"
+            android:textColor="@color/Orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:background="@color/White"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/Orange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/n_26e_de_l_quipement"
+            android:textColor="@color/Orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="5dp"
+            android:background="@color/White"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/Orange" />
+
+        <Button
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="42dp"
+            android:text="@string/commencer_la_recette"
+            android:textColor="@color/Orange"
+            android:layout_marginTop="40dp"/>
+
     </LinearLayout>
-
-    <EditText
-        android:id="@+id/eNumeroTicket"
-        android:layout_width="10dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:background="@color/White"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/Orange" />
-
-
-    <TextView
-        android:id="@+id/vSalle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="37dp"
-        android:text="nom des salles"
-        android:textColor="@color/Orange"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vRealisateur" />
-
-    <TextView
-        android:id="@+id/vNumeroTicket"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
-        android:text="Numéro de ticket"
-        android:textColor="@color/Orange" />
-
-    <EditText
-        android:id="@+id/editText3"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/White"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/Orange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/eRealisateur" />
-
-    <TextView
-        android:id="@+id/vPositionBaie"
-        android:layout_width="wrap_content"
-        android:layout_height="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="37dp"
-        android:text="Positions des baies"
-        android:textColor="@color/Orange"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vSalle" />
-
-    <EditText
-        android:id="@+id/ePositionBaie"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/White"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/Orange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
-
-    <TextView
-        android:id="@+id/vNumero26e"
-        android:layout_width="wrap_content"
-        android:layout_height="21dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="39dp"
-        android:text="Numéros 26E des l'équipements"
-        android:textColor="@color/Orange"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vPositionBaie" />
-
-    <EditText
-        android:id="@+id/eNumero26e"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="30dp"
-        android:background="@color/White"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:text=""
-        android:textColor="@color/Orange"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ePositionBaie" />
-
-    <Button
-        android:id="@+id/start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="42dp"
-        android:text="Commencer la recette"
-        android:textColor="@color/Orange"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-
 </LinearLayout>
