@@ -1,7 +1,9 @@
-package aubervilliers.orange.aubrecettage;
+package aubervilliers.orange.aubrecettage.InfosTickets;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import aubervilliers.orange.aubrecettage.R;
 
 public class RackageActivity extends AppCompatActivity {
 

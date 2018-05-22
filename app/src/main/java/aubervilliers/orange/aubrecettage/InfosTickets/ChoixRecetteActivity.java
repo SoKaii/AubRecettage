@@ -1,4 +1,4 @@
-package aubervilliers.orange.aubrecettage;
+package aubervilliers.orange.aubrecettage.InfosTickets;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import aubervilliers.orange.aubrecettage.R;
 
 public class ChoixRecetteActivity extends AppCompatActivity {
     
@@ -55,9 +57,30 @@ public class ChoixRecetteActivity extends AppCompatActivity {
             }
         });
 
+        mbuttonCableComplexe.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        
-        
+                Intent intent = new Intent(ChoixRecetteActivity.this, CablageComplexeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        mbutton26e.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChoixRecetteActivity.this , E26Activity.class);
+                startActivity(intent);
+            }
+        });
+
+        mbuttonIncident.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ChoixRecetteActivity.this , IncidentActivity.class);
+                startActivity(intent);
+            }
+        });
     }
     
     

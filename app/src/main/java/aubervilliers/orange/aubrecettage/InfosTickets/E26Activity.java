@@ -1,13 +1,15 @@
-package aubervilliers.orange.aubrecettage;
+package aubervilliers.orange.aubrecettage.InfosTickets;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class CablageSimpleActivity extends AppCompatActivity {
+import aubervilliers.orange.aubrecettage.R;
+
+public class E26Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_cablage_simple);
+        setContentView(R.layout.layout_26e);
     }
 }
