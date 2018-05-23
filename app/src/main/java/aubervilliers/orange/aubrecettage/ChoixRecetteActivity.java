@@ -1,17 +1,20 @@
-package aubervilliers.orange.aubrecettage.InfosTickets;
+package aubervilliers.orange.aubrecettage;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
-import aubervilliers.orange.aubrecettage.R;
+import aubervilliers.orange.aubrecettage.InfosTickets.InfosCablageComplexeActivity;
+import aubervilliers.orange.aubrecettage.InfosTickets.InfosCablageSimpleActivity;
+import aubervilliers.orange.aubrecettage.InfosTickets.InfosE26Activity;
+import aubervilliers.orange.aubrecettage.InfosTickets.InfosIncidentActivity;
+import aubervilliers.orange.aubrecettage.InfosTickets.InfosJ4Activity;
+import aubervilliers.orange.aubrecettage.InfosTickets.InfosRackageActivity;
 
 public class ChoixRecetteActivity extends AppCompatActivity {
-    
-    private TextView mtitreChoixRecette;
+
     private Button mbuttonCableSimple;
     private Button mbuttonCableComplexe;
     private Button mbuttonRackage;

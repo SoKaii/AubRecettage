@@ -1,4 +1,4 @@
-package aubervilliers.orange.aubrecettage.InfosTickets;
+package aubervilliers.orange.aubrecettage;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,8 +7,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import aubervilliers.orange.aubrecettage.R;
 
 public class HomeActivity extends AppCompatActivity {
 

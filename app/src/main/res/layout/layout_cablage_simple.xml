@@ -1,0 +1,798 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fiches.CablageSimpleActivity"
+    android:background="@color/Black">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginEnd="10dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/test"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cablâge Simple"
+        android:gravity="center"
+        android:textColor="@color/Orange"
+        android:textSize="24sp"
+        android:layout_marginTop="15dp" />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/White"
+        ></LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro du ticket : "
+            android:layout_marginStart="5dp"
+            android:textColor="@color/Orange"/>
+        <TextView
+            android:id="@+id/numTicket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Réalisateur du ticket :  "
+            android:layout_marginStart="5dp"
+            android:textColor="@color/Orange"/>
+        <TextView
+            android:id="@+id/realTicket"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:text=""/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:text="Nom de la salle :  "
+            android:textColor="@color/Orange"/>
+        <TextView
+            android:id="@+id/nomSalle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:text=""/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Callepinage de la baie :  "
+            android:textColor="@color/Orange"/>
+        <TextView
+            android:id="@+id/callBaie"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:text=""/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Numéro 26E de l'équipement :  "
+            android:textColor="@color/Orange"/>
+        <TextView
+            android:id="@+id/numEquip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/White"
+            android:text=""/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="7dp"
+        android:background="@color/White"
+        ></LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLes informations  « équipement/constructeur/modèle » sont en cohérence avec le « Terrain » ? \n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLa localisation « Salle/Baie » est en cohérence avec le          « Terrain » ? \n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLe hostname des équipements décrits dans le document de référence sont en cohérence avec le « Terrain » ?\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nL'étiquetage des hostname (Face AV, Face ARR, Format d’étiquetage, modèle d’étiquette , emplacement …) est correct ?\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLa présence de l’étiquetage 26E, et son emplacement est correct ? (puce RFID pour DCN)\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLe N°26e indiqué sur l’équipement et en cohérence avec le document de référence (puce RFID pour DCN)\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLe N° de série de l’équipement est en cohérence avec le document de référence ? \n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLe câblage physique des liaisons est en cohérence avec le Plan de câblage Transplan ? (Ports équipements/Ports Rocades/ N° de bandeaux…)\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLes passages de câbles présentent un rayon de courbure suffisant  y/c sur les toits modulaires ?\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLa connexion des cordons sur les bandeaux et équipements est correcte ?\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLes longueurs des cordons utilisés pour le CFA (Gestion du « mou ») est correcte y/c sur les toits modulaires ?\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nL’utilisation des scratchs (fixation des torons, nombre..) est correcte y/c sur les toits modulaires ?\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLe passage des liaisons à l’état « réalisées » est effectif dans l’outil Transplan\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nLa polarité Rx, Tx ainsi que le type de module SFP sont respectés ?\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:text="\n\nL’étiquetage des liaisons (présence, format, visibilité, emplacement) est correct ?\n"
+        android:layout_marginStart="5dp"/>
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="OUI"
+            android:layout_marginStart="00dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NON"
+            android:layout_marginLeft="40dp"
+            android:textColor="@color/Orange"
+            android:buttonTint="@color/White"/>
+    </RadioGroup>
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/Orange"
+    android:layout_marginStart="5dp"
+    android:text="Commentaire : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textColor="@color/Orange"
+    android:layout_marginStart="5dp"
+    android:layout_marginTop="30dp"
+    android:text="Anomalies à corriger : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Anomalies constatées lors de la recette initiale, correctifs apportés : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/Orange"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="15dp"
+        android:text="Anomalies non bloquantes à prendre en compte : "/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/White"/>
+    <Button
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:text="Enregistrer et Continuer"
+        android:textColor="@color/Orange"/>
+
+
+</LinearLayout>
+
+</ScrollView>
