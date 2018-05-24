@@ -1,4 +1,4 @@
-package aubervilliers.orange.aubrecettage.InfosTickets;
+package aubervilliers.orange.aubrecettage.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfosTickets.RackageActivity"
+    tools:context=".ui.infostickets.InfosRackageActivity"
     android:background="@color/Black"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cablage Complexe"
+        android:text="Incident"
         android:gravity="center"
         android:textColor="@color/Orange"
         android:textSize="24sp"

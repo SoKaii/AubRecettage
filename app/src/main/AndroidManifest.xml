@@ -9,21 +9,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".InfosTickets.HomeActivity">
+        <activity android:name=".ui.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".InfosTickets.ChoixRecetteActivity" />
-        <activity android:name=".InfosTickets.CablageSimpleActivity" />
-        <activity android:name=".InfosTickets.CablageSimpleActivity" />
-        <activity android:name=".InfosTickets.J4Activity" />
-        <activity android:name=".InfosTickets.RackageActivity" />
-        <activity android:name=".InfosTickets.CablageComplexeActivity" />
-        <activity android:name=".InfosTickets.E26Activity" />
-        <activity android:name=".InfosTickets.IncidentActivity"></activity>
+        <activity android:name=".ui.ChoixRecetteActivity" />
+        <activity android:name=".ui.infostickets.InfosCablageSimpleActivity" />
+        <activity android:name=".ui.infostickets.InfosJ4Activity" />
+        <activity android:name=".ui.infostickets.InfosRackageActivity" />
+        <activity android:name=".ui.infostickets.InfosCablageComplexeActivity" />
+        <activity android:name=".ui.infostickets.InfosE26Activity" />
+        <activity android:name=".ui.infostickets.InfosIncidentActivity" />
+        <activity android:name=".ui.fiches.CablageSimpleActivity"
+            android:windowSoftInputMode="stateUnchanged"/>
+        <activity android:name=".ui.fiches.RackageActivity"></activity>
     </application>
 
 </manifest>

@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfosTickets.RackageActivity"
     android:background="@color/Black"
+    tools:context=".ui.infostickets.InfosCablageSimpleActivity"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Incident"
+        android:text="Cablage Simple"
         android:gravity="center"
         android:textColor="@color/Orange"
         android:textSize="24sp"
@@ -38,6 +38,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/nTicket"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -59,6 +60,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/realTicket"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -80,6 +82,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/nomSalle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -100,6 +103,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/callBaie"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -120,6 +124,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/numEquip"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

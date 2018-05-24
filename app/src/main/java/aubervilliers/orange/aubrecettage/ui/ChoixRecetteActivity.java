@@ -1,17 +1,21 @@
-package aubervilliers.orange.aubrecettage.InfosTickets;
+package aubervilliers.orange.aubrecettage.ui;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
+import aubervilliers.orange.aubrecettage.ui.infostickets.InfosCablageComplexeActivity;
+import aubervilliers.orange.aubrecettage.ui.infostickets.InfosCablageSimpleActivity;
+import aubervilliers.orange.aubrecettage.ui.infostickets.InfosE26Activity;
+import aubervilliers.orange.aubrecettage.ui.infostickets.InfosIncidentActivity;
+import aubervilliers.orange.aubrecettage.ui.infostickets.InfosJ4Activity;
+import aubervilliers.orange.aubrecettage.ui.infostickets.InfosRackageActivity;
 import aubervilliers.orange.aubrecettage.R;
 
 public class ChoixRecetteActivity extends AppCompatActivity {
-    
-    private TextView mtitreChoixRecette;
+
     private Button mbuttonCableSimple;
     private Button mbuttonCableComplexe;
     private Button mbuttonRackage;
@@ -36,7 +40,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         public void onClick(View v)
         {
 
-            Intent intent = new Intent(ChoixRecetteActivity.this , CablageSimpleActivity.class);
+            Intent intent = new Intent(ChoixRecetteActivity.this , InfosCablageSimpleActivity.class);
             startActivity(intent);
         }
         });
@@ -44,7 +48,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         mbuttonRackage.setOnClickListener(new View.OnClickListener()
         { @Override
         public void onClick(View view) {
-            Intent intent = new Intent(ChoixRecetteActivity.this , RackageActivity.class);
+            Intent intent = new Intent(ChoixRecetteActivity.this , InfosRackageActivity.class);
             startActivity(intent);
         }
         });
@@ -52,7 +56,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         mbuttonJ4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChoixRecetteActivity.this, J4Activity.class);
+                Intent intent = new Intent(ChoixRecetteActivity.this, InfosJ4Activity.class);
                 startActivity(intent);
             }
         });
@@ -61,7 +65,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(ChoixRecetteActivity.this, CablageComplexeActivity.class);
+                Intent intent = new Intent(ChoixRecetteActivity.this, InfosCablageComplexeActivity.class);
                 startActivity(intent);
             }
         });
@@ -69,7 +73,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         mbutton26e.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChoixRecetteActivity.this , E26Activity.class);
+                Intent intent = new Intent(ChoixRecetteActivity.this , InfosE26Activity.class);
                 startActivity(intent);
             }
         });
@@ -77,7 +81,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         mbuttonIncident.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChoixRecetteActivity.this , IncidentActivity.class);
+                Intent intent = new Intent(ChoixRecetteActivity.this , InfosIncidentActivity.class);
                 startActivity(intent);
             }
         });
