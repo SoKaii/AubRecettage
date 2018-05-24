@@ -1,13 +1,21 @@
 package aubervilliers.orange.aubrecettage.Fiches;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import aubervilliers.orange.aubrecettage.R;
 
 public class CablageSimpleActivity extends AppCompatActivity {
+
+    private String numTicket = "";
+    private String realTicket = "";
+    private String nomSalle = "";
+    private String callBaie = "";
+    private String numEquip = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,12 +24,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        if(intent != null) {
-            String numTicket = "";
-            String realTicket = "";
-            String nomSalle = "";
-            String callBaie = "";
-            String numEquip = "";
+        if (intent != null) {
 
             if(intent.hasExtra("nTicket")) {
                 numTicket = intent.getStringExtra("nTicket");
@@ -31,22 +34,34 @@ public class CablageSimpleActivity extends AppCompatActivity {
                 numEquip = intent.getStringExtra("numEquip");
 
             }
-            TextView nTicket = (TextView) findViewById(R.id.numTicket);
+            TextView nTicket = findViewById(R.id.numTicket);
             nTicket.setText(numTicket);
 
-            TextView rTicket = (TextView) findViewById(R.id.realTicket);
+            TextView rTicket = findViewById(R.id.realTicket);
             rTicket.setText(realTicket);
 
-            TextView nSalle = (TextView) findViewById(R.id.nomSalle);
+            TextView nSalle = findViewById(R.id.nomSalle);
             nSalle.setText(nomSalle);
 
-            TextView cBaie = (TextView) findViewById(R.id.callBaie);
+            TextView cBaie = findViewById(R.id.callBaie);
             cBaie.setText(callBaie);
 
-            TextView nEquip = (TextView) findViewById(R.id.numEquip);
+            TextView nEquip = findViewById(R.id.numEquip);
             nEquip.setText(numEquip);
         }
 
+    }
 
+    private void getInfos() {
+        //TODO create model to store data
+
+        //TODO store numTicket, realTicket, salle, baie and equipment in data model
+
+        RadioButton infosEquipYes = findViewById(R.id.infos_equip_yes);
+        // not necessary to have the state of the other button, when one is checked, the other is unchecked because of RadioGroup
+        // model.infosEquipCoherent = infosEquipYes.isChecked()
+
+        EditText infosEquipEt = findViewById(R.id.infos_equip_comment);
+        // model.setInfosEquipComment = infosEquipEt.getText().toString();
     }
 }
