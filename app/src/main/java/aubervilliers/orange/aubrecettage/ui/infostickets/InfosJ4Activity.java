@@ -1,15 +1,15 @@
-package aubervilliers.orange.aubrecettage.InfosTickets;
+package aubervilliers.orange.aubrecettage.ui.infostickets;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import aubervilliers.orange.aubrecettage.R;
 
-public class InfosCablageComplexeActivity extends AppCompatActivity {
+public class InfosJ4Activity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_infos_cablage_complexe);
+        setContentView(R.layout.layout_infos_j4);
     }
 }

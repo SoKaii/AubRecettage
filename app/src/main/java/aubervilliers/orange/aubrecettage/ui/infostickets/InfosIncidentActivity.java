@@ -1,4 +1,4 @@
-package aubervilliers.orange.aubrecettage.InfosTickets;
+package aubervilliers.orange.aubrecettage.ui.infostickets;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;

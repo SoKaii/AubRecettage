@@ -1,4 +1,4 @@
-package aubervilliers.orange.aubrecettage.Fiches;
+package aubervilliers.orange.aubrecettage.ui.fiches;
 
 import android.content.Intent;
 import android.os.Bundle;

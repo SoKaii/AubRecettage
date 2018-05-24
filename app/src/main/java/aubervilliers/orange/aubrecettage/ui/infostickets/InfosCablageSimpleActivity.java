@@ -1,4 +1,4 @@
-package aubervilliers.orange.aubrecettage.InfosTickets;
+package aubervilliers.orange.aubrecettage.ui.infostickets;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -7,10 +7,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import aubervilliers.orange.aubrecettage.ui.fiches.CablageSimpleActivity;
 import aubervilliers.orange.aubrecettage.R;
-import aubervilliers.orange.aubrecettage.Fiches.RackageActivity;
 
-public class InfosRackageActivity extends AppCompatActivity {
+public class InfosCablageSimpleActivity extends AppCompatActivity {
 
     private Button mButtonStart;
     private EditText mNTicket;
@@ -22,16 +22,15 @@ public class InfosRackageActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_infos_rackage);
+        setContentView(R.layout.layout_infos_cablage_simple);
 
-        mButtonStart = findViewById(R.id.start);
-        mNTicket = findViewById(R.id.nTicket);
-        mRealTicket = findViewById(R.id.realTicket);
-        mNomSalle = findViewById(R.id.nomSalle);
-        mCallBaie = findViewById(R.id.callBaie);
-        mNumEquip = findViewById(R.id.numEquip);
+        mNTicket = (EditText) findViewById(R.id.nTicket);
+        mRealTicket = (EditText) findViewById(R.id.realTicket);
+        mNomSalle = (EditText) findViewById(R.id.nomSalle);
+        mCallBaie = (EditText) findViewById(R.id.callBaie);
+        mNumEquip = (EditText) findViewById(R.id.numEquip);
 
-
+        mButtonStart = (Button) findViewById(R.id.start);
 
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,7 +41,7 @@ public class InfosRackageActivity extends AppCompatActivity {
                 String callBaie = mCallBaie.getText().toString();
                 String numEquip = mNumEquip.getText().toString();
 
-                Intent intent = new Intent(InfosRackageActivity.this , RackageActivity.class);
+                Intent intent = new Intent(InfosCablageSimpleActivity.this , CablageSimpleActivity.class);
                 intent.putExtra("nTicket",numeroTicket);
                 intent.putExtra("realTicket",realTicket);
                 intent.putExtra("nomSalle",nomSalle);
@@ -52,6 +51,5 @@ public class InfosRackageActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

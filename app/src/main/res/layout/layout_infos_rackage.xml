@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".InfosTickets.InfosRackageActivity"
+    tools:context=".ui.infostickets.InfosRackageActivity"
     android:background="@color/Black"
     android:orientation="vertical">
     
