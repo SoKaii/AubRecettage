@@ -2,12 +2,15 @@ package aubervilliers.orange.aubrecettage.ui.fiches;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import aubervilliers.orange.aubrecettage.R;
+import aubervilliers.orange.aubrecettage.model.Question;
 
 public class CablageSimpleActivity extends AppCompatActivity {
 
@@ -34,6 +37,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
                 numEquip = intent.getStringExtra("numEquip");
 
             }
+
             TextView nTicket = findViewById(R.id.numTicket);
             nTicket.setText(numTicket);
 
@@ -55,13 +59,25 @@ public class CablageSimpleActivity extends AppCompatActivity {
     private void getInfos() {
         //TODO create model to store data
 
-        //TODO store numTicket, realTicket, salle, baie and equipment in data model
+        //TODO store numTicket, realTicket, nomSalle, callBaie and numEquipment in data model
+        boolean Oui;
+        String Comment;
 
         RadioButton infosEquipYes = findViewById(R.id.infos_equip_yes);
+
+        if(infosEquipYes.isSelected()) {
+            Oui=true;
+        }
+        else {
+            Oui=false;
+        }
         // not necessary to have the state of the other button, when one is checked, the other is unchecked because of RadioGroup
-        // model.infosEquipCoherent = infosEquipYes.isChecked()
 
         EditText infosEquipEt = findViewById(R.id.infos_equip_comment);
+        Comment = infosEquipEt.getText().toString();
+
+        Question q1 = new Question(Oui,Comment);
+
         // model.setInfosEquipComment = infosEquipEt.getText().toString();
     }
 }

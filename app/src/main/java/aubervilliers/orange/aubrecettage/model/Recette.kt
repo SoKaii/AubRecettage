@@ -1,4 +1,5 @@
 package aubervilliers.orange.aubrecettage.model
+import aubervilliers.orange.aubrecettage.model.Question
 
 data class Recette(
         var recetteType: RecetteType,
@@ -6,7 +7,8 @@ data class Recette(
         var ticketWriter: String?,
         var roomName: String?,
         var baieCall: String?,
-        var equipNumber: Int?
+        var equipNumber: Int?,
+        var Q1: Question
 
 
 //TODO complete

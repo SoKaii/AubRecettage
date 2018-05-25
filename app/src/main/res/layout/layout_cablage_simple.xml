@@ -25,7 +25,9 @@
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1px"
-            android:background="@color/White"></LinearLayout>
+            android:background="@color/White">
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -157,6 +159,7 @@
                 android:textColor="@color/Orange" />
 
             <RadioButton
+                android:id="@+id/infos_equip_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
