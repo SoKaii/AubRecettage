@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
+import aubervilliers.orange.aubrecettage.ui.recaps.RecapCablageSimpleActivity;
 
 public class CablageSimpleActivity extends AppCompatActivity {
 
@@ -19,11 +21,14 @@ public class CablageSimpleActivity extends AppCompatActivity {
     private String nomSalle = "";
     private String callBaie = "";
     private String numEquip = "";
+    private Button buttonNext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_cablage_simple);
+
+        buttonNext = findViewById(R.id.saveNext);
 
         Intent intent = getIntent();
 
@@ -53,6 +58,14 @@ public class CablageSimpleActivity extends AppCompatActivity {
             TextView nEquip = findViewById(R.id.numEquip);
             nEquip.setText(numEquip);
         }
+
+        buttonNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent1 = new Intent(CablageSimpleActivity.this, RecapCablageSimpleActivity.class);
+                startActivity(intent1);
+            }
+        });
 
     }
 

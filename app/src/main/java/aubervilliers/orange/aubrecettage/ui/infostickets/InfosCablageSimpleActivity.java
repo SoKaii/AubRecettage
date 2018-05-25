@@ -24,13 +24,13 @@ public class InfosCablageSimpleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_infos_cablage_simple);
 
-        mNTicket = (EditText) findViewById(R.id.nTicket);
-        mRealTicket = (EditText) findViewById(R.id.realTicket);
-        mNomSalle = (EditText) findViewById(R.id.nomSalle);
-        mCallBaie = (EditText) findViewById(R.id.callBaie);
-        mNumEquip = (EditText) findViewById(R.id.numEquip);
+        mNTicket = findViewById(R.id.nTicket);
+        mRealTicket = findViewById(R.id.realTicket);
+        mNomSalle = findViewById(R.id.nomSalle);
+        mCallBaie = findViewById(R.id.callBaie);
+        mNumEquip = findViewById(R.id.numEquip);
 
-        mButtonStart = (Button) findViewById(R.id.start);
+        mButtonStart = findViewById(R.id.start);
 
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override
