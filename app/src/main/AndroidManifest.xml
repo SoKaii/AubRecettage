@@ -23,9 +23,11 @@
         <activity android:name=".ui.infostickets.InfosCablageComplexeActivity" />
         <activity android:name=".ui.infostickets.InfosE26Activity" />
         <activity android:name=".ui.infostickets.InfosIncidentActivity" />
-        <activity android:name=".ui.fiches.CablageSimpleActivity"
-            android:windowSoftInputMode="stateUnchanged"/>
-        <activity android:name=".ui.fiches.RackageActivity"></activity>
+        <activity
+            android:name=".ui.fiches.CablageSimpleActivity"
+            android:windowSoftInputMode="stateUnchanged" />
+        <activity android:name=".ui.fiches.RackageActivity" />
+        <activity android:name=".ui.recaps.RecapCablageSimpleActivity"></activity>
     </application>
 
 </manifest>
