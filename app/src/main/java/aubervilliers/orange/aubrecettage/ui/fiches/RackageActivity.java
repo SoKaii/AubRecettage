@@ -21,7 +21,8 @@ public class RackageActivity extends AppCompatActivity {
             if(intent.hasExtra("nTicket")) {
                 numTicket = intent.getStringExtra("nTicket");
             }
-            TextView textView = (TextView) findViewById(R.id.test);
+
+            TextView textView = (TextView) findViewById(R.id.numTicket);
             textView.setText(numTicket);
         }
 
