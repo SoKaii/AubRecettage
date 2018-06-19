@@ -1,17 +1,56 @@
 package aubervilliers.orange.aubrecettage.ui;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import com.cete.dynamicpdf.*;
 import com.cete.dynamicpdf.pageelements.Label;
 
+import android.app.Activity;
+import android.os.Bundle;
+import android.os.Environment;
+import android.widget.Toast;
+
 import aubervilliers.orange.aubrecettage.R;
 
-public class ExportPDFActivity extends AppCompatActivity {
+public class ExportPDFActivity extends Activity {
+    private static String FILE = Environment.getExternalStorageDirectory()
+            + "/Recette.pdf";
 
+    /** Called when the activity is first created. */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_export_pdf);
+
+        // Create a document and set it's properties
+        Document objDocument = new Document();
+        objDocument.setCreator("DynamicPDFHelloWorld.java");
+        objDocument.setAuthor("AubRecettage");
+        objDocument.setTitle("AubRecettage");
+
+        // Create a page to add to the document
+        Page objPage = new Page(PageSize.LETTER, PageOrientation.PORTRAIT,
+                54.0f);
+
+        // Create a Label to add to the page
+        String strText = "Ceci est un test de génération de PDF\nFrom DynamicPDF Generator "
+                + "for Java\nDynamicPDF.com";
+        Label objLabel = new Label(strText, 0, 0, 504, 100,
+                Font.getHelvetica(), 18, TextAlign.CENTER);
+
+        // Add label to page
+        objPage.getElements().add(objLabel);
+
+        // Add page to document
+        objDocument.getPages().add(objPage);
+
+        try {
+            // Outputs the document to file
+            objDocument.draw(FILE);
+            Toast.makeText(this, "File has been written to :" + FILE,
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Toast.makeText(this,
+                    "Error, unable to write to file\n" + e.getMessage(),
+                    Toast.LENGTH_LONG).show();
+        }
     }
 }
