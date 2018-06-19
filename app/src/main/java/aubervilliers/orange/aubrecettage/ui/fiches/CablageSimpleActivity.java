@@ -2,7 +2,6 @@ package aubervilliers.orange.aubrecettage.ui.fiches;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
-import aubervilliers.orange.aubrecettage.ui.recaps.RecapCablageSimpleActivity;
+import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
 public class CablageSimpleActivity extends AppCompatActivity {
 
@@ -62,7 +61,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent1 = new Intent(CablageSimpleActivity.this, RecapCablageSimpleActivity.class);
+                Intent intent1 = new Intent(CablageSimpleActivity.this, RecapActivity.class);
                 startActivity(intent1);
             }
         });

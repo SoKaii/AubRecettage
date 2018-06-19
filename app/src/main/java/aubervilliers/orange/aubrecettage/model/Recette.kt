@@ -8,8 +8,7 @@ data class Recette(
         var roomName: String?,
         var baieCall: String?,
         var equipNumber: Int?,
-        var Q1: Question
+        val tabQuestion: List<Question>)
+{
 
-
-//TODO complete
-)
+}

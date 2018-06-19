@@ -12,11 +12,9 @@ import aubervilliers.orange.aubrecettage.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private TextView mTitreHome;
-    private ImageView mBackgroundBlack;
+
     private Button mNewRecette;
     private Button mConsultRecette;
-    private ImageView mLogoOrange;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -28,13 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_home);
 
-        //test pull request
-
-        //mTitreHome = (TextView) findViewById(R.id.titreHome);
-        //mBackgroundBlack = (ImageView) findViewById(R.id.backgroundBlack);
         mNewRecette = (Button) findViewById(R.id.newRecette);
-        //mConsultRecette = (Button) findViewById(R.id.consultRecette);
-        //mLogoOrange = (ImageView) findViewById(R.id.logoOrange);
 
         mNewRecette.setOnClickListener(new View.OnClickListener()
         { @Override
@@ -47,7 +39,4 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
-
-
-    //public native stringFromJNI();
 }
