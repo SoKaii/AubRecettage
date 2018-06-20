@@ -10,7 +10,6 @@ import android.widget.RadioButton;
 import android.widget.TextView;
 
 import aubervilliers.orange.aubrecettage.R;
-import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
 public class RackageActivity extends AppCompatActivity {
@@ -88,7 +87,7 @@ public class RackageActivity extends AppCompatActivity {
         EditText infosEquipEt = findViewById(R.id.infos_equip_comment);
         Comment = infosEquipEt.getText().toString();
 
-        Question q1 = new Question(Oui,Comment);
+        //QuestionOld q1 = new QuestionOld(Oui,Comment);
 
         // model.setInfosEquipComment = infosEquipEt.getText().toString();
     }

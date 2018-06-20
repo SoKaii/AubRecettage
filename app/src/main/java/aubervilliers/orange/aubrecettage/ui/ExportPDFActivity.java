@@ -6,19 +6,41 @@ import com.cete.dynamicpdf.pageelements.Label;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Environment;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import aubervilliers.orange.aubrecettage.R;
 
 public class ExportPDFActivity extends Activity {
-    private static String FILE = Environment.getExternalStorageDirectory()
-            + "/Recette.pdf";
+
+    private EditText editText;
 
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_export_pdf);
+
+
+        editText = findViewById(R.id.nomFichier);
+
+        Button bt = findViewById(R.id.exportButton);
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                exportPDF(editText.getText().toString());
+            }
+        });
+
+
+    }
+
+    public void exportPDF(String fileName) {
+
+        String pdfFileName = Environment.getExternalStorageDirectory()
+                + "/" + fileName + ".pdf";
 
         // Create a document and set it's properties
         Document objDocument = new Document();
@@ -44,8 +66,8 @@ public class ExportPDFActivity extends Activity {
 
         try {
             // Outputs the document to file
-            objDocument.draw(FILE);
-            Toast.makeText(this, "File has been written to :" + FILE,
+            objDocument.draw(pdfFileName);
+            Toast.makeText(this, "File has been written to :" + pdfFileName,
                     Toast.LENGTH_LONG).show();
         } catch (Exception e) {
             Toast.makeText(this,
