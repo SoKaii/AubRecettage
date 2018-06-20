@@ -12,6 +12,18 @@ public class Recette implements Serializable {
     private String baieCall;
     private String equipNumber;
     private List<Question> tabQuestions;
+    private Recap recap;
+
+    public Recette(String recetteType, String ticketNumber, String ticketWriter, String roomName, String baieCall, String equipNumber, List<Question> tabQuestions, Recap recap) {
+        this.recetteType = recetteType;
+        this.ticketNumber = ticketNumber;
+        this.ticketWriter = ticketWriter;
+        this.roomName = roomName;
+        this.baieCall = baieCall;
+        this.equipNumber = equipNumber;
+        this.tabQuestions = tabQuestions;
+        this.recap = recap;
+    }
 
     public String getRecetteType() {
         return recetteType;

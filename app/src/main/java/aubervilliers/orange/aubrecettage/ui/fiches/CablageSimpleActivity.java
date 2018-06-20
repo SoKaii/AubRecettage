@@ -9,6 +9,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
@@ -16,10 +19,7 @@ import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
 public class CablageSimpleActivity extends AppCompatActivity {
 
-    public static final String EXTRA_CABLAGE_SIMPLE = "extra_cablage_simple";
-
     private Recette recette;
-
     private String numTicket = "";
     private String realTicket = "";
     private String nomSalle = "";
@@ -67,9 +67,10 @@ public class CablageSimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO verify all qeustions are answered
+                getInfos();
 
                 Intent intent1 = new Intent(CablageSimpleActivity.this, RecapActivity.class);
-                intent1.putExtra(EXTRA_CABLAGE_SIMPLE, recette);
+                intent1.putExtra(RecapActivity.EXTRA_RECETTE_KEY, recette);
                 startActivity(intent1);
             }
         });
@@ -77,14 +78,6 @@ public class CablageSimpleActivity extends AppCompatActivity {
     }
 
     private void getInfos() {
-
-        recette = new Recette();
-        recette.setRecetteType("Câblage simple");
-        recette.setTicketNumber(numTicket);
-        recette.setTicketWriter(realTicket);
-        recette.setRoomName(nomSalle);
-        recette.setBaieCall(callBaie);
-        recette.setEquipNumber(numEquip);
 
         TextView questionLabelTv1 = findViewById(R.id.infos_equip_label);
         Question question1 = new Question();
@@ -94,7 +87,11 @@ public class CablageSimpleActivity extends AppCompatActivity {
         EditText questionCommentEt1 = findViewById(R.id.infos_equip_comment);
         question1.setCommentary(questionCommentEt1.getText().toString());
 
-        //TODO
+        List<Question> questions = new ArrayList<>();
+        questions.add(question1);
+
+
+        recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions, null);
 
     }
 }
