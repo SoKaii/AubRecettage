@@ -4,6 +4,7 @@ import com.cete.dynamicpdf.*;
 import com.cete.dynamicpdf.pageelements.Label;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.view.View;
@@ -12,10 +13,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import aubervilliers.orange.aubrecettage.R;
+import aubervilliers.orange.aubrecettage.model.Recette;
 
 public class ExportPDFActivity extends Activity {
 
+    public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
     private EditText editText;
+    private Recette recette;
 
     /** Called when the activity is first created. */
     @Override
@@ -23,7 +27,21 @@ public class ExportPDFActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_export_pdf);
 
+        Intent intent = getIntent();
 
+        if (intent != null) {
+
+            if(intent.hasExtra(EXTRA_RECETTE_KEY)) {
+
+                recette = (Recette) intent.getSerializableExtra(EXTRA_RECETTE_KEY);
+
+            }
+
+            Toast.makeText(this,
+                    "Intent " + recette.getQuestion1().getCommentary() + " récupéré",
+                    Toast.LENGTH_LONG).show();
+
+        }
         editText = findViewById(R.id.nomFichier);
 
         Button bt = findViewById(R.id.exportButton);

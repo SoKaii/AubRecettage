@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/Black"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/question1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="\n\nLes informations  « équipement/constructeur/modèle » sont en cohérence avec le « Terrain » ? \n"
+        android:textColor="@color/Orange" />
+
+    <RadioGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/question1-yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="00dp"
+            android:buttonTint="@color/White"
+            android:text="OUI"
+            android:textColor="@color/Orange" />
+
+        <RadioButton
+            android:id="@+id/infos_equip_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:buttonTint="@color/White"
+            android:text="NON"
+            android:textColor="@color/Orange" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:text="Commentaire : "
+        android:textColor="@color/Orange" />
+
+    <EditText
+        android:id="@+id/question1-comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="5dp"
+        android:background="@color/White" />
+
+</LinearLayout>

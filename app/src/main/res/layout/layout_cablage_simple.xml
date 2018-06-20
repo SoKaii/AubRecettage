@@ -135,10 +135,20 @@
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:layout_marginTop="7dp"
-            android:background="@color/White"></LinearLayout>
+            android:background="@color/White">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/questions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/infos_equip_label"
+            android:id="@+id/question1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -152,7 +162,7 @@
             android:orientation="horizontal">
 
             <RadioButton
-                android:id="@+id/infos_equip_yes"
+                android:id="@+id/question1-yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
@@ -178,7 +188,7 @@
             android:textColor="@color/Orange" />
 
         <EditText
-            android:id="@+id/infos_equip_comment"
+            android:id="@+id/question1-comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -186,6 +196,7 @@
             android:background="@color/White" />
 
         <TextView
+            android:id="@+id/question2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -199,6 +210,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/question2-yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
@@ -223,6 +235,7 @@
             android:textColor="@color/Orange" />
 
         <EditText
+            android:id="@+id/question2-comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -230,6 +243,7 @@
             android:background="@color/White" />
 
         <TextView
+            android:id="@+id/question3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -243,6 +257,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/question3-yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
@@ -267,6 +282,7 @@
             android:textColor="@color/Orange" />
 
         <EditText
+            android:id="@+id/question3-comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -274,6 +290,7 @@
             android:background="@color/White" />
 
         <TextView
+            android:id="@+id/question4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -287,6 +304,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/question4-yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
@@ -311,6 +329,7 @@
             android:textColor="@color/Orange" />
 
         <EditText
+            android:id="@+id/question4-comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
@@ -318,6 +337,7 @@
             android:background="@color/White" />
 
         <TextView
+            android:id="@+id/question5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
@@ -331,6 +351,7 @@
             android:orientation="horizontal">
 
             <RadioButton
+                android:id="@+id/question5-yes"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
@@ -355,6 +376,7 @@
             android:textColor="@color/Orange" />
 
         <EditText
+            android:id="@+id/question5-comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"

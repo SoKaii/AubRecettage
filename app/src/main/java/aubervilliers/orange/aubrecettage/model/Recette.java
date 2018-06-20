@@ -80,4 +80,9 @@ public class Recette implements Serializable {
     public void setEquipNumber(String equipNumber) {
         this.equipNumber = equipNumber;
     }
+
+    public Question getQuestion1()
+    {
+        return tabQuestions.get(0);
+    }
 }

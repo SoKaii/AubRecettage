@@ -9,6 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import aubervilliers.orange.aubrecettage.R;
+import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
 import aubervilliers.orange.aubrecettage.ui.fiches.CablageSimpleActivity;
 
@@ -38,7 +39,7 @@ public class RecapActivity extends AppCompatActivity {
             }
 
             Toast.makeText(this,
-                    "Intent " + recette + " récupéré",
+                    "Intent " + recette.getRecetteType() + " récupéré",
                     Toast.LENGTH_LONG).show();
 
         }
@@ -48,6 +49,7 @@ public class RecapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RecapActivity.this, ExportPDFActivity.class);
+                intent.putExtra(ExportPDFActivity.EXTRA_RECETTE_KEY,recette);
                 startActivity(intent);
             }
         });
