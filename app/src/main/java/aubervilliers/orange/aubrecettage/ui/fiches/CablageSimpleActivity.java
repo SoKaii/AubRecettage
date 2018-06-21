@@ -73,13 +73,28 @@ public class CablageSimpleActivity extends AppCompatActivity {
         ll = findViewById(R.id.questions);
         addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true);
         addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true);
-        addQuestion("Anomalies constatées lors de la recette initiale, correctifs apportés:", false);
+        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?",true);
+        addQuestion("L'étiquetage des hostname est correct ?",true);
+        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?",true);
+        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?",true);
+        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?",true);
+        addQuestion("Le câblage physique des liaisons est en cohérence avec le plan de câblage Transplan ?",true);
+        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant sur les toits modulaires ?",true);
+        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?",true);
+        addQuestion("Les longueurs des cordons utilisés pour le CFA est correcte sur les toits modulaires ?",true);
+        addQuestion("L’utilisation des scratchs est correcte sur les toits modulaires ?",true);
+        addQuestion("Le passage des liaisons à l’état «réalisées» est effectif dans l’outil Transplan ?",true);
+        addQuestion("La polarité Rx,Tx ainsi que le type de module SFP sont respectés ?",true);
+        addQuestion("L’étiquetage des liaisons est correct ?",true);
+        addQuestion("Anomalies à corriger :",false);
+        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :",false);
+        addQuestion("Anomalies non bloquantes à prendre en compte :",false);
 
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO verify all qeustions are answered
+                //TODO verify all questions are answered
                 getInfos();
 
                 Intent intent1 = new Intent(CablageSimpleActivity.this, RecapActivity.class);
@@ -99,6 +114,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
         commentList.add((EditText) questionLayout.findViewById(R.id.questionComment));
         if (!hasRadioButtons) {
             questionLayout.findViewById(R.id.questionRadioGroup).setVisibility(View.GONE);
+            questionLayout.findViewById(R.id.questionCommentTV).setVisibility(View.GONE);
         }
         isOpenQuestionList.add(!hasRadioButtons);
         ll.addView(questionLayout);

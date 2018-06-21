@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Recette;
 
@@ -57,12 +58,13 @@ public class ExportPDFActivity extends Activity {
 
     public void exportPDF(String fileName) {
 
+        int i = 0;
         String pdfFileName = Environment.getExternalStorageDirectory()
                 + "/" + fileName + ".pdf";
 
         // Create a document and set it's properties
         Document objDocument = new Document();
-        objDocument.setCreator("DynamicPDFHelloWorld.java");
+        objDocument.setCreator("AubRecettage");
         objDocument.setAuthor("AubRecettage");
         objDocument.setTitle("AubRecettage");
 
@@ -71,13 +73,41 @@ public class ExportPDFActivity extends Activity {
                 54.0f);
 
         // Create a Label to add to the page
-        String strText = "Ceci est un test de génération de PDF\nFrom DynamicPDF Generator "
-                + "for Java\nDynamicPDF.com";
-        Label objLabel = new Label(strText, 0, 0, 504, 100,
+        String titre = "Recette de Câblage Simple du ticket n°"+recette.getTicketNumber();
+
+        Label title = new Label(titre, 0, 0, 504, 100,
                 Font.getHelvetica(), 18, TextAlign.CENTER);
 
         // Add label to page
-        objPage.getElements().add(objLabel);
+
+        while (recette.getTabQuestions().get(i) != null)
+        {
+            String questionBool = null;
+            String questionLabel = recette.getTabQuestions().get(i).getQuestionLabel();
+
+            if (recette.getTabQuestions().get(i).getButtonYesSelected())
+            {
+                questionBool = "Oui";
+            }
+            else
+            {
+                questionBool = "Non";
+            }
+
+            String questionComment = recette.getTabQuestions().get(i).getCommentary();
+
+            Label QuestionTitle = new Label(questionLabel,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
+            Label QuestionBool = new Label(questionBool,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
+            Label QuestionComment = new Label(questionComment,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
+
+            objPage.getElements().add(QuestionTitle);
+            objPage.getElements().add(QuestionBool);
+            objPage.getElements().add(QuestionComment);
+
+            i++;
+        }
+
+        objPage.getElements().add(title);
 
         // Add page to document
         objDocument.getPages().add(objPage);
