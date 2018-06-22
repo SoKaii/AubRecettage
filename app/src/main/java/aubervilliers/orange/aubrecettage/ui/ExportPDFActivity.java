@@ -1,8 +1,5 @@
 package aubervilliers.orange.aubrecettage.ui;
 
-import com.cete.dynamicpdf.*;
-import com.cete.dynamicpdf.pageelements.Label;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +9,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.cete.dynamicpdf.*;
+import com.cete.dynamicpdf.pageelements.Label;
 
 import aubervilliers.orange.aubrecettage.R;
+import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
 
 public class ExportPDFActivity extends Activity {
@@ -80,31 +80,28 @@ public class ExportPDFActivity extends Activity {
 
         // Add label to page
 
-        while (recette.getTabQuestions().get(i) != null)
-        {
-            String questionBool = null;
-            String questionLabel = recette.getTabQuestions().get(i).getQuestionLabel();
+        for (Question question : recette.getTabQuestions()) {
+            String questionLabel = question.getQuestionLabel();
 
-            if (recette.getTabQuestions().get(i).getButtonYesSelected())
+            String questionBoolLabel;
+            if (question.getButtonYesSelected())
             {
-                questionBool = "Oui";
+                questionBoolLabel = "Oui";
             }
             else
             {
-                questionBool = "Non";
+                questionBoolLabel = "Non";
             }
 
-            String questionComment = recette.getTabQuestions().get(i).getCommentary();
+            String questionComment = question.getCommentary();
 
             Label QuestionTitle = new Label(questionLabel,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
-            Label QuestionBool = new Label(questionBool,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
+            Label QuestionBool = new Label(questionBoolLabel,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
             Label QuestionComment = new Label(questionComment,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
 
             objPage.getElements().add(QuestionTitle);
             objPage.getElements().add(QuestionBool);
             objPage.getElements().add(QuestionComment);
-
-            i++;
         }
 
         objPage.getElements().add(title);

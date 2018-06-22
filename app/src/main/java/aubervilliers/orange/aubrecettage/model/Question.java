@@ -5,15 +5,15 @@ import java.io.Serializable;
 public class Question implements Serializable {
 
     private String questionLabel;
-    private Boolean buttonYesSelected;
+    private boolean buttonYesSelected;
     private String commentary;
-    private Boolean isOpenQuestion;
+    private boolean isOpenQuestion;
 
-    public Boolean getButtonYesSelected() {
+    public boolean getButtonYesSelected() {
         return buttonYesSelected;
     }
 
-    public void setButtonYesSelected(Boolean buttonYeSelecteds) {
+    public void setButtonYesSelected(boolean buttonYeSelecteds) {
         this.buttonYesSelected = buttonYesSelected;
     }
 
@@ -33,11 +33,11 @@ public class Question implements Serializable {
         this.questionLabel = questionLabel;
     }
 
-    public Boolean getOpenQuestion() {
+    public boolean getOpenQuestion() {
         return isOpenQuestion;
     }
 
-    public void setOpenQuestion(Boolean openQuestion) {
+    public void setOpenQuestion(boolean openQuestion) {
         isOpenQuestion = openQuestion;
     }
 }
