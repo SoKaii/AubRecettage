@@ -1,15 +1,25 @@
 package aubervilliers.orange.aubrecettage.ui;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.cete.dynamicpdf.*;
+import com.cete.dynamicpdf.Document;
+import com.cete.dynamicpdf.Font;
+import com.cete.dynamicpdf.Page;
+import com.cete.dynamicpdf.PageOrientation;
+import com.cete.dynamicpdf.PageSize;
+import com.cete.dynamicpdf.TextAlign;
 import com.cete.dynamicpdf.pageelements.Label;
 
 import aubervilliers.orange.aubrecettage.R;
@@ -18,11 +28,17 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 
 public class ExportPDFActivity extends Activity {
 
+    public static final String TAG = "ExportPDFActivity";
+
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
     private EditText editText;
     private Recette recette;
+    private Document objDocument;
+    private String pdfFileName;
 
-    /** Called when the activity is first created. */
+    /**
+     * Called when the activity is first created.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +48,7 @@ public class ExportPDFActivity extends Activity {
 
         if (intent != null) {
 
-            if(intent.hasExtra(EXTRA_RECETTE_KEY)) {
+            if (intent.hasExtra(EXTRA_RECETTE_KEY)) {
 
                 recette = (Recette) intent.getSerializableExtra(EXTRA_RECETTE_KEY);
 
@@ -59,11 +75,11 @@ public class ExportPDFActivity extends Activity {
     public void exportPDF(String fileName) {
 
         int i = 0;
-        String pdfFileName = Environment.getExternalStorageDirectory()
+        pdfFileName = Environment.getExternalStorageDirectory()
                 + "/" + fileName + ".pdf";
 
         // Create a document and set it's properties
-        Document objDocument = new Document();
+        objDocument = new Document();
         objDocument.setCreator("AubRecettage");
         objDocument.setAuthor("AubRecettage");
         objDocument.setTitle("AubRecettage");
@@ -73,7 +89,7 @@ public class ExportPDFActivity extends Activity {
                 54.0f);
 
         // Create a Label to add to the page
-        String titre = "Recette de Câblage Simple du ticket n°"+recette.getTicketNumber();
+        String titre = "Recette de Câblage Simple du ticket n°" + recette.getTicketNumber();
 
         Label title = new Label(titre, 0, 0, 504, 100,
                 Font.getHelvetica(), 18, TextAlign.CENTER);
@@ -84,20 +100,17 @@ public class ExportPDFActivity extends Activity {
             String questionLabel = question.getQuestionLabel();
 
             String questionBoolLabel;
-            if (question.getButtonYesSelected())
-            {
+            if (question.getButtonYesSelected()) {
                 questionBoolLabel = "Oui";
-            }
-            else
-            {
+            } else {
                 questionBoolLabel = "Non";
             }
 
             String questionComment = question.getCommentary();
 
-            Label QuestionTitle = new Label(questionLabel,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
-            Label QuestionBool = new Label(questionBoolLabel,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
-            Label QuestionComment = new Label(questionComment,0,0,504,100,Font.getHelvetica(),18,TextAlign.LEFT);
+            Label QuestionTitle = new Label(questionLabel, 0, 0, 504, 100, Font.getHelvetica(), 18, TextAlign.LEFT);
+            Label QuestionBool = new Label(questionBoolLabel, 0, 0, 504, 100, Font.getHelvetica(), 18, TextAlign.LEFT);
+            Label QuestionComment = new Label(questionComment, 0, 0, 504, 100, Font.getHelvetica(), 18, TextAlign.LEFT);
 
             objPage.getElements().add(QuestionTitle);
             objPage.getElements().add(QuestionBool);
@@ -109,12 +122,46 @@ public class ExportPDFActivity extends Activity {
         // Add page to document
         objDocument.getPages().add(objPage);
 
+        generatePDF();
+    }
+
+    public boolean isStoragePermissionGranted() {
+        if (Build.VERSION.SDK_INT >= 23) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                    == PackageManager.PERMISSION_GRANTED) {
+                Log.v(TAG, "Permission is granted");
+                return true;
+            } else {
+
+                Log.v(TAG, "Permission is revoked");
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+                return false;
+            }
+        } else { //permission is automatically granted on sdk<23 upon installation
+            Log.v(TAG, "Permission is granted");
+            return true;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
+            Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
+            generatePDF();
+        }
+    }
+
+    private void generatePDF() {
         try {
             // Outputs the document to file
-            objDocument.draw(pdfFileName);
-            Toast.makeText(this, "File has been written to :" + pdfFileName,
-                    Toast.LENGTH_LONG).show();
+            if (isStoragePermissionGranted()) {
+                objDocument.draw(pdfFileName);
+                Toast.makeText(this, "File has been written to :" + pdfFileName,
+                        Toast.LENGTH_LONG).show();
+            }
         } catch (Exception e) {
+            Log.e("ExportPDF", e.getMessage(), e);
             Toast.makeText(this,
                     "Error, unable to write to file\n" + e.getMessage(),
                     Toast.LENGTH_LONG).show();
