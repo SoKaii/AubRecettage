@@ -4,6 +4,7 @@ import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
@@ -21,6 +22,8 @@ import com.cete.dynamicpdf.PageOrientation;
 import com.cete.dynamicpdf.PageSize;
 import com.cete.dynamicpdf.TextAlign;
 import com.cete.dynamicpdf.pageelements.Label;
+
+import java.io.File;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
@@ -146,8 +149,8 @@ public class ExportPDFActivity extends Activity {
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if(grantResults[0]== PackageManager.PERMISSION_GRANTED){
-            Log.v(TAG,"Permission: "+permissions[0]+ "was "+grantResults[0]);
+        if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+            Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
             generatePDF();
         }
     }
@@ -157,6 +160,7 @@ public class ExportPDFActivity extends Activity {
             // Outputs the document to file
             if (isStoragePermissionGranted()) {
                 objDocument.draw(pdfFileName);
+                sendEmail(pdfFileName);
                 Toast.makeText(this, "File has been written to :" + pdfFileName,
                         Toast.LENGTH_LONG).show();
             }
@@ -166,5 +170,21 @@ public class ExportPDFActivity extends Activity {
                     "Error, unable to write to file\n" + e.getMessage(),
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    private void sendEmail(String pdfFileName) {
+        Intent emailIntent = new Intent(Intent.ACTION_SEND);
+        emailIntent.setType("text/plain");
+        //emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"aurore.penault@orange.com"});
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Résultat de la campagne de tests");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la campagne de tests au format PDF.");
+        File file = new File(pdfFileName);
+        if (!file.exists() || !file.canRead()) {
+            Log.e(TAG, "The following file does not exist: " + pdfFileName);
+            return;
+        }
+        Uri uri = Uri.fromFile(file);
+        emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        startActivity(Intent.createChooser(emailIntent, "Pick an Email provider"));
     }
 }
