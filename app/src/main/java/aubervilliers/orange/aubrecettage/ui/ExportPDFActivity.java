@@ -15,15 +15,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.cete.dynamicpdf.Document;
-import com.cete.dynamicpdf.Font;
-import com.cete.dynamicpdf.Page;
-import com.cete.dynamicpdf.PageOrientation;
-import com.cete.dynamicpdf.PageSize;
-import com.cete.dynamicpdf.TextAlign;
-import com.cete.dynamicpdf.pageelements.Label;
-
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfWriter;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
@@ -36,8 +35,8 @@ public class ExportPDFActivity extends Activity {
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
     private EditText editText;
     private Recette recette;
-    private Document objDocument;
     private String pdfFileName;
+    Document document = new Document();
 
     /**
      * Called when the activity is first created.
@@ -81,51 +80,40 @@ public class ExportPDFActivity extends Activity {
         pdfFileName = Environment.getExternalStorageDirectory()
                 + "/" + fileName + ".pdf";
 
-        // Create a document and set it's properties
-        objDocument = new Document();
-        objDocument.setCreator("AubRecettage");
-        objDocument.setAuthor("AubRecettage");
-        objDocument.setTitle("AubRecettage");
 
-        // Create a page to add to the document
-        Page objPage = new Page(PageSize.LETTER, PageOrientation.PORTRAIT,
-                54.0f);
+        try {
 
-        // Create a Label to add to the page
-        String titre = "Recette de Câblage Simple du ticket n°" + recette.getTicketNumber();
+            PdfWriter.getInstance(document, new FileOutputStream(pdfFileName));
+            document.open();
+            document.addAuthor("AubRecettage");
+            document.addCreator("AubRecettage");
+            document.addTitle("Recette du ticket n°" + recette.getTicketNumber());
 
-        Label title = new Label(titre, 0, 0, 504, 100,
-                Font.getHelvetica(), 18, TextAlign.CENTER);
+            for (Question question : recette.getTabQuestions()) {
 
-        // Add label to page
+                document.add(new Paragraph("Question : " + question.getQuestionLabel()));
 
-        for (Question question : recette.getTabQuestions()) {
-            String questionLabel = question.getQuestionLabel();
+                if (question.getButtonYesSelected()) {
+                    document.add(new Paragraph("Validation : Oui"));
+                } else {
+                    document.add(new Paragraph("Validation : Non"));
+                }
 
-            String questionBoolLabel;
-            if (question.getButtonYesSelected()) {
-                questionBoolLabel = "Oui";
-            } else {
-                questionBoolLabel = "Non";
+                document.add(new Paragraph("Commentaire : " + question.getCommentary()));
+
+                document.add(new Paragraph("\n \n"));
             }
 
-            String questionComment = question.getCommentary();
-
-            Label QuestionTitle = new Label(questionLabel, 0, 0, 504, 100, Font.getHelvetica(), 18, TextAlign.LEFT);
-            Label QuestionBool = new Label(questionBoolLabel, 0, 0, 504, 100, Font.getHelvetica(), 18, TextAlign.LEFT);
-            Label QuestionComment = new Label(questionComment, 0, 0, 504, 100, Font.getHelvetica(), 18, TextAlign.LEFT);
-
-            objPage.getElements().add(QuestionTitle);
-            objPage.getElements().add(QuestionBool);
-            objPage.getElements().add(QuestionComment);
+            document.close();
         }
 
-        objPage.getElements().add(title);
-
-        // Add page to document
-        objDocument.getPages().add(objPage);
-
-        generatePDF();
+        catch (DocumentException de) {
+            de.printStackTrace();
+        }
+        catch (IOException ioe)
+        {
+            ioe.printStackTrace();
+        }
     }
 
     public boolean isStoragePermissionGranted() {
@@ -176,8 +164,8 @@ public class ExportPDFActivity extends Activity {
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
         //emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"aurore.penault@orange.com"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Résultat de la campagne de tests");
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la campagne de tests au format PDF.");
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Résultat de la recette du ticket n°" + recette.getTicketNumber());
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF.");
         File file = new File(pdfFileName);
         if (!file.exists() || !file.canRead()) {
             Log.e(TAG, "The following file does not exist: " + pdfFileName);

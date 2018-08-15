@@ -38,7 +38,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation files('libs/DynamicPDF.jar')
+    implementation files('libs/itextpdf-5.5.13.jar')
 }
 repositories {
     mavenCentral()

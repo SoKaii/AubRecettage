@@ -11,7 +11,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Export PDF"
+        android:text="Exportation en PDF"
         android:gravity="center"
         android:textColor="@color/Orange"
         android:textSize="24sp"
@@ -40,7 +40,7 @@
             android:layout_gravity="left"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="30dp"
-            android:text="Nom du fichier à enregistrer : \n"
+            android:text="Nom du fichier à enregistrer (sans extension .pdf) : \n"
             android:textColor="@color/Orange"
             android:textSize="16sp" />
 
