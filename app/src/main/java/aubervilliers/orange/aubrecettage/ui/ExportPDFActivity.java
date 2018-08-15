@@ -103,9 +103,7 @@ public class ExportPDFActivity extends Activity {
 
                 document.add(new Paragraph("\n \n"));
             }
-
-            document.close();
-        }
+            }
 
         catch (DocumentException de) {
             de.printStackTrace();
@@ -147,7 +145,8 @@ public class ExportPDFActivity extends Activity {
         try {
             // Outputs the document to file
             if (isStoragePermissionGranted()) {
-                objDocument.draw(pdfFileName);
+                // objDocument.draw(pdfFileName);
+                document.close();
                 sendEmail(pdfFileName);
                 Toast.makeText(this, "File has been written to :" + pdfFileName,
                         Toast.LENGTH_LONG).show();

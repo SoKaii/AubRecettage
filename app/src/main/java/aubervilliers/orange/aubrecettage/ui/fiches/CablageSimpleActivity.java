@@ -1,7 +1,9 @@
 package aubervilliers.orange.aubrecettage.ui.fiches;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +11,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,8 +34,10 @@ public class CablageSimpleActivity extends AppCompatActivity {
     private LinearLayout ll;
     private List<String> titleList = new ArrayList<>();
     private List<RadioButton> yesBtList = new ArrayList<>();
+    private List<RadioButton> noBtList = new ArrayList<>();
     private List<EditText> commentList = new ArrayList<>();
     private List<Boolean> isOpenQuestionList = new ArrayList<>();
+    private List<Question> questions = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,8 +99,24 @@ public class CablageSimpleActivity extends AppCompatActivity {
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO verify all questions are answered
+
+                //TODO Look for the Dialog if all the not opened questions are answered
                 getInfos();
+                for (Question question: questions) {
+                    if(question.getButtonYesSelected() && question.getButtonNoSelected()) {
+                        AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageSimpleActivity.this);
+                        notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
+                                   .setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        })
+                                   .setTitle("Erreur")
+                                   .create();
+                    }
+                }
+
 
                 Intent intent1 = new Intent(CablageSimpleActivity.this, RecapActivity.class);
                 intent1.putExtra(RecapActivity.EXTRA_RECETTE_KEY, recette);
@@ -111,6 +132,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
         tv.setText(title);
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
+        noBtList.add((RadioButton) questionLayout.findViewById(R.id.questionNo));
         commentList.add((EditText) questionLayout.findViewById(R.id.questionComment));
         if (!hasRadioButtons) {
             questionLayout.findViewById(R.id.questionRadioGroup).setVisibility(View.GONE);
@@ -122,8 +144,6 @@ public class CablageSimpleActivity extends AppCompatActivity {
 
     private void getInfos() {
 
-        List<Question> questions = new ArrayList<>();
-
         int index = 0;
         for (String title : titleList) {
             Question question = new Question();
@@ -132,7 +152,10 @@ public class CablageSimpleActivity extends AppCompatActivity {
             question.setOpenQuestion(openQuestion);
             if (!openQuestion) {
                 RadioButton yesButton = yesBtList.get(index);
+                RadioButton noButton = noBtList.get(index);
+
                 question.setButtonYesSelected(yesButton.isSelected());
+                question.setButtonNoSelected(noButton.isSelected());
             }
             EditText commentEt = commentList.get(index);
             question.setCommentary(commentEt.getText().toString());

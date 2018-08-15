@@ -30,7 +30,8 @@
             android:windowSoftInputMode="stateUnchanged" />
         <activity android:name=".ui.fiches.RackageActivity" />
         <activity android:name=".ui.RecapActivity" />
-        <activity android:name=".ui.ExportPDFActivity"></activity>
+        <activity android:name=".ui.ExportPDFActivity" />
+        <activity android:name=".ui.fiches.J4Activity"></activity>
     </application>
 
 </manifest>

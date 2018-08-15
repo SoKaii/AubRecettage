@@ -6,6 +6,7 @@ public class Question implements Serializable {
 
     private String questionLabel;
     private boolean buttonYesSelected;
+    private boolean buttonNoSelected;
     private String commentary;
     private boolean isOpenQuestion;
 
@@ -39,5 +40,13 @@ public class Question implements Serializable {
 
     public void setOpenQuestion(boolean openQuestion) {
         isOpenQuestion = openQuestion;
+    }
+
+    public boolean getButtonNoSelected() {
+        return buttonNoSelected;
+    }
+
+    public void setButtonNoSelected(boolean buttonNoSelected) {
+        this.buttonNoSelected = buttonNoSelected;
     }
 }
