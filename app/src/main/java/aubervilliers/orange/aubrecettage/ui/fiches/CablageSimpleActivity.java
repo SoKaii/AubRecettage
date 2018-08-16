@@ -103,7 +103,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
                 //TODO Look for the Dialog if all the not opened questions are answered
                 getInfos();
                 for (Question question: questions) {
-                    if(question.getButtonYesSelected() && question.getButtonNoSelected()) {
+                    if(!question.getButtonYesSelected() && !question.getButtonNoSelected()) {
                         AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageSimpleActivity.this);
                         notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
                                    .setPositiveButton("Continuer", new DialogInterface.OnClickListener() {

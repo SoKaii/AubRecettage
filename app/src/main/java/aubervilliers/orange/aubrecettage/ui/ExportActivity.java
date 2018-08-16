@@ -21,6 +21,7 @@ import java.io.IOException;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
@@ -28,14 +29,21 @@ import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
 
-public class ExportPDFActivity extends Activity {
+public class ExportActivity extends Activity {
 
-    public static final String TAG = "ExportPDFActivity";
+    public static final String TAG = "ExportActivity";
 
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
     private EditText editText;
     private Recette recette;
+    private Button sendMail;
+    private EditText mailObject;
+    private EditText mailTo;
+
+    private String nomFichier;
     private String pdfFileName;
+    private String objetMail;
+    private String mailRecipient;
     Document document = new Document();
 
     /**
@@ -44,7 +52,16 @@ public class ExportPDFActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_export_pdf);
+        setContentView(R.layout.layout_export);
+
+        sendMail = findViewById(R.id.sendMail);
+        mailObject = findViewById(R.id.mailObject);
+        mailTo = findViewById(R.id.mailTo);
+        editText = findViewById(R.id.nomFichier);
+
+        nomFichier = editText.getText().toString();
+        objetMail = mailObject.getText().toString();
+        mailRecipient = mailTo.getText().toString();
 
         Intent intent = getIntent();
 
@@ -61,7 +78,6 @@ public class ExportPDFActivity extends Activity {
                     Toast.LENGTH_LONG).show();
 
         }
-        editText = findViewById(R.id.nomFichier);
 
         Button bt = findViewById(R.id.exportButton);
         bt.setOnClickListener(new View.OnClickListener() {
@@ -71,12 +87,18 @@ public class ExportPDFActivity extends Activity {
             }
         });
 
+        sendMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMail(mailRecipient,objetMail,nomFichier);
+            }
+        });
+
 
     }
 
     public void exportPDF(String fileName) {
 
-        int i = 0;
         pdfFileName = Environment.getExternalStorageDirectory()
                 + "/" + fileName + ".pdf";
 
@@ -87,22 +109,26 @@ public class ExportPDFActivity extends Activity {
             document.open();
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
-            document.addTitle("Recette du ticket n°" + recette.getTicketNumber());
-
+            document.add(new Paragraph("Recette du ticket n°" + recette.getTicketNumber() + "\n\n\n"));
+            new Font(Font.FontFamily.TIMES_ROMAN,12);
             for (Question question : recette.getTabQuestions()) {
 
-                document.add(new Paragraph("Question : " + question.getQuestionLabel()));
+                document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));
 
-                if (question.getButtonYesSelected()) {
-                    document.add(new Paragraph("Validation : Oui"));
-                } else {
-                    document.add(new Paragraph("Validation : Non"));
+                if (!question.getOpenQuestion()) {
+                    if (question.getButtonYesSelected()) {
+                        document.add(new Paragraph("Validation : Oui"));
+                    } else {
+                        document.add(new Paragraph("Validation : Non"));
+                    }
                 }
 
                 document.add(new Paragraph("Commentaire : " + question.getCommentary()));
 
                 document.add(new Paragraph("\n \n"));
             }
+
+             generatePDF();
             }
 
         catch (DocumentException de) {
@@ -147,7 +173,6 @@ public class ExportPDFActivity extends Activity {
             if (isStoragePermissionGranted()) {
                 // objDocument.draw(pdfFileName);
                 document.close();
-                sendEmail(pdfFileName);
                 Toast.makeText(this, "File has been written to :" + pdfFileName,
                         Toast.LENGTH_LONG).show();
             }
@@ -159,15 +184,17 @@ public class ExportPDFActivity extends Activity {
         }
     }
 
-    private void sendEmail(String pdfFileName) {
+    private void sendMail(String mailRecipient, String objetMail, String nomFichier)
+    {
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-        //emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"aurore.penault@orange.com"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Résultat de la recette du ticket n°" + recette.getTicketNumber());
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF.");
-        File file = new File(pdfFileName);
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, mailRecipient);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, objetMail);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF du ticket n° " + recette.getTicketNumber());
+        File file = new File(nomFichier);
         if (!file.exists() || !file.canRead()) {
-            Log.e(TAG, "The following file does not exist: " + pdfFileName);
+            Log.e(TAG, "The following file does not exist: " + nomFichier);
             return;
         }
         Uri uri = Uri.fromFile(file);
