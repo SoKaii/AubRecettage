@@ -15,14 +15,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+
+import java.io.File;
+import java.io.FileOutputStream;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
@@ -67,22 +65,18 @@ public class ExportPDFActivity extends Activity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                exportPDF(editText.getText().toString());
+                pdfFileName = Environment.getExternalStorageDirectory() + "/" + editText.getText().toString() + ".pdf";
+                if (isStoragePermissionGranted()) {
+                    exportPDF();
+                }
             }
         });
 
 
     }
 
-    public void exportPDF(String fileName) {
-
-        int i = 0;
-        pdfFileName = Environment.getExternalStorageDirectory()
-                + "/" + fileName + ".pdf";
-
-
+    public void exportPDF() {
         try {
-
             PdfWriter.getInstance(document, new FileOutputStream(pdfFileName));
             document.open();
             document.addAuthor("AubRecettage");
@@ -103,14 +97,17 @@ public class ExportPDFActivity extends Activity {
 
                 document.add(new Paragraph("\n \n"));
             }
-            }
+            document.close();
 
-        catch (DocumentException de) {
-            de.printStackTrace();
-        }
-        catch (IOException ioe)
-        {
-            ioe.printStackTrace();
+            sendEmail(pdfFileName);
+            Toast.makeText(this, "File has been written to :" + pdfFileName,
+                    Toast.LENGTH_LONG).show();
+
+        } catch (Exception e) {
+            Log.e("ExportPDF", e.getMessage(), e);
+            Toast.makeText(this,
+                    "Error, unable to write to file\n" + e.getMessage(),
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -137,25 +134,7 @@ public class ExportPDFActivity extends Activity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
-            generatePDF();
-        }
-    }
-
-    private void generatePDF() {
-        try {
-            // Outputs the document to file
-            if (isStoragePermissionGranted()) {
-                // objDocument.draw(pdfFileName);
-                document.close();
-                sendEmail(pdfFileName);
-                Toast.makeText(this, "File has been written to :" + pdfFileName,
-                        Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-            Log.e("ExportPDF", e.getMessage(), e);
-            Toast.makeText(this,
-                    "Error, unable to write to file\n" + e.getMessage(),
-                    Toast.LENGTH_LONG).show();
+            exportPDF();
         }
     }
 
