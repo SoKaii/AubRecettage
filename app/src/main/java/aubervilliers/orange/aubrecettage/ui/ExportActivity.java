@@ -16,24 +16,34 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.DocumentException;
+import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
 
-public class ExportPDFActivity extends Activity {
+public class ExportActivity extends Activity {
 
-    public static final String TAG = "ExportPDFActivity";
+    public static final String TAG = "ExportActivity";
 
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
     private EditText editText;
     private Recette recette;
+    private Button sendMail;
+    private EditText mailObject;
+    private EditText mailTo;
+
+    private String fileName;
     private String pdfFileName;
+    private String objetMail;
+    private String mailRecipient;
     Document document = new Document();
 
     /**
@@ -42,7 +52,16 @@ public class ExportPDFActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_export_pdf);
+        setContentView(R.layout.layout_export);
+
+        sendMail = findViewById(R.id.sendMail);
+        mailObject = findViewById(R.id.mailObject);
+        mailTo = findViewById(R.id.mailTo);
+        editText = findViewById(R.id.nomFichier);
+
+        fileName = editText.getText().toString();
+        objetMail = mailObject.getText().toString();
+        mailRecipient = mailTo.getText().toString();
 
         Intent intent = getIntent();
 
@@ -59,16 +78,24 @@ public class ExportPDFActivity extends Activity {
                     Toast.LENGTH_LONG).show();
 
         }
-        editText = findViewById(R.id.nomFichier);
 
         Button bt = findViewById(R.id.exportButton);
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pdfFileName = Environment.getExternalStorageDirectory() + "/" + editText.getText().toString() + ".pdf";
-                if (isStoragePermissionGranted()) {
-                    exportPDF();
-                }
+                pdfFileName = Environment.getExternalStorageDirectory()
+                        + "/" + fileName + ".pdf";
+                exportPDF();
+            }
+        });
+
+        sendMail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pdfFileName = Environment.getExternalStorageDirectory()
+                        + "/" + fileName + ".pdf";
+                exportPDF();
+                sendMail(mailRecipient, objetMail);
             }
         });
 
@@ -77,44 +104,41 @@ public class ExportPDFActivity extends Activity {
 
     public void exportPDF() {
         try {
+
             PdfWriter.getInstance(document, new FileOutputStream(pdfFileName));
             document.open();
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
-            document.addTitle("Recette du ticket n°" + recette.getTicketNumber());
-
+            document.add(new Paragraph("Recette du ticket n°" + recette.getTicketNumber() + "\n\n\n"));
+            new Font(Font.FontFamily.TIMES_ROMAN, 12);
             for (Question question : recette.getTabQuestions()) {
 
-                document.add(new Paragraph("Question : " + question.getQuestionLabel()));
+                document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));
 
-                if (question.getButtonYesSelected()) {
-                    document.add(new Paragraph("Validation : Oui"));
-                } else {
-                    document.add(new Paragraph("Validation : Non"));
+                if (!question.getOpenQuestion()) {
+                    if (question.getButtonYesSelected()) {
+                        document.add(new Paragraph("Validation : Oui"));
+                    } else {
+                        document.add(new Paragraph("Validation : Non"));
+                    }
                 }
 
                 document.add(new Paragraph("Commentaire : " + question.getCommentary()));
 
                 document.add(new Paragraph("\n \n"));
             }
-            document.close();
 
-            sendEmail(pdfFileName);
-            Toast.makeText(this, "File has been written to :" + pdfFileName,
-                    Toast.LENGTH_LONG).show();
-
-        } catch (Exception e) {
-            Log.e("ExportPDF", e.getMessage(), e);
-            Toast.makeText(this,
-                    "Error, unable to write to file\n" + e.getMessage(),
-                    Toast.LENGTH_LONG).show();
+            generatePDF();
+        } catch (DocumentException de) {
+            de.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
     public boolean isStoragePermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
-            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE)
-                    == PackageManager.PERMISSION_GRANTED) {
+            if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
                 Log.v(TAG, "Permission is granted");
                 return true;
             } else {
@@ -134,16 +158,34 @@ public class ExportPDFActivity extends Activity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
-            exportPDF();
+            generatePDF();
         }
     }
 
-    private void sendEmail(String pdfFileName) {
+    private void generatePDF() {
+        try {
+            // Outputs the document to file
+            if (isStoragePermissionGranted()) {
+                // objDocument.draw(pdfFileName);
+                document.close();
+                Toast.makeText(this, "File has been written to :" + pdfFileName,
+                        Toast.LENGTH_LONG).show();
+            }
+        } catch (Exception e) {
+            Log.e("ExportPDF", e.getMessage(), e);
+            Toast.makeText(this,
+                    "Error, unable to write to file\n" + e.getMessage(),
+                    Toast.LENGTH_LONG).show();
+        }
+    }
+
+    private void sendMail(String mailRecipient, String objetMail) {
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-        //emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{"aurore.penault@orange.com"});
-        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "Résultat de la recette du ticket n°" + recette.getTicketNumber());
-        emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF.");
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, mailRecipient);
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, objetMail);
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF du ticket n° " + recette.getTicketNumber());
         File file = new File(pdfFileName);
         if (!file.exists() || !file.canRead()) {
             Log.e(TAG, "The following file does not exist: " + pdfFileName);

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/Black"
+    tools:context=".ui.infostickets.InfosCablageSimpleActivity"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Exportation"
+        android:gravity="center"
+        android:textColor="@color/Orange"
+        android:textSize="24sp"
+        android:layout_marginTop="15dp"/>
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/White"
+        android:layout_marginTop="3dp">
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="30dp"
+            android:text="Nom du fichier à enregistrer (sans extension .pdf) : \n"
+            android:textColor="@color/Orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/nomFichier"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/White"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/Orange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="30dp"
+            android:text="Objet du mail à envoyer (Si envoi par mail) :  \n"
+            android:textColor="@color/Orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/mailObject"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/White"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/Orange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="30dp"
+            android:text="Adresse mail du destinataire (Si envoi par mail) : \n"
+            android:textColor="@color/Orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/mailTo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="15dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/White"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/Orange" />
+
+
+        <Button
+            android:id="@+id/sendMail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="30dp"
+            android:text="Envoyer par Mail"
+            android:textColor="@color/Orange" />
+
+        <Button
+            android:id="@+id/exportButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="5dp"
+            android:text="Enregistrer le fichier"
+            android:textColor="@color/Orange" />
+
+    </LinearLayout>
+</LinearLayout>
