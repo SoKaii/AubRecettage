@@ -11,7 +11,6 @@ import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,13 +31,12 @@ public class ExportActivity extends Activity {
     public static final String TAG = "ExportActivity";
 
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
-    private EditText editText;
     private Recette recette;
-    private Button sendMail;
+
     private EditText mailObject;
     private EditText mailTo;
+    private EditText editText;
 
-    private String fileName;
     private String pdfFileName;
     private String objetMail;
     private String mailRecipient;
@@ -54,14 +52,10 @@ public class ExportActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_export);
 
-        sendMail = findViewById(R.id.sendMail);
         mailObject = findViewById(R.id.mailObject);
         mailTo = findViewById(R.id.mailTo);
         editText = findViewById(R.id.nomFichier);
 
-        fileName = editText.getText().toString();
-        objetMail = mailObject.getText().toString();
-        mailRecipient = mailTo.getText().toString();
 
         Intent intent = getIntent();
 
@@ -79,8 +73,7 @@ public class ExportActivity extends Activity {
 
         }
 
-        Button bt = findViewById(R.id.exportButton);
-        bt.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.exportButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isStoragePermissionGranted()) {
@@ -89,7 +82,7 @@ public class ExportActivity extends Activity {
             }
         });
 
-        sendMail.setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.sendMail).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 sendEmail = true;
@@ -103,19 +96,23 @@ public class ExportActivity extends Activity {
     }
 
     private void exportPDFAndSendEmailIfNecessary() {
+        objetMail = mailObject.getText().toString();
+        mailRecipient = mailTo.getText().toString();
+
+        String fileName = editText.getText().toString();
         pdfFileName = Environment.getExternalStorageDirectory() + "/" + fileName + ".pdf";
 
         if (isStoragePermissionGranted()) {
             exportPDF();
         }
         if (sendEmail) {
-            sendMail(mailRecipient, objetMail);
+            sendMail();
         }
     }
 
     public void exportPDF() {
-        try {
 
+        try {
             PdfWriter.getInstance(document, new FileOutputStream(pdfFileName));
             document.open();
             document.addAuthor("AubRecettage");
@@ -177,11 +174,12 @@ public class ExportActivity extends Activity {
         }
     }
 
-    private void sendMail(String mailRecipient, String objetMail) {
+    private void sendMail() {
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-        emailIntent.putExtra(Intent.EXTRA_EMAIL, mailRecipient);
+
+        emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{mailRecipient});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, objetMail);
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF du ticket n° " + recette.getTicketNumber());
         File file = new File(pdfFileName);
