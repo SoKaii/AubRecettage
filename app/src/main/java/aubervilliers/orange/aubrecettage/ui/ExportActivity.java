@@ -16,14 +16,12 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.itextpdf.text.Document;
-import com.itextpdf.text.DocumentException;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.IOException;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
@@ -45,6 +43,8 @@ public class ExportActivity extends Activity {
     private String objetMail;
     private String mailRecipient;
     Document document = new Document();
+
+    private boolean sendEmail = false;
 
     /**
      * Called when the activity is first created.
@@ -83,23 +83,34 @@ public class ExportActivity extends Activity {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pdfFileName = Environment.getExternalStorageDirectory()
-                        + "/" + fileName + ".pdf";
-                exportPDF();
+                if (isStoragePermissionGranted()) {
+                    exportPDFAndSendEmailIfNecessary();
+                }
             }
         });
 
         sendMail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                pdfFileName = Environment.getExternalStorageDirectory()
-                        + "/" + fileName + ".pdf";
-                exportPDF();
-                sendMail(mailRecipient, objetMail);
+                sendEmail = true;
+                if (isStoragePermissionGranted()) {
+                    exportPDFAndSendEmailIfNecessary();
+                }
             }
         });
 
 
+    }
+
+    private void exportPDFAndSendEmailIfNecessary() {
+        pdfFileName = Environment.getExternalStorageDirectory() + "/" + fileName + ".pdf";
+
+        if (isStoragePermissionGranted()) {
+            exportPDF();
+        }
+        if (sendEmail) {
+            sendMail(mailRecipient, objetMail);
+        }
     }
 
     public void exportPDF() {
@@ -128,11 +139,15 @@ public class ExportActivity extends Activity {
                 document.add(new Paragraph("\n \n"));
             }
 
-            generatePDF();
-        } catch (DocumentException de) {
-            de.printStackTrace();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+
+            document.close();
+            Toast.makeText(this, "File has been written to :" + pdfFileName,
+                    Toast.LENGTH_LONG).show();
+        } catch (Exception e) {
+            Log.e("ExportPDF", e.getMessage(), e);
+            Toast.makeText(this,
+                    "Error, unable to write to file\n" + e.getMessage(),
+                    Toast.LENGTH_LONG).show();
         }
     }
 
@@ -158,24 +173,7 @@ public class ExportActivity extends Activity {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
-            generatePDF();
-        }
-    }
-
-    private void generatePDF() {
-        try {
-            // Outputs the document to file
-            if (isStoragePermissionGranted()) {
-                // objDocument.draw(pdfFileName);
-                document.close();
-                Toast.makeText(this, "File has been written to :" + pdfFileName,
-                        Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-            Log.e("ExportPDF", e.getMessage(), e);
-            Toast.makeText(this,
-                    "Error, unable to write to file\n" + e.getMessage(),
-                    Toast.LENGTH_LONG).show();
+            exportPDFAndSendEmailIfNecessary();
         }
     }
 

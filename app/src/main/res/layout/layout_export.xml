@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Black"
-    tools:context=".ui.infostickets.InfosCablageSimpleActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.infostickets.InfosCablageSimpleActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Exportation"
+        android:layout_marginTop="15dp"
         android:gravity="center"
+        android:text="Exportation"
         android:textColor="@color/Orange"
-        android:textSize="24sp"
-        android:layout_marginTop="15dp"/>
+        android:textSize="24sp" />
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="1px"
-        android:background="@color/White"
-        android:layout_marginTop="3dp">
+        android:layout_marginTop="3dp"
+        android:background="@color/White">
 
     </LinearLayout>
 
@@ -73,7 +73,7 @@
             android:layout_marginStart="15dp"
             android:background="@color/White"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textEmailSubject"
             android:textColor="@color/Orange" />
 
         <TextView
@@ -94,7 +94,7 @@
             android:layout_marginStart="15dp"
             android:background="@color/White"
             android:ems="10"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:textColor="@color/Orange" />
 
 
