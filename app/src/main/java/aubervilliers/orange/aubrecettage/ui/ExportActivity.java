@@ -123,8 +123,8 @@ public class ExportActivity extends Activity {
 
                 document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));
 
-                if (!question.getOpenQuestion()) {
-                    if (question.getButtonYesSelected()) {
+                if (!question.isOpenQuestion()) {
+                    if (question.isButtonYesSelected()) {
                         document.add(new Paragraph("Validation : Oui"));
                     } else {
                         document.add(new Paragraph("Validation : Non"));

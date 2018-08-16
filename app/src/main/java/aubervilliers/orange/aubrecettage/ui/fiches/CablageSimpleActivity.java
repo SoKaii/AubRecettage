@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +22,8 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
 public class CablageSimpleActivity extends AppCompatActivity {
+
+    private static final String TAG = "CablageSimpleActivity";
 
     private Recette recette;
     private String numTicket = "";
@@ -49,7 +52,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
 
         if (intent != null) {
 
-            if(intent.hasExtra("nTicket")) {
+            if (intent.hasExtra("nTicket")) {
                 numTicket = intent.getStringExtra("nTicket");
                 realTicket = intent.getStringExtra("realTicket");
                 nomSalle = intent.getStringExtra("nomSalle");
@@ -77,22 +80,22 @@ public class CablageSimpleActivity extends AppCompatActivity {
         ll = findViewById(R.id.questions);
         addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true);
         addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true);
-        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?",true);
-        addQuestion("L'étiquetage des hostname est correct ?",true);
-        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?",true);
-        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?",true);
-        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?",true);
-        addQuestion("Le câblage physique des liaisons est en cohérence avec le plan de câblage Transplan ?",true);
-        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant sur les toits modulaires ?",true);
-        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?",true);
-        addQuestion("Les longueurs des cordons utilisés pour le CFA est correcte sur les toits modulaires ?",true);
-        addQuestion("L’utilisation des scratchs est correcte sur les toits modulaires ?",true);
-        addQuestion("Le passage des liaisons à l’état «réalisées» est effectif dans l’outil Transplan ?",true);
-        addQuestion("La polarité Rx,Tx ainsi que le type de module SFP sont respectés ?",true);
-        addQuestion("L’étiquetage des liaisons est correct ?",true);
-        addQuestion("Anomalies à corriger :",false);
-        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :",false);
-        addQuestion("Anomalies non bloquantes à prendre en compte :",false);
+        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true);
+        addQuestion("L'étiquetage des hostname est correct ?", true);
+        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true);
+        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?", true);
+        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?", true);
+        addQuestion("Le câblage physique des liaisons est en cohérence avec le plan de câblage Transplan ?", true);
+        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant sur les toits modulaires ?", true);
+        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?", true);
+        addQuestion("Les longueurs des cordons utilisés pour le CFA est correcte sur les toits modulaires ?", true);
+        addQuestion("L’utilisation des scratchs est correcte sur les toits modulaires ?", true);
+        addQuestion("Le passage des liaisons à l’état «réalisées» est effectif dans l’outil Transplan ?", true);
+        addQuestion("La polarité Rx,Tx ainsi que le type de module SFP sont respectés ?", true);
+        addQuestion("L’étiquetage des liaisons est correct ?", true);
+        addQuestion("Anomalies à corriger :", false);
+        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false);
+        addQuestion("Anomalies non bloquantes à prendre en compte :", false);
 
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -101,25 +104,32 @@ public class CablageSimpleActivity extends AppCompatActivity {
 
                 //TODO Look for the Dialog if all the not opened questions are answered
                 getInfos();
-                for (Question question: questions) {
-                    if(!question.getButtonYesSelected() && !question.getButtonNoSelected()) {
-                        AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageSimpleActivity.this);
-                        notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
-                                   .setPositiveButton("Continuer", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                dialog.dismiss();
-                            }
-                        })
-                                   .setTitle("Erreur")
-                                   .create();
+                boolean allAnsweredQuestions = true;
+                for (Question question : questions) {
+                    if (!question.isOpenQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
+                        Log.v(TAG, "question non répondu: " + question.getQuestionLabel());
+                        allAnsweredQuestions = false;
+                        break;
                     }
                 }
+                if (!allAnsweredQuestions) {
+                    AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageSimpleActivity.this);
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
+                            .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    dialog.dismiss();
+                                }
+                            })
+                            .setTitle("Erreur")
+                            .create();
+                    notAnswered.show();
+                } else {
+                    Intent intent1 = new Intent(CablageSimpleActivity.this, RecapActivity.class);
+                    intent1.putExtra(RecapActivity.EXTRA_RECETTE_KEY, recette);
+                    startActivity(intent1);
+                }
 
-
-                Intent intent1 = new Intent(CablageSimpleActivity.this, RecapActivity.class);
-                intent1.putExtra(RecapActivity.EXTRA_RECETTE_KEY, recette);
-                startActivity(intent1);
             }
         });
 
@@ -144,6 +154,8 @@ public class CablageSimpleActivity extends AppCompatActivity {
     private void getInfos() {
 
         int index = 0;
+        questions = new ArrayList<>();
+        Log.v(TAG, "getInfos");
         for (String title : titleList) {
             Question question = new Question();
             question.setQuestionLabel(title);
@@ -153,8 +165,9 @@ public class CablageSimpleActivity extends AppCompatActivity {
                 RadioButton yesButton = yesBtList.get(index);
                 RadioButton noButton = noBtList.get(index);
 
-                question.setButtonYesSelected(yesButton.isSelected());
-                question.setButtonNoSelected(noButton.isSelected());
+                Log.v(TAG, "question: " + title + " button yes selected: " + yesButton.isChecked());
+                question.setButtonYesSelected(yesButton.isChecked());
+                question.setButtonNoSelected(noButton.isChecked());
             }
             EditText commentEt = commentList.get(index);
             question.setCommentary(commentEt.getText().toString());

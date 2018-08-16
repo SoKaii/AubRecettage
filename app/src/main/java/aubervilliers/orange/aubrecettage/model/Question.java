@@ -10,11 +10,11 @@ public class Question implements Serializable {
     private String commentary;
     private boolean isOpenQuestion;
 
-    public boolean getButtonYesSelected() {
+    public boolean isButtonYesSelected() {
         return buttonYesSelected;
     }
 
-    public void setButtonYesSelected(boolean buttonYeSelecteds) {
+    public void setButtonYesSelected(boolean buttonYesSelected) {
         this.buttonYesSelected = buttonYesSelected;
     }
 
@@ -34,7 +34,7 @@ public class Question implements Serializable {
         this.questionLabel = questionLabel;
     }
 
-    public boolean getOpenQuestion() {
+    public boolean isOpenQuestion() {
         return isOpenQuestion;
     }
 
@@ -42,7 +42,7 @@ public class Question implements Serializable {
         isOpenQuestion = openQuestion;
     }
 
-    public boolean getButtonNoSelected() {
+    public boolean isButtonNoSelected() {
         return buttonNoSelected;
     }
 
