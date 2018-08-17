@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.itextpdf.text.Document;
+import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
@@ -117,7 +118,9 @@ public class ExportActivity extends Activity {
             document.open();
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
-            document.add(new Paragraph("Recette du ticket n°" + recette.getTicketNumber() + "\n\n\n"));
+            Paragraph titleParagraph = new Paragraph("Recette du ticket n°" + recette.getTicketNumber() + "\n\n\n");
+            titleParagraph.setAlignment(Element.ALIGN_CENTER);
+            document.add(titleParagraph);
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
             for (Question question : recette.getTabQuestions()) {
 

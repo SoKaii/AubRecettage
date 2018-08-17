@@ -12,7 +12,6 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 
 public class RecapActivity extends AppCompatActivity {
 
-    public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
 
     private Button mSavePDF;
     private Recette recette;
@@ -29,9 +28,9 @@ public class RecapActivity extends AppCompatActivity {
 
         if (intent != null) {
 
-            if(intent.hasExtra(EXTRA_RECETTE_KEY)) {
+            if(intent.hasExtra(ExportActivity.EXTRA_RECETTE_KEY)) {
 
-                recette = (Recette) intent.getSerializableExtra(EXTRA_RECETTE_KEY);
+                recette = (Recette) intent.getSerializableExtra(ExportActivity.EXTRA_RECETTE_KEY);
 
             }
 

@@ -19,6 +19,7 @@ import java.util.List;
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
+import aubervilliers.orange.aubrecettage.ui.ExportActivity;
 import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
 public class CablageSimpleActivity extends AppCompatActivity {
@@ -107,7 +108,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
                 boolean allAnsweredQuestions = true;
                 for (Question question : questions) {
                     if (!question.isOpenQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
-                        Log.v(TAG, "question non répondu: " + question.getQuestionLabel());
+                        Log.v(TAG, "Question non répondu: " + question.getQuestionLabel());
                         allAnsweredQuestions = false;
                         break;
                     }
@@ -126,7 +127,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
                     notAnswered.show();
                 } else {
                     Intent intent1 = new Intent(CablageSimpleActivity.this, RecapActivity.class);
-                    intent1.putExtra(RecapActivity.EXTRA_RECETTE_KEY, recette);
+                    intent1.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
                     startActivity(intent1);
                 }
 
