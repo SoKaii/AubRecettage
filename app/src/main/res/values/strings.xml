@@ -20,4 +20,5 @@
     <string name="commentaire">Commentaire :</string>
     <string name="n_nl_tiquetage_des_hostname_face_av_face_arr_format_d_tiquetage_mod_le_d_tiquette_emplacement_est_correct_n">L\'étiquetage des hostname (Face AV, Face ARR, Format d’étiquetage, modèle d’étiquette , emplacement …) est correct ?</string>
     <string name="oui">OUI</string>
+    <string name="click_to_add">Cliquez pour ajouter</string>
 </resources>
