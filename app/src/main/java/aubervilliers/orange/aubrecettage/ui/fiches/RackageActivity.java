@@ -19,14 +19,12 @@ public class RackageActivity extends AppCompatActivity {
     private String nomSalle = "";
     private String callBaie = "";
     private String numEquip = "";
-    private Button buttonNext;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_rackage);
 
-        buttonNext = findViewById(R.id.saveNext);
+        Button buttonNext = findViewById(R.id.saveNext);
 
         Intent intent = getIntent();
 

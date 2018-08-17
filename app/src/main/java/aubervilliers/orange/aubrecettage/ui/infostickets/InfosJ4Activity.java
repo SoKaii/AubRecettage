@@ -14,7 +14,6 @@ import aubervilliers.orange.aubrecettage.ui.fiches.J4Activity;
 public class InfosJ4Activity extends AppCompatActivity {
 
 
-    private Button mButtonStart;
     private EditText mNTicket;
     private EditText mRealTicket;
     private EditText mNomSalle;
@@ -32,7 +31,7 @@ public class InfosJ4Activity extends AppCompatActivity {
         mCallBaie = findViewById(R.id.callBaie);
         mNumEquip = findViewById(R.id.numEquip);
 
-        mButtonStart = findViewById(R.id.start);
+        Button mButtonStart = findViewById(R.id.start);
 
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override

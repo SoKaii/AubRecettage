@@ -12,7 +12,6 @@ import aubervilliers.orange.aubrecettage.R;
 
 public class InfosCablageSimpleActivity extends AppCompatActivity {
 
-    private Button mButtonStart;
     private EditText mNTicket;
     private EditText mRealTicket;
     private EditText mNomSalle;
@@ -30,7 +29,7 @@ public class InfosCablageSimpleActivity extends AppCompatActivity {
         mCallBaie = findViewById(R.id.callBaie);
         mNumEquip = findViewById(R.id.numEquip);
 
-        mButtonStart = findViewById(R.id.start);
+        Button mButtonStart = findViewById(R.id.start);
 
         mButtonStart.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -12,10 +12,6 @@ import aubervilliers.orange.aubrecettage.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-
-    private Button mNewRecette;
-    private Button mConsultRecette;
-
     // Used to load the 'native-lib' library on application startup.
     static {
         System.loadLibrary("native-lib");
@@ -26,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_home);
 
-        mNewRecette = (Button) findViewById(R.id.newRecette);
+        Button mNewRecette = (Button) findViewById(R.id.newRecette);
 
         mNewRecette.setOnClickListener(new View.OnClickListener()
         { @Override

@@ -16,24 +16,17 @@ import aubervilliers.orange.aubrecettage.R;
 
 public class ChoixRecetteActivity extends AppCompatActivity {
 
-    private Button mbuttonCableSimple;
-    private Button mbuttonCableComplexe;
-    private Button mbuttonRackage;
-    private Button mbuttonJ4;
-    private Button mbutton26e;
-    private Button mbuttonIncident;
-    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_choix_recette);
 
-        mbuttonCableSimple = (Button) findViewById(R.id.buttonCableSimple);
-        mbuttonCableComplexe = (Button) findViewById(R.id.buttonCableComplexe);
-        mbuttonRackage = (Button) findViewById(R.id.buttonRackage);
-        mbuttonJ4 = (Button) findViewById(R.id.buttonJ4);
-        mbutton26e = (Button) findViewById(R.id.button26e);
-        mbuttonIncident = (Button) findViewById(R.id.buttonIncident);
+        Button mbuttonCableSimple = (Button) findViewById(R.id.buttonCableSimple);
+        Button mbuttonCableComplexe = (Button) findViewById(R.id.buttonCableComplexe);
+        Button mbuttonRackage = (Button) findViewById(R.id.buttonRackage);
+        Button mbuttonJ4 = (Button) findViewById(R.id.buttonJ4);
+        Button mbutton26e = (Button) findViewById(R.id.button26e);
+        Button mbuttonIncident = (Button) findViewById(R.id.buttonIncident);
         
         mbuttonCableSimple.setOnClickListener(new View.OnClickListener()
         { @Override

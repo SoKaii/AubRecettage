@@ -18,21 +18,23 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 
 public class RecapActivity extends AppCompatActivity{
 
-    private DatePicker datePicker;
-    private Calendar calendar;
+
     private Button dateRecetteI;
     private Button dateRecetteD;
-    private Button mSavePDF;
     private Recette recette;
-    private int year,month,day,index;
+
+    private int year;
+    private int month;
+    private int day;
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recap);
 
-        calendar = Calendar.getInstance();
-        mSavePDF = findViewById(R.id.SavePDF);
+        Calendar calendar = Calendar.getInstance();
+        Button mSavePDF = findViewById(R.id.SavePDF);
         dateRecetteD = findViewById(R.id.dateRecetteD);
         dateRecetteI = findViewById(R.id.dateRecetteI);
 
