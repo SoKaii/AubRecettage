@@ -22,7 +22,7 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 import aubervilliers.orange.aubrecettage.ui.ExportActivity;
 import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
-public class RackageActivity extends AppCompatActivity {
+public class CablageComplexeActivity extends AppCompatActivity {
 
     private static final String TAG = "CablageComplexeActivity";
 
@@ -40,11 +40,11 @@ public class RackageActivity extends AppCompatActivity {
     private List<EditText> commentList = new ArrayList<>();
     private List<Boolean> isOpenQuestionList = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_rackage);
-
+        setContentView(R.layout.layout_cablage_complexe);
         Button buttonNext = findViewById(R.id.saveNext);
 
         Intent intent = getIntent();
@@ -112,7 +112,7 @@ public class RackageActivity extends AppCompatActivity {
                     }
                 }
                 if (!allAnsweredQuestions) {
-                    AlertDialog.Builder notAnswered = new AlertDialog.Builder(RackageActivity.this);
+                    AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageComplexeActivity.this);
                     notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
@@ -124,7 +124,7 @@ public class RackageActivity extends AppCompatActivity {
                             .create();
                     notAnswered.show();
                 } else {
-                    Intent intent1 = new Intent(RackageActivity.this, RecapActivity.class);
+                    Intent intent1 = new Intent(CablageComplexeActivity.this, RecapActivity.class);
                     intent1.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
                     startActivity(intent1);
                 }
@@ -178,3 +178,4 @@ public class RackageActivity extends AppCompatActivity {
 
     }
 }
+

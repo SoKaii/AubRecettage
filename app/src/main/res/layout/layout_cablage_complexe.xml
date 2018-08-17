@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".ui.fiches.RackageActivity">
+    tools:context=".ui.fiches.CablageComplexeActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="Rackage"
+            android:text="Cablâge Complexe"
             android:textColor="@color/orange"
             android:textSize="24sp" />
 
