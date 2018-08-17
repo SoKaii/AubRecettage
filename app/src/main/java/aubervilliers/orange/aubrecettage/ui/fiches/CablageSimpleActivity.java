@@ -32,7 +32,6 @@ public class CablageSimpleActivity extends AppCompatActivity {
     private String nomSalle = "";
     private String callBaie = "";
     private String numEquip = "";
-    private Button buttonNext;
 
     private LinearLayout ll;
     private List<String> titleList = new ArrayList<>();
@@ -47,7 +46,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_cablage_simple);
 
-        buttonNext = findViewById(R.id.saveNext);
+        Button buttonNext = findViewById(R.id.saveNext);
 
         Intent intent = getIntent();
 

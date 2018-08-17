@@ -31,7 +31,6 @@ public class J4Activity extends AppCompatActivity {
     private String nomSalle = "";
     private String callBaie = "";
     private String numEquip = "";
-    private Button buttonNext;
 
     private LinearLayout ll;
     private List<String> titleList = new ArrayList<>();
@@ -46,7 +45,7 @@ public class J4Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_j4);
 
-        buttonNext = findViewById(R.id.saveNext);
+        Button buttonNext = findViewById(R.id.saveNext);
 
         Intent intent = getIntent();
 
