@@ -20,7 +20,8 @@
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:layout_marginTop="3dp"
-        android:background="@color/white"></LinearLayout>
+        android:background="@color/white">
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,72 +43,51 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-<<<<<<< HEAD
+        android:text="Date de recette Initiale : "
+        android:textColor="@color/orange"
         android:layout_marginStart="5dp"/>
+
     <Button
         android:id="@+id/dateRecetteI"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:text="appuyer pour choisir une date"
-        android:background="@color/White"
+        android:background="@color/white"
         android:layout_marginTop="3dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:backgroundTint="@android:color/darker_gray" />
-=======
-        android:text="Date de recette initiale : "
-        android:textColor="@color/orange" />
-
-    <EditText
-        android:id="@+id/dateRecetteI"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white" />
->>>>>>> f15e82395be8e33b139e29b8faf0dede88fe4143
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-<<<<<<< HEAD
-        android:layout_marginStart="5dp"/>
+        android:text="Date de recette définitive : "
+        android:textColor="@color/orange"/>
+
     <Button
         android:id="@+id/dateRecetteD"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
         android:text="appuyer pour choisir une date"
-        android:background="@color/White"
+        android:background="@color/white"
         android:layout_marginTop="3dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:backgroundTint="@android:color/darker_gray"/>
-=======
-        android:text="Date de recette définitive : "
-        android:textColor="@color/orange" />
 
-    <EditText
-        android:id="@+id/dateRecetteD"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white" />
->>>>>>> f15e82395be8e33b139e29b8faf0dede88fe4143
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-<<<<<<< HEAD
-        android:layout_marginStart="5dp"/>
+        android:text="Type de recette : "
+        android:textColor="@color/orange"
+        />
+
     <RadioGroup
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -120,33 +100,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="00dp"
-            android:buttonTint="@color/White"
+            android:buttonTint="@color/white"
             android:text="TOTALE"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioButton
             android:id="@+id/recette_partielle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:buttonTint="@color/White"
+            android:buttonTint="@color/white"
             android:text="PARTIELLE"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
     </RadioGroup>
-=======
-        android:text="Type de recette (Totale/Partielle) : "
-        android:textColor="@color/orange" />
 
-    <EditText
-        android:id="@+id/typeRecette"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"
-        android:background="@color/white" />
-
->>>>>>> f15e82395be8e33b139e29b8faf0dede88fe4143
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
