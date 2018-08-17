@@ -48,7 +48,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
 
         Button buttonNext = findViewById(R.id.saveNext);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         if (intent != null) {
 

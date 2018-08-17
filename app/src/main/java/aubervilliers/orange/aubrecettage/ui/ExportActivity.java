@@ -42,6 +42,13 @@ public class ExportActivity extends Activity {
     private String pdfFileName;
     private String objetMail;
     private String mailRecipient;
+    private String dateRecetteI;
+    private String dateRecetteD;
+    private String nCI2A;
+    private String referentOrange;
+    private String validationOrange;
+    private String typeRecette;
+
     Document document = new Document();
 
     private boolean sendEmail = false;
@@ -66,7 +73,12 @@ public class ExportActivity extends Activity {
             if (intent.hasExtra(EXTRA_RECETTE_KEY)) {
 
                 recette = (Recette) intent.getSerializableExtra(EXTRA_RECETTE_KEY);
-
+                dateRecetteI = intent.getStringExtra("DateRecetteI");
+                dateRecetteD = intent.getStringExtra("DateRecetteD");
+                nCI2A= intent.getStringExtra("CI2ANumber");
+                referentOrange = intent.getStringExtra("referentOrange");
+                validationOrange = intent.getStringExtra("validationOrange");
+                typeRecette = intent.getStringExtra("recetteType");
             }
 
             Toast.makeText(this,
@@ -113,7 +125,6 @@ public class ExportActivity extends Activity {
     }
 
     public void exportPDF() {
-
         try {
             PdfWriter.getInstance(document, new FileOutputStream(pdfFileName));
             document.open();
@@ -125,6 +136,22 @@ public class ExportActivity extends Activity {
             document.add(titleParagraph);
             
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
+
+            Paragraph infosTicketParagraph = new Paragraph("\n\nNuméro du ticket : " + recette.getTicketNumber() + "\n" +
+                                                                  "Réalisateur du ticket : " + recette.getTicketWriter() + "\n" +
+                                                                  "Nom de la salle : " + recette.getRoomName() + "\n" +
+                                                                  "Callepinage de l'équipement : " + recette.getBaieCall() + "\n" +
+                                                                  "N° 26E de l'équipement : " + recette.getEquipNumber() + "\n\n");
+            document.add(infosTicketParagraph);
+
+            Paragraph recapParagraph = new Paragraph("Numéro de CI2A du ticket : " + nCI2A + "\n" +
+                                                            "Date de recette initiale : " + dateRecetteI + "\n" +
+                                                            "Date de recette définitive : " + dateRecetteD + "\n" +
+                                                            "Type de recette : " + typeRecette + "\n" +
+                                                            "Validation orange : " + validationOrange + "\n" +
+                                                            "Référent Orange : " + referentOrange + "\n\n");
+            document.add(recapParagraph);
+
             for (Question question : recette.getTabQuestions()) {
 
                 document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));

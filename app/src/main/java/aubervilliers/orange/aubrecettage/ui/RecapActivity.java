@@ -22,8 +22,6 @@ public class RecapActivity extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialogI;
     private DatePickerDialog datePickerDialogD;
-    private EditText nCI2A;
-    private EditText refOrange;
     private RadioButton recettePartielle;
     private RadioButton recetteTotale;
     private RadioButton validOrangeYes;
@@ -33,6 +31,9 @@ public class RecapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recap);
+
+        EditText nCI2A;
+        EditText refOrange;
 
         Button mSavePDF = findViewById(R.id.SavePDF);
         final Button dateRecetteD = findViewById(R.id.dateRecetteD);
@@ -57,6 +58,7 @@ public class RecapActivity extends AppCompatActivity {
 
         final String CI2ANumber = nCI2A.getText().toString();
         final String orangeReferent = refOrange.getText().toString();
+
         Intent intent = getIntent();
 
         if (intent != null) {
@@ -95,6 +97,7 @@ public class RecapActivity extends AppCompatActivity {
                 intent.putExtra("DateRecetteD",dateRecetteD.getText().toString());
                 intent.putExtra("CI2ANumber",CI2ANumber);
                 intent.putExtra("referentOrange",orangeReferent);
+
 
                 if (validOrangeYes.isSelected())
                     intent.putExtra("validationOrange",validOrangeYes.getText().toString());
