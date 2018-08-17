@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Black"
+    android:background="@color/black"
     tools:context=".ui.fiches.CablageSimpleActivity">
 
     <LinearLayout
@@ -19,14 +19,14 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="Cablâge Simple"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1px"
-            android:background="@color/White"
-            android:layout_marginTop="3dp">
+            android:layout_marginTop="3dp"
+            android:background="@color/white">
 
         </LinearLayout>
 
@@ -41,14 +41,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="Numéro du ticket : "
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/numTicket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -61,14 +61,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="Réalisateur du ticket :  "
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/realTicket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,14 +81,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="Nom de la salle :  "
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/nomSalle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -101,14 +101,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Callepinage de la baie :  "
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/callBaie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -121,21 +121,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Numéro 26E de l'équipement :  "
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/numEquip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:layout_marginTop="7dp"
-            android:background="@color/White">
+            android:background="@color/white">
 
         </LinearLayout>
 
@@ -155,7 +155,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:text="Enregistrer et Continuer"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
 
     </LinearLayout>

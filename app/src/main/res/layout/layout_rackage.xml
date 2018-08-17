@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Black"
+    android:background="@color/black"
     tools:context=".ui.fiches.RackageActivity">
 
     <LinearLayout
@@ -19,14 +19,14 @@
             android:layout_marginTop="15dp"
             android:gravity="center"
             android:text="@string/rackage"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             android:textSize="24sp" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1px"
-            android:background="@color/White"
-            android:layout_marginTop="3dp">
+            android:layout_marginTop="3dp"
+            android:background="@color/white">
 
         </LinearLayout>
 
@@ -41,14 +41,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="Numéro du ticket : "
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/numTicket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -61,14 +61,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/r_alisateur_du_ticket"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/realTicket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -81,14 +81,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:text="@string/nom_de_la_salle"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/nomSalle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -101,14 +101,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/callepinage_de_la_baie"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/callBaie"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
@@ -121,21 +121,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/num_ro_26e_de_l_quipement"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <TextView
                 android:id="@+id/numEquip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textColor="@color/White" />
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:layout_marginTop="7dp"
-            android:background="@color/White">
+            android:background="@color/white">
 
         </LinearLayout>
 
@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/n_nles_informations_quipement_constructeur_mod_le_sont_en_coh_rence_avec_le_terrain_n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -157,18 +157,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="@string/oui"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:id="@+id/infos_equip_no"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="@string/non"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -176,7 +176,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/commentaire"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:id="@+id/infos_equip_comment"
@@ -184,7 +184,7 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White"
+            android:background="@color/white"
             android:inputType="" />
 
         <TextView
@@ -192,7 +192,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/n_nla_localisation_salle_baie_est_en_coh_rence_avec_le_terrain_n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -204,17 +204,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="@string/oui"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -222,14 +222,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White"
+            android:background="@color/white"
             android:inputType="" />
 
         <TextView
@@ -237,7 +237,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/n_nle_hostname_des_quipements_d_crits_dans_le_document_de_r_f_rence_sont_en_coh_rence_avec_le_terrain_n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -249,17 +249,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="@string/oui"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="@string/non"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -267,14 +267,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/commentaire"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White"
+            android:background="@color/white"
             android:inputType="" />
 
         <TextView
@@ -282,7 +282,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="@string/n_nl_tiquetage_des_hostname_face_av_face_arr_format_d_tiquetage_mod_le_d_tiquette_emplacement_est_correct_n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -294,17 +294,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="@string/oui"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -312,14 +312,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White"
+            android:background="@color/white"
             android:inputType="" />
 
         <TextView
@@ -327,7 +327,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLa présence de l’étiquetage 26E, et son emplacement est correct ? (puce RFID pour DCN)\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -339,17 +339,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -357,21 +357,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLe N°26e indiqué sur l’équipement et en cohérence avec le document de référence (puce RFID pour DCN)\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -383,17 +383,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -401,21 +401,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLe N° de série de l’équipement est en cohérence avec le document de référence ? \n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -427,17 +427,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -445,21 +445,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLe Rackage des équipements ne présente pas de défaut(s) visuel(s) ?\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -471,17 +471,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -489,21 +489,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nL'aéraulique a été prise en compte ?\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -515,17 +515,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -533,21 +533,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLes informations concernant l’étiquetage CFO sont en cohérence avec le document de référence ? \n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -559,17 +559,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -577,21 +577,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLe format d’étiquetage CFO est correct ?\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -603,17 +603,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -621,21 +621,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLes informations concernant l’étiquetage des cordons d’alimentation sont en cohérence avec le document de référence ?\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -647,17 +647,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -665,21 +665,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLes longueurs de cordon utilisées pour le CFO sont correctes ?\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -691,17 +691,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -709,21 +709,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLe verrouillage des câbles d’alimentation CFO est correct ?\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -735,17 +735,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -753,21 +753,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLes PDU(s) ainsi que leurs câbles d’alimentation sont correctement fixés à la Baie ?\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -779,17 +779,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -797,21 +797,21 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="\n\nLa Mise à la Terre de la Baie (Présence/Raccordement du câble) est correcte ?\n"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioGroup
             android:layout_width="match_parent"
@@ -823,17 +823,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="00dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="OUI"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
 
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="40dp"
-                android:buttonTint="@color/White"
+                android:buttonTint="@color/white"
                 android:text="NON"
-                android:textColor="@color/Orange" />
+                android:textColor="@color/orange" />
         </RadioGroup>
 
         <TextView
@@ -841,14 +841,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:text="Commentaire : "
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginEnd="5dp"
             android:layout_marginStart="5dp"
-            android:background="@color/White" />
+            android:background="@color/white" />
 
 
         <Button
@@ -858,7 +858,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:text="Enregistrer et Continuer"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
 
     </LinearLayout>

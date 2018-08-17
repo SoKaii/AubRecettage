@@ -1,143 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/Black"
-    tools:context=".ui.infostickets.InfosJ4Activity"
-    android:orientation="vertical">
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".ui.infostickets.InfosJ4Activity">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:text="J4"
+        android:textColor="@color/orange"
+        android:textSize="24sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/num_ro_de_ticket"
+            android:textColor="@color/orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/nTicket"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="15dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/orange" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/r_alisateur_du_ticket"
+            android:textColor="@color/orange"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/realTicket"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="5dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/orange" />
 
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="J4"
-            android:gravity="center"
-            android:textColor="@color/Orange"
-            android:textSize="24sp"
-            android:layout_marginTop="15dp"/>
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/nom_de_la_salle"
+            android:textColor="@color/orange"
+            android:textSize="16sp" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:layout_marginStart="10dp"
+        <EditText
+            android:id="@+id/nomSalle"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
             android:layout_marginEnd="5dp"
-            android:layout_marginTop="10dp">
+            android:background="@color/white"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/orange" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="30dp"
-                    android:text="@string/num_ro_de_ticket"
-                    android:textColor="@color/Orange"
-                    android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/callepinage_de_la_baie"
+            android:textColor="@color/orange"
+            android:textSize="16sp" />
 
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginStart="15dp"
-                    android:layout_marginEnd="5dp"
-                    android:background="@color/White"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:textColor="@color/Orange" />
+        <EditText
+            android:id="@+id/callBaie"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="5dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/orange" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/r_alisateur_du_ticket"
-                    android:textColor="@color/Orange"
-                    android:textSize="16sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/n_26e_de_l_quipement"
+            android:textColor="@color/orange"
+            android:textSize="16sp" />
 
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:background="@color/White"
-                    android:layout_marginEnd="5dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:textColor="@color/Orange" />
+        <EditText
+            android:id="@+id/numEquip"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginEnd="5dp"
+            android:background="@color/white"
+            android:ems="10"
+            android:inputType="text"
+            android:textColor="@color/orange" />
 
+        <Button
+            android:id="@+id/start"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="42dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/commencer_la_recette"
+            android:textColor="@color/orange" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/nom_de_la_salle"
-                    android:textColor="@color/Orange"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:background="@color/White"
-                    android:ems="10"
-                    android:layout_marginEnd="5dp"
-                    android:inputType="text"
-                    android:textColor="@color/Orange" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/callepinage_de_la_baie"
-                    android:textColor="@color/Orange"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:background="@color/White"
-                    android:layout_marginEnd="5dp"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:textColor="@color/Orange" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="left"
-                    android:layout_marginEnd="15dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/n_26e_de_l_quipement"
-                    android:textColor="@color/Orange"
-                    android:textSize="16sp" />
-
-                <EditText
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="right"
-                    android:layout_marginEnd="5dp"
-                    android:background="@color/White"
-                    android:ems="10"
-                    android:inputType="text"
-                    android:textColor="@color/Orange" />
-
-                <Button
-                    android:id="@+id/start"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="42dp"
-                    android:text="@string/commencer_la_recette"
-                    android:textColor="@color/Orange"
-                    android:layout_marginTop="40dp"/>
-
-        </LinearLayout>
+    </LinearLayout>
 </LinearLayout>

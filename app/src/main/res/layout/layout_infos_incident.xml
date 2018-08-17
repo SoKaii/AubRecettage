@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.infostickets.InfosRackageActivity"
-    android:background="@color/Black"
+    android:background="@color/black"
     android:orientation="vertical">
 
     <TextView
@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Incident"
         android:gravity="center"
-        android:textColor="@color/Orange"
+        android:textColor="@color/orange"
         android:textSize="24sp"
         android:layout_marginTop="15dp"/>
 
@@ -34,7 +34,7 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="30dp"
             android:text="@string/num_ro_de_ticket"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             android:textSize="16sp" />
 
         <EditText
@@ -43,10 +43,10 @@
             android:layout_gravity="right"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="5dp"
-            android:background="@color/White"
+            android:background="@color/white"
             android:ems="10"
             android:inputType="text"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -55,18 +55,18 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="16dp"
             android:text="@string/r_alisateur_du_ticket"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             android:textSize="16sp" />
 
         <EditText
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:background="@color/White"
+            android:background="@color/white"
             android:layout_marginEnd="5dp"
             android:ems="10"
             android:inputType="text"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
 
         <TextView
@@ -76,18 +76,18 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="16dp"
             android:text="@string/nom_de_la_salle"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             android:textSize="16sp" />
 
         <EditText
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:background="@color/White"
+            android:background="@color/white"
             android:ems="10"
             android:layout_marginEnd="5dp"
             android:inputType="text"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -96,18 +96,18 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="16dp"
             android:text="@string/callepinage_de_la_baie"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             android:textSize="16sp" />
 
         <EditText
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:background="@color/White"
+            android:background="@color/white"
             android:layout_marginEnd="5dp"
             android:ems="10"
             android:inputType="text"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
             android:layout_marginEnd="15dp"
             android:layout_marginTop="16dp"
             android:text="@string/n_26e_de_l_quipement"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             android:textSize="16sp" />
 
         <EditText
@@ -124,10 +124,10 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginEnd="5dp"
-            android:background="@color/White"
+            android:background="@color/white"
             android:ems="10"
             android:inputType="text"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <Button
             android:id="@+id/start"
@@ -135,7 +135,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="42dp"
             android:text="@string/commencer_la_recette"
-            android:textColor="@color/Orange"
+            android:textColor="@color/orange"
             android:layout_marginTop="40dp"/>
 
     </LinearLayout>

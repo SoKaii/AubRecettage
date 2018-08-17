@@ -4,50 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.ChoixRecetteActivity"
-    android:background="@color/Black"
-    android:orientation="vertical">
+    android:background="@color/black"
+    android:orientation="vertical"
+    tools:context=".ui.ChoixRecetteActivity">
 
     <TextView
         android:id="@+id/titreChoixRecette"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Choix du type de recette"
         android:gravity="center"
-        android:textColor="@color/Orange"
-        android:textSize="24sp"/>
+        android:text="Choix du type de recette"
+        android:textColor="@color/orange"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal|center_vertical">
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal">
 
 
         <Button
             android:id="@+id/buttonCableSimple"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:text="Câblage simple"
-            android:textColor="@color/Orange"
-            android:layout_marginRight="10dp"/>
+            android:textColor="@color/orange" />
 
         <Button
             android:id="@+id/buttonCableComplexe"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/Orange"
             android:layout_marginLeft="10dp"
-            android:text="Câblage complexe" />
+            android:text="Câblage complexe"
+            android:textColor="@color/orange" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal|center_vertical">
+        android:gravity="center_horizontal|center_vertical"
+        android:orientation="horizontal">
 
 
         <Button
@@ -55,25 +56,26 @@
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:textColor="@color/Orange"
-            android:text="Rackage" />
+            android:text="Rackage"
+            android:textColor="@color/orange" />
 
         <Button
             android:id="@+id/buttonJ4"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/Orange"
             android:text="J4"
+            android:textColor="@color/orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonCableComplexe" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="horizontal"
-        android:gravity="center_vertical|center_horizontal">
+        android:gravity="center_vertical|center_horizontal"
+        android:orientation="horizontal">
 
 
         <Button
@@ -82,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:text="26E"
-            android:textColor="@color/Orange"/>
+            android:textColor="@color/orange" />
 
         <Button
             android:id="@+id/buttonIncident"
@@ -90,7 +92,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="Incident"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
     </LinearLayout>
 
