@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".ui.infostickets.InfosCablageSimpleActivity">
 
@@ -11,10 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:gravity="center"
         android:text="Exportation"
-        android:textColor="@color/orange"
-        android:textSize="24sp" />
+        style="@style/title"/>
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -29,7 +26,6 @@
         android:layout_height="0dp"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:gravity="center_horizontal"
         android:orientation="vertical">
@@ -39,7 +35,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginEnd="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:text="Nom du fichier à enregistrer (sans extension .pdf) : \n"
             android:textColor="@color/orange"
             android:textSize="16sp" />
@@ -48,19 +44,14 @@
             android:id="@+id/nomFichier"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
-            android:background="@color/white"
-            android:ems="10"
             android:inputType="text"
-            android:textColor="@color/orange" />
-
+            style="@style/edittext"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginEnd="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="Objet du mail à envoyer (Si envoi par mail) :  \n"
             android:textColor="@color/orange"
             android:textSize="16sp" />
@@ -69,19 +60,15 @@
             android:id="@+id/mailObject"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
-            android:background="@color/white"
-            android:ems="10"
             android:inputType="textEmailSubject"
-            android:textColor="@color/orange" />
+            style="@style/edittext"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginEnd="15dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="20dp"
             android:text="Adresse mail du destinataire (Si envoi par mail) : \n"
             android:textColor="@color/orange"
             android:textSize="16sp" />
@@ -90,32 +77,25 @@
             android:id="@+id/mailTo"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="15dp"
-            android:layout_marginStart="15dp"
-            android:background="@color/white"
-            android:ems="10"
             android:inputType="textEmailAddress"
-            android:textColor="@color/orange" />
-
+            style="@style/edittext"/>
 
         <Button
             android:id="@+id/sendMail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
+            android:layout_marginBottom="5dp"
             android:layout_marginTop="30dp"
             android:text="Envoyer par Mail"
-            android:textColor="@color/orange" />
+            style="@style/button"/>
 
         <Button
             android:id="@+id/exportButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:layout_marginLeft="0dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="15dp"
             android:text="Enregistrer le fichier"
-            android:textColor="@color/orange" />
-
+            style="@style/button"/>
     </LinearLayout>
 </LinearLayout>

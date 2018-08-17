@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:buttonTint="@color/black"
-
             android:text="NON"
             android:textColor="@color/orange" />
     </RadioGroup>

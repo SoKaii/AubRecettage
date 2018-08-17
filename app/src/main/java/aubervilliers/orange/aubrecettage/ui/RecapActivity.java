@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.util.Calendar;
@@ -20,19 +22,32 @@ public class RecapActivity extends AppCompatActivity {
 
     private DatePickerDialog datePickerDialogI;
     private DatePickerDialog datePickerDialogD;
+    private EditText nCI2A;
+    private EditText refOrange;
+    private RadioButton recettePartielle;
+    private RadioButton recetteTotale;
+    private RadioButton validOrangeYes;
+    private RadioButton validOrangeNo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recap);
 
-        Calendar calendar = Calendar.getInstance();
         Button mSavePDF = findViewById(R.id.SavePDF);
-        Button dateRecetteD = findViewById(R.id.dateRecetteD);
-        dateRecetteD.setText(R.string.click_to_add);
-        Button dateRecetteI = findViewById(R.id.dateRecetteI);
-        dateRecetteI.setText(R.string.click_to_add);
+        final Button dateRecetteD = findViewById(R.id.dateRecetteD);
+        final Button dateRecetteI = findViewById(R.id.dateRecetteI);
 
+        nCI2A = findViewById(R.id.nCI2A);
+        refOrange = findViewById(R.id.refORange);
+        recettePartielle = findViewById(R.id.recette_partielle);
+        recetteTotale = findViewById(R.id.recette_totale);
+        validOrangeYes = findViewById(R.id.valid_orange_yes);
+        validOrangeNo = findViewById(R.id.valid_orange_no);
+
+        Calendar calendar = Calendar.getInstance();
+        dateRecetteD.setText(R.string.click_to_add);
+        dateRecetteI.setText(R.string.click_to_add);
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int day = calendar.get(Calendar.DAY_OF_MONTH);
@@ -40,8 +55,9 @@ public class RecapActivity extends AppCompatActivity {
         datePickerDialogI = new DatePickerDialog(this, new MyDateSetListener(dateRecetteI), year, month, day);
         datePickerDialogD = new DatePickerDialog(this, new MyDateSetListener(dateRecetteD), year, month, day);
 
+        final String CI2ANumber = nCI2A.getText().toString();
+        final String orangeReferent = refOrange.getText().toString();
         Intent intent = getIntent();
-
 
         if (intent != null) {
 
@@ -75,6 +91,20 @@ public class RecapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RecapActivity.this, ExportActivity.class);
                 intent.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
+                intent.putExtra("DateRecetteI",dateRecetteI.getText().toString());
+                intent.putExtra("DateRecetteD",dateRecetteD.getText().toString());
+                intent.putExtra("CI2ANumber",CI2ANumber);
+                intent.putExtra("referentOrange",orangeReferent);
+
+                if (validOrangeYes.isSelected())
+                    intent.putExtra("validationOrange",validOrangeYes.getText().toString());
+                else if (validOrangeNo.isSelected())
+                    intent.putExtra("validationOrange",validOrangeNo.getText().toString());
+                if (recettePartielle.isSelected())
+                    intent.putExtra("recetteType",recettePartielle.getText().toString());
+                else if (recetteTotale.isSelected())
+                    intent.putExtra("recetteType",recetteTotale.getText().toString());
+
                 startActivity(intent);
             }
         });
@@ -98,5 +128,3 @@ public class RecapActivity extends AppCompatActivity {
     }
 
 }
-
-//TODO Recuperate dates && configure radio buttons for TOTALE/PARTIELLE
