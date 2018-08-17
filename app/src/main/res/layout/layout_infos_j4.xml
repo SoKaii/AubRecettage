@@ -39,6 +39,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/nTicket"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -60,6 +61,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/realTicket"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -81,6 +83,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/nomSalle"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -101,6 +104,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/callBaie"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
@@ -121,6 +125,7 @@
                     android:textSize="16sp" />
 
                 <EditText
+                    android:id="@+id/numEquip"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
