@@ -4,18 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".ui.ChoixRecetteActivity">
 
     <TextView
         android:id="@+id/titreChoixRecette"
+        style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Choix du type de recette"
-        android:textColor="@color/orange"
-        android:textSize="24sp" />
+        android:layout_marginTop="16dp"
+        android:text="Choix du type de recette" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -27,19 +25,19 @@
 
         <Button
             android:id="@+id/buttonCableSimple"
+            style="@style/button"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Câblage simple"
-            android:textColor="@color/orange" />
+            android:text="Câblage simple" />
 
         <Button
             android:id="@+id/buttonCableComplexe"
+            style="@style/button"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Câblage complexe"
-            android:textColor="@color/orange" />
+            android:text="Câblage complexe" />
 
     </LinearLayout>
 
@@ -53,19 +51,19 @@
 
         <Button
             android:id="@+id/buttonRackage"
+            style="@style/button"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Rackage"
-            android:textColor="@color/orange" />
+            android:text="Rackage" />
 
         <Button
             android:id="@+id/buttonJ4"
+            style="@style/button"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:text="J4"
-            android:textColor="@color/orange"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonCableComplexe" />
     </LinearLayout>
@@ -80,19 +78,19 @@
 
         <Button
             android:id="@+id/button26e"
+            style="@style/button"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="26E"
-            android:textColor="@color/orange" />
+            android:text="26E" />
 
         <Button
             android:id="@+id/buttonIncident"
+            style="@style/button"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Incident"
-            android:textColor="@color/orange" />
+            android:text="Incident" />
 
     </LinearLayout>
 
