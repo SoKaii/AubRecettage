@@ -1,64 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.HomeActivity"
     android:orientation="vertical"
-    android:background="@android:color/black">
+    tools:context=".ui.HomeActivity">
 
 
     <TextView
         android:id="@+id/titreHome"
+        style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="@string/recettage_aubervilliers"
-        android:gravity="center_horizontal"
-        android:textColor="@android:color/holo_orange_dark"
-        android:textSize="24sp" />
+        android:layout_marginTop="30dp"
+        android:text="@string/recettage_aubervilliers" />
 
 
     <ImageView
         android:id="@+id/backgroundBlack"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:layout_margin="50dp"
         android:layout_weight="1"
-        android:src="@drawable/logoorange"
         android:contentDescription="@string/todo"
         android:scaleType="centerInside"
-        android:layout_margin="50dp"/>
+        android:src="@drawable/logoorange" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        android:orientation="horizontal">
 
 
         <Button
             android:id="@+id/newRecette"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
+            style="@style/button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:text="@string/nouvelle_recette"
-            android:gravity="center"
-            android:textColor="@android:color/holo_orange_dark"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="@string/nouvelle_recette" />
 
         <Button
             android:id="@+id/consultRecette"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
+            style="@style/button"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="@string/consulter_recettes"
-            android:gravity="center"
-            android:textColor="@android:color/holo_orange_dark"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:text="@string/consulter_recettes" />
 
     </LinearLayout>
 </LinearLayout>
