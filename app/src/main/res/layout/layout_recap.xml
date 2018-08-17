@@ -1,114 +1,119 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.RecapActivity"
+    android:background="@color/black"
     android:orientation="vertical"
-    android:background="@color/Black">
+    tools:context=".ui.RecapActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/Orange"
-        android:text="Récapitulatif"
         android:layout_gravity="center"
         android:layout_marginTop="5dp"
-        android:textSize="24sp"/>
+        android:text="Récapitulatif"
+        android:textColor="@color/orange"
+        android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="1px"
-        android:background="@color/White"
-        android:layout_marginTop="3dp">
-    </LinearLayout>
+        android:layout_marginTop="3dp"
+        android:background="@color/white"></LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/Orange"
-        android:text="CI2A - Projet : "
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"/>
+        android:text="CI2A - Projet : "
+        android:textColor="@color/orange" />
+
     <EditText
         android:id="@+id/nCI2A"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/White"
-        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"/>
+        android:layout_marginTop="3dp"
+        android:background="@color/white" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/Orange"
-        android:text="Date de recette initiale : "
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"/>
+        android:text="Date de recette initiale : "
+        android:textColor="@color/orange" />
+
     <EditText
         android:id="@+id/dateRecetteI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/White"
-        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"/>
+        android:layout_marginTop="3dp"
+        android:background="@color/white" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/Orange"
-        android:text="Date de recette définitive : "
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"/>
+        android:text="Date de recette définitive : "
+        android:textColor="@color/orange" />
+
     <EditText
         android:id="@+id/dateRecetteD"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/White"
-        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"/>
+        android:layout_marginTop="3dp"
+        android:background="@color/white" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/Orange"
-        android:text="Type de recette (Totale/Partielle) : "
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"/>
+        android:text="Type de recette (Totale/Partielle) : "
+        android:textColor="@color/orange" />
+
     <EditText
         android:id="@+id/typeRecette"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/White"
-        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"/>
+        android:layout_marginTop="3dp"
+        android:background="@color/white" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/Orange"
-        android:text="Réfèrent Orange : "
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:layout_marginStart="5dp"/>
+        android:text="Réfèrent Orange : "
+        android:textColor="@color/orange" />
+
     <EditText
         android:id="@+id/refORange"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/White"
-        android:layout_marginTop="3dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"/>
+        android:layout_marginTop="3dp"
+        android:background="@color/white" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/Orange"
-        android:text="Validation Orange : "
+        android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:layout_marginStart="5dp"/>
+        android:text="Validation Orange : "
+        android:textColor="@color/orange" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -122,35 +127,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="00dp"
-            android:buttonTint="@color/White"
+            android:buttonTint="@color/white"
             android:text="OUI"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
 
         <RadioButton
             android:id="@+id/valid_orange_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:buttonTint="@color/White"
+            android:buttonTint="@color/white"
             android:text="NON"
-            android:textColor="@color/Orange" />
+            android:textColor="@color/orange" />
     </RadioGroup>
 
 
-
-        <Button
-            android:id="@+id/SavePDF"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity=""
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="50dp"
-            android:text="Exporter"
-            android:textColor="@color/Orange" />
-
-
-
+    <Button
+        android:id="@+id/SavePDF"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity=""
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="50dp"
+        android:text="Exporter"
+        android:textColor="@color/orange" />
 
 
 </LinearLayout>
