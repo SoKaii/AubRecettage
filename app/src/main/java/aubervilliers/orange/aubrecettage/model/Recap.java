@@ -14,12 +14,12 @@ public class Recap implements Serializable {
 
     public Recap(String CI2Anum,String dateRecetteI,String dateRecetteD,String referentOrange) {
 
-        this.CI2Anum = null;
-        this.dateRecetteI = null;
-        this.dateRecetteD = null;
+        this.CI2Anum = CI2Anum;
+        this.dateRecetteI = dateRecetteI;
+        this.dateRecetteD = dateRecetteD;
         this.typeRecette = null;
         this.validOrange = null;
-        this.referentOrange = null;
+        this.referentOrange = referentOrange;
     }
 
     public void setCI2Anum(String CI2Anum) {

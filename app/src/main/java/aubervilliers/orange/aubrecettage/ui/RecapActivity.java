@@ -91,7 +91,9 @@ public class RecapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RecapActivity.this, ExportActivity.class);
+
                 recap = new Recap(nCI2A.getText().toString(),dateRecetteI.getText().toString(),dateRecetteD.getText().toString(),refOrange.getText().toString());
+
                 if (recetteTotale.isChecked())
                     recap.setTypeRecette("Recette Totale");
                 else if (recettePartielle.isChecked())

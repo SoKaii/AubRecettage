@@ -174,7 +174,7 @@ public class RackageActivity extends AppCompatActivity {
             index++;
         }
 
-        recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions, null);
+        recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
 
     }
 }
