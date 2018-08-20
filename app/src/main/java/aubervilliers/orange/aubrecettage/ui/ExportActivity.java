@@ -73,12 +73,7 @@ public class ExportActivity extends Activity {
             if (intent.hasExtra(EXTRA_RECETTE_KEY)) {
 
                 recette = (Recette) intent.getSerializableExtra(EXTRA_RECETTE_KEY);
-                dateRecetteI = intent.getStringExtra("DateRecetteI");
-                dateRecetteD = intent.getStringExtra("DateRecetteD");
-                nCI2A= intent.getStringExtra("CI2ANumber");
-                referentOrange = intent.getStringExtra("referentOrange");
-                validationOrange = intent.getStringExtra("validationOrange");
-                typeRecette = intent.getStringExtra("recetteType");
+
             }
 
             Toast.makeText(this,
@@ -144,12 +139,12 @@ public class ExportActivity extends Activity {
                                                                   "N° 26E de l'équipement : " + recette.getEquipNumber() + "\n\n");
             document.add(infosTicketParagraph);
 
-            Paragraph recapParagraph = new Paragraph("Numéro de CI2A du ticket : " + nCI2A + "\n" +
-                                                            "Date de recette initiale : " + dateRecetteI + "\n" +
-                                                            "Date de recette définitive : " + dateRecetteD + "\n" +
-                                                            "Type de recette : " + typeRecette + "\n" +
-                                                            "Validation orange : " + validationOrange + "\n" +
-                                                            "Référent Orange : " + referentOrange + "\n\n");
+            Paragraph recapParagraph = new Paragraph("Numéro de CI2A du ticket : " + recette.getRecap().getCI2Anum() + "\n" +
+                                                            "Date de recette initiale : " + recette.getRecap().getDateRecetteI() + "\n" +
+                                                            "Date de recette définitive : " + recette.getRecap().getDateRecetteD() + "\n" +
+                                                            "Type de recette : " + recette.getRecap().getTypeRecette() + "\n" +
+                                                            "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
+                                                            "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
             document.add(recapParagraph);
 
             for (Question question : recette.getTabQuestions()) {

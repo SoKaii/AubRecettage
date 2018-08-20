@@ -14,11 +14,13 @@ import android.widget.Toast;
 import java.util.Calendar;
 
 import aubervilliers.orange.aubrecettage.R;
+import aubervilliers.orange.aubrecettage.model.Recap;
 import aubervilliers.orange.aubrecettage.model.Recette;
 
 public class RecapActivity extends AppCompatActivity {
 
     private Recette recette;
+    private Recap recap;
 
     private DatePickerDialog datePickerDialogI;
     private DatePickerDialog datePickerDialogD;
@@ -32,8 +34,8 @@ public class RecapActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recap);
 
-        EditText nCI2A;
-        EditText refOrange;
+        final EditText nCI2A;
+        final EditText refOrange;
 
         Button mSavePDF = findViewById(R.id.SavePDF);
         final Button dateRecetteD = findViewById(R.id.dateRecetteD);
@@ -55,9 +57,6 @@ public class RecapActivity extends AppCompatActivity {
 
         datePickerDialogI = new DatePickerDialog(this, new MyDateSetListener(dateRecetteI), year, month, day);
         datePickerDialogD = new DatePickerDialog(this, new MyDateSetListener(dateRecetteD), year, month, day);
-
-        final String CI2ANumber = nCI2A.getText().toString();
-        final String orangeReferent = refOrange.getText().toString();
 
         Intent intent = getIntent();
 
@@ -92,22 +91,19 @@ public class RecapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RecapActivity.this, ExportActivity.class);
+                recap = new Recap(nCI2A.getText().toString(),dateRecetteI.getText().toString(),dateRecetteD.getText().toString(),refOrange.getText().toString());
+                if (recetteTotale.isChecked())
+                    recap.setTypeRecette("Recette Totale");
+                else if (recettePartielle.isChecked())
+                    recap.setTypeRecette("Recette Partielle");
+                if (validOrangeYes.isChecked())
+                    recap.setValidOrange("OUI");
+                else if (validOrangeNo.isChecked())
+                    recap.setValidOrange("NON");
+
+                recette.setRecap(recap);
+
                 intent.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
-                intent.putExtra("DateRecetteI",dateRecetteI.getText().toString());
-                intent.putExtra("DateRecetteD",dateRecetteD.getText().toString());
-                intent.putExtra("CI2ANumber",CI2ANumber);
-                intent.putExtra("referentOrange",orangeReferent);
-
-
-                if (validOrangeYes.isSelected())
-                    intent.putExtra("validationOrange",validOrangeYes.getText().toString());
-                else if (validOrangeNo.isSelected())
-                    intent.putExtra("validationOrange",validOrangeNo.getText().toString());
-                if (recettePartielle.isSelected())
-                    intent.putExtra("recetteType",recettePartielle.getText().toString());
-                else if (recetteTotale.isSelected())
-                    intent.putExtra("recetteType",recetteTotale.getText().toString());
-
                 startActivity(intent);
             }
         });

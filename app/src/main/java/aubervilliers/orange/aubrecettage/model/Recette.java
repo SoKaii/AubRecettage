@@ -11,10 +11,11 @@ public class Recette implements Serializable {
     private String roomName;
     private String baieCall;
     private String equipNumber;
+
     private List<Question> tabQuestions;
     private Recap recap;
 
-    public Recette(String recetteType, String ticketNumber, String ticketWriter, String roomName, String baieCall, String equipNumber, List<Question> tabQuestions, Recap recap) {
+    public Recette(String recetteType, String ticketNumber, String ticketWriter, String roomName, String baieCall, String equipNumber, List<Question> tabQuestions) {
         this.recetteType = recetteType;
         this.ticketNumber = ticketNumber;
         this.ticketWriter = ticketWriter;
@@ -22,7 +23,7 @@ public class Recette implements Serializable {
         this.baieCall = baieCall;
         this.equipNumber = equipNumber;
         this.tabQuestions = tabQuestions;
-        this.recap = recap;
+        this.recap = null;
     }
 
     public String getRecetteType() {
@@ -84,5 +85,13 @@ public class Recette implements Serializable {
     public Question getQuestion1()
     {
         return tabQuestions.get(0);
+    }
+
+    public Recap getRecap() {
+        return recap;
+    }
+
+    public void setRecap(Recap recap) {
+        this.recap = recap;
     }
 }
