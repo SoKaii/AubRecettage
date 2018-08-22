@@ -2,10 +2,10 @@ package aubervilliers.orange.aubrecettage.ui;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
@@ -15,6 +15,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -26,6 +27,8 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 
 public class RecapActivity extends AppCompatActivity {
 
+    private static final String TAG = "RecapActivity";
+
     private Recette recette;
     private Recap recap;
 
@@ -35,6 +38,7 @@ public class RecapActivity extends AppCompatActivity {
     private RadioButton recetteTotale;
     private RadioButton validOrangeYes;
     private RadioButton validOrangeNo;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,13 +96,18 @@ public class RecapActivity extends AppCompatActivity {
         dateRecetteD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-            hideKeyboard(RecapActivity.this);
+                hideKeyboard(RecapActivity.this);
 
                 DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH);
-                Date dateI = formatter.parse(dateRecetteI.getText().toString());
+                Log.v(TAG, "dateRecetteI: " + dateRecetteI.getText());
+                try {
+                    Date dateI = formatter.parse(dateRecetteI.getText().toString());
+                    datePickerDialogD.getDatePicker().setMinDate(dateI.getTime());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
 
-            datePickerDialogD.getDatePicker().setMinDate(calendar.getTimeInMillis());
-            datePickerDialogD.show();
+                datePickerDialogD.show();
             }
         });
 
@@ -107,7 +116,7 @@ public class RecapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RecapActivity.this, ExportActivity.class);
 
-                recap = new Recap(nCI2A.getText().toString(),dateRecetteI.getText().toString(),dateRecetteD.getText().toString(),refOrange.getText().toString());
+                recap = new Recap(nCI2A.getText().toString(), dateRecetteI.getText().toString(), dateRecetteD.getText().toString(), refOrange.getText().toString());
 
                 if (recetteTotale.isChecked())
                     recap.setTypeRecette("Recette Totale");
