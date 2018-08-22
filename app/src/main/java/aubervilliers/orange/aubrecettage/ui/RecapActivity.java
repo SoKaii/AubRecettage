@@ -157,6 +157,7 @@ public class RecapActivity extends AppCompatActivity {
     private void setDateMin(String dateMin,DatePickerDialog dp)
     {
         try {
+            dp.getDatePicker().setMinDate(0);
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH);
             Date date = formatter.parse(dateMin);
             dp.getDatePicker().setMinDate(date.getTime());
