@@ -1,17 +1,24 @@
 package aubervilliers.orange.aubrecettage.ui;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Recap;
@@ -28,7 +35,6 @@ public class RecapActivity extends AppCompatActivity {
     private RadioButton recetteTotale;
     private RadioButton validOrangeYes;
     private RadioButton validOrangeNo;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,12 +54,13 @@ public class RecapActivity extends AppCompatActivity {
         validOrangeYes = findViewById(R.id.valid_orange_yes);
         validOrangeNo = findViewById(R.id.valid_orange_no);
 
-        Calendar calendar = Calendar.getInstance();
+
+        final Calendar calendar = Calendar.getInstance();
         dateRecetteD.setText(R.string.click_to_add);
         dateRecetteI.setText(R.string.click_to_add);
-        int year = calendar.get(Calendar.YEAR);
-        int month = calendar.get(Calendar.MONTH);
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
         datePickerDialogI = new DatePickerDialog(this, new MyDateSetListener(dateRecetteI), year, month, day);
         datePickerDialogD = new DatePickerDialog(this, new MyDateSetListener(dateRecetteD), year, month, day);
@@ -76,14 +83,22 @@ public class RecapActivity extends AppCompatActivity {
         dateRecetteI.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                hideKeyboard(RecapActivity.this);
                 datePickerDialogI.show();
+
             }
         });
 
         dateRecetteD.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                datePickerDialogD.show();
+            hideKeyboard(RecapActivity.this);
+
+                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH);
+                Date dateI = formatter.parse(dateRecetteI.getText().toString());
+
+            datePickerDialogD.getDatePicker().setMinDate(calendar.getTimeInMillis());
+            datePickerDialogD.show();
             }
         });
 
@@ -126,6 +141,17 @@ public class RecapActivity extends AppCompatActivity {
                     .append(month + 1).append("/").append(year));
         }
 
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
 }

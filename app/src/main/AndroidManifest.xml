@@ -29,10 +29,12 @@
             android:name=".ui.fiches.CablageSimpleActivity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity android:name=".ui.fiches.RackageActivity" />
-        <activity android:name=".ui.RecapActivity" />
+        <activity android:name=".ui.RecapActivity"
+                  android:windowSoftInputMode="adjustResize"/>
+
         <activity android:name=".ui.ExportActivity" />
         <activity android:name=".ui.fiches.J4Activity" />
-        <activity android:name=".ui.fiches.CablageComplexeActivity"></activity>
+        <activity android:name=".ui.fiches.CablageComplexeActivity"/>
     </application>
 
 </manifest>
