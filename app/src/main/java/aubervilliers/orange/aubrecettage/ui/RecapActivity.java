@@ -89,7 +89,6 @@ public class RecapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 hideKeyboard(RecapActivity.this);
                 datePickerDialogI.show();
-
             }
         });
 
@@ -97,16 +96,8 @@ public class RecapActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 hideKeyboard(RecapActivity.this);
-
-                DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH);
                 Log.v(TAG, "dateRecetteI: " + dateRecetteI.getText());
-                try {
-                    Date dateI = formatter.parse(dateRecetteI.getText().toString());
-                    datePickerDialogD.getDatePicker().setMinDate(dateI.getTime());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
-
+                setDateMin(dateRecetteI.getText().toString(),datePickerDialogD);
                 datePickerDialogD.show();
             }
         });
@@ -161,6 +152,17 @@ public class RecapActivity extends AppCompatActivity {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    private void setDateMin(String dateMin,DatePickerDialog dp)
+    {
+        try {
+            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH);
+            Date date = formatter.parse(dateMin);
+            dp.getDatePicker().setMinDate(date.getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
     }
 
 }
