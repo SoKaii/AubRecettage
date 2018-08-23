@@ -2,6 +2,7 @@ package aubervilliers.orange.aubrecettage.ui;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -10,9 +11,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.SystemClock;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
@@ -50,9 +53,6 @@ public class ExportActivity extends Activity {
 
     private boolean sendEmail = false;
 
-    /**
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,29 +62,20 @@ public class ExportActivity extends Activity {
         mailTo = findViewById(R.id.mailTo);
         editText = findViewById(R.id.nomFichier);
 
-
         Intent intent = getIntent();
-
         if (intent != null) {
-
-            if (intent.hasExtra(EXTRA_RECETTE_KEY)) {
-
+            if (intent.hasExtra(EXTRA_RECETTE_KEY))
                 recette = (Recette) intent.getSerializableExtra(EXTRA_RECETTE_KEY);
-
-            }
-
             Toast.makeText(this,
                     "Intent " + recette.getQuestion1().getCommentary() + " récupéré",
                     Toast.LENGTH_LONG).show();
-
         }
 
         findViewById(R.id.exportButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isStoragePermissionGranted()) {
+                if (isStoragePermissionGranted())
                     exportPDFAndSendEmailIfNecessary();
-                }
             }
         });
 
@@ -92,34 +83,27 @@ public class ExportActivity extends Activity {
             @Override
             public void onClick(View view) {
                 sendEmail = true;
-                if (isStoragePermissionGranted()) {
+                if (isStoragePermissionGranted())
                     exportPDFAndSendEmailIfNecessary();
-                }
             }
         });
-
-
     }
 
     private void exportPDFAndSendEmailIfNecessary() {
         objetMail = mailObject.getText().toString();
         mailRecipient = mailTo.getText().toString();
-
         String fileName = editText.getText().toString();
         pdfFileName = Environment.getExternalStorageDirectory() + "/" + fileName + ".pdf";
-
-        if (isStoragePermissionGranted()) {
+        if (isStoragePermissionGranted())
             exportPDF();
-        }
-        if (sendEmail) {
+        if (sendEmail)
             sendMail();
-
-        }
     }
 
     public void exportPDF() {
         try {
             PdfWriter.getInstance(document, new FileOutputStream(pdfFileName));
+
             document.open();
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
@@ -144,25 +128,19 @@ public class ExportActivity extends Activity {
                                                             "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
                                                             "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
             document.add(recapParagraph);
-
             for (Question question : recette.getTabQuestions()) {
-
                 document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));
 
                 if (!question.isOpenQuestion()) {
-                    if (question.isButtonYesSelected()) {
+                    if (question.isButtonYesSelected())
                         document.add(new Paragraph("Validation : Oui"));
-                    } else {
+                    else
                         document.add(new Paragraph("Validation : Non"));
-                    }
                 }
 
                 document.add(new Paragraph("Commentaire : " + question.getCommentary()));
-
                 document.add(new Paragraph("\n \n"));
             }
-
-
             document.close();
             Toast.makeText(this, "File has been written to :" + pdfFileName,
                     Toast.LENGTH_LONG).show();
@@ -180,7 +158,6 @@ public class ExportActivity extends Activity {
                 Log.v(TAG, "Permission is granted");
                 return true;
             } else {
-
                 Log.v(TAG, "Permission is revoked");
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
                 return false;
@@ -192,7 +169,7 @@ public class ExportActivity extends Activity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode,@NonNull String[] permissions,@NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
@@ -201,13 +178,12 @@ public class ExportActivity extends Activity {
     }
 
     private void sendMail() {
-
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
-
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{mailRecipient});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, objetMail);
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF du ticket n° " + recette.getTicketNumber());
+
         final File file = new File(pdfFileName);
         if (!file.exists() || !file.canRead()) {
             Log.e(TAG, "The following file does not exist: " + pdfFileName);
@@ -242,12 +218,18 @@ public class ExportActivity extends Activity {
 
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        //Find the currently focused view, so we can grab the correct window token from it.
         View view = activity.getCurrentFocus();
-        //If no view currently has focus, create a new one, just so we can grab a window token from it
         if (view == null) {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
+        return true;
     }
 }

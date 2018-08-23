@@ -15,24 +15,22 @@ import aubervilliers.orange.aubrecettage.ui.infostickets.InfosRackageActivity;
 import aubervilliers.orange.aubrecettage.R;
 
 public class ChoixRecetteActivity extends AppCompatActivity {
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_choix_recette);
 
-        Button mbuttonCableSimple = (Button) findViewById(R.id.buttonCableSimple);
-        Button mbuttonCableComplexe = (Button) findViewById(R.id.buttonCableComplexe);
-        Button mbuttonRackage = (Button) findViewById(R.id.buttonRackage);
-        Button mbuttonJ4 = (Button) findViewById(R.id.buttonJ4);
-        Button mbutton26e = (Button) findViewById(R.id.button26e);
-        Button mbuttonIncident = (Button) findViewById(R.id.buttonIncident);
+        Button mbuttonCableSimple =  findViewById(R.id.buttonCableSimple);
+        Button mbuttonCableComplexe = findViewById(R.id.buttonCableComplexe);
+        Button mbuttonRackage =  findViewById(R.id.buttonRackage);
+        Button mbuttonJ4 =  findViewById(R.id.buttonJ4);
+        Button mbutton26e =  findViewById(R.id.button26e);
+        Button mbuttonIncident = findViewById(R.id.buttonIncident);
         
         mbuttonCableSimple.setOnClickListener(new View.OnClickListener()
         { @Override
         public void onClick(View v)
         {
-
             Intent intent = new Intent(ChoixRecetteActivity.this , InfosCablageSimpleActivity.class);
             startActivity(intent);
         }
@@ -57,7 +55,6 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         mbuttonCableComplexe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Intent intent = new Intent(ChoixRecetteActivity.this, InfosCablageComplexeActivity.class);
                 startActivity(intent);
             }
@@ -79,7 +76,5 @@ public class ChoixRecetteActivity extends AppCompatActivity {
             }
         });
     }
-    
-    
 }
 
