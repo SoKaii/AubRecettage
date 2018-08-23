@@ -2,15 +2,19 @@ package aubervilliers.orange.aubrecettage.ui;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.SystemClock;
 import android.support.v4.app.ActivityCompat;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -31,23 +35,16 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 public class ExportActivity extends Activity {
 
     public static final String TAG = "ExportActivity";
-
+    private String pdfFileName;
+    private String objetMail;
+    private String mailRecipient;
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
+
     private Recette recette;
 
     private EditText mailObject;
     private EditText mailTo;
     private EditText editText;
-
-    private String pdfFileName;
-    private String objetMail;
-    private String mailRecipient;
-    private String dateRecetteI;
-    private String dateRecetteD;
-    private String nCI2A;
-    private String referentOrange;
-    private String validationOrange;
-    private String typeRecette;
 
     Document document = new Document();
 
@@ -116,6 +113,7 @@ public class ExportActivity extends Activity {
         }
         if (sendEmail) {
             sendMail();
+
         }
     }
 
@@ -210,7 +208,7 @@ public class ExportActivity extends Activity {
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{mailRecipient});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, objetMail);
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF du ticket n° " + recette.getTicketNumber());
-        File file = new File(pdfFileName);
+        final File file = new File(pdfFileName);
         if (!file.exists() || !file.canRead()) {
             Log.e(TAG, "The following file does not exist: " + pdfFileName);
             return;
@@ -218,5 +216,38 @@ public class ExportActivity extends Activity {
         Uri uri = Uri.fromFile(file);
         emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
         startActivity(Intent.createChooser(emailIntent, "Pick an Email provider"));
+
+        SystemClock.sleep(10000);
+        hideKeyboard(ExportActivity.this);
+
+        AlertDialog.Builder savePDF = new AlertDialog.Builder(ExportActivity.this);
+        savePDF.setMessage("Voulez vous enregistrer le PDF sur le téléphone ? ")
+                .setPositiveButton("OUI", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .setNegativeButton("NON", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        file.delete();
+                    }
+                })
+                .setTitle("Enregistrer PDF")
+                .create();
+        savePDF.show();
+    }
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        //Find the currently focused view, so we can grab the correct window token from it.
+        View view = activity.getCurrentFocus();
+        //If no view currently has focus, create a new one, just so we can grab a window token from it
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }

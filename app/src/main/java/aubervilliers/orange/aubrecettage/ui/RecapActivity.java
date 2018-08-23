@@ -43,7 +43,6 @@ public class RecapActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_recap);
-
         final EditText nCI2A;
         final EditText refOrange;
 
