@@ -38,6 +38,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/nomSalle"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -58,6 +59,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/callBaie"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -78,6 +80,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/numEquip"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
@@ -98,6 +101,7 @@
             android:textSize="16sp" />
 
         <EditText
+            android:id="@+id/elevEquip"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
