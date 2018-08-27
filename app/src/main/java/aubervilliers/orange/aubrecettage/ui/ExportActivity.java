@@ -36,6 +36,7 @@ import java.io.FileOutputStream;
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
+import aubervilliers.orange.aubrecettage.ui.fiches.CablageSimpleActivity;
 
 public class ExportActivity extends Activity {
 
@@ -91,6 +92,10 @@ public class ExportActivity extends Activity {
             public void onClick(View view) {
                 if (isStoragePermissionGranted())
                     exportPDFAndSendEmailIfNecessary();
+
+                Intent intent1 = new Intent(ExportActivity.this, ConfirmationActivity.class);
+                intent1.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
+                startActivity(intent1);
             }
         });
     }

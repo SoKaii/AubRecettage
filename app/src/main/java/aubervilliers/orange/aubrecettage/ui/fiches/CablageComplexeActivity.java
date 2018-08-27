@@ -27,11 +27,11 @@ public class CablageComplexeActivity extends AppCompatActivity {
     private static final String TAG = "CablageComplexeActivity";
 
     private Recette recette;
-    private String numTicket = "";
-    private String realTicket = "";
-    private String nomSalle = "";
-    private String callBaie = "";
-    private String numEquip = "";
+    private String numTicket = null;
+    private String realTicket = null;
+    private String nomSalle = null;
+    private String callBaie = null;
+    private String numEquip = null;
 
     private LinearLayout ll;
     private List<String> titleList = new ArrayList<>();
@@ -45,9 +45,10 @@ public class CablageComplexeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_cablage_complexe);
+
         Button buttonNext = findViewById(R.id.saveNext);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         if (intent != null) {
 
