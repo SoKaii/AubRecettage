@@ -6,4 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".ui.ConfirmationActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
+            style="@style/title"
+            android:text="Confirmation Exportation"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="1px"
+            android:layout_marginTop="3dp"
+            android:background="@color/black">
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/confirmationExport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:text=""
+            android:textColor="@color/orange"
+            android:textSize="18dp"/>
+
+    </LinearLayout>
+
 </android.support.constraint.ConstraintLayout>

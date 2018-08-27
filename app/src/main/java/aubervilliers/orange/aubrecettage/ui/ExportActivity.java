@@ -32,6 +32,7 @@ import com.itextpdf.text.pdf.PdfWriter;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.nio.file.Path;
 
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
@@ -45,7 +46,6 @@ public class ExportActivity extends Activity {
     private String objetMail;
     private String mailRecipient;
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
-
     private Recette recette;
 
     private EditText mailObject;
@@ -55,6 +55,8 @@ public class ExportActivity extends Activity {
     private CheckBox cbSave;
     private CheckBox cbSend;
 
+    private File file;
+    private String extra;
     Document document = new Document();
 
     @Override
@@ -69,7 +71,7 @@ public class ExportActivity extends Activity {
         mailTo = findViewById(R.id.mailTo);
         editText = findViewById(R.id.nomFichier);
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         if (intent != null) {
             if (intent.hasExtra(EXTRA_RECETTE_KEY))
                 recette = (Recette) intent.getSerializableExtra(EXTRA_RECETTE_KEY);
@@ -94,7 +96,9 @@ public class ExportActivity extends Activity {
                     exportPDFAndSendEmailIfNecessary();
 
                 Intent intent1 = new Intent(ExportActivity.this, ConfirmationActivity.class);
-                intent1.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
+                intent1.putExtra("exportState",extra);
+                intent1.putExtra(ConfirmationActivity.EXTRA_FILE_KEY,file);
+                while
                 startActivity(intent1);
             }
         });
@@ -108,9 +112,12 @@ public class ExportActivity extends Activity {
         if (cbSend.isChecked()) {
             exportPDF();
             sendMail();
+            extra = "Send Mail";
         }
-        else if (cbSave.isChecked())
+        else if (cbSave.isChecked()) {
             exportPDF();
+            extra = "Save PDF";
+        }
         else if (!cbSave.isChecked() && !cbSend.isChecked())
         {
             AlertDialog.Builder cbEmpty = new AlertDialog.Builder(ExportActivity.this);
@@ -205,13 +212,16 @@ public class ExportActivity extends Activity {
     }
 
     private void sendMail() {
+        if(!cbSave.isChecked())
+            extra = "Send Mail + Save PDF";
+
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
         emailIntent.putExtra(Intent.EXTRA_EMAIL, new String[]{mailRecipient});
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, objetMail);
         emailIntent.putExtra(Intent.EXTRA_TEXT, "Veuillez trouver en pièce jointe, le résultat de la recette au format PDF du ticket n° " + recette.getTicketNumber());
 
-        final File file = new File(pdfFileName);
+        file = new File(pdfFileName);
         if (!file.exists() || !file.canRead()) {
             Log.e(TAG, "The following file does not exist: " + pdfFileName);
             return;
@@ -219,12 +229,7 @@ public class ExportActivity extends Activity {
         Uri uri = Uri.fromFile(file);
         emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
         startActivity(Intent.createChooser(emailIntent, "Pick an Email provider"));
-
-        SystemClock.sleep(10000);
         hideKeyboard(ExportActivity.this);
-
-        if(!cbSave.isChecked())
-            file.delete();
     }
 
     public static void hideKeyboard(Activity activity) {
