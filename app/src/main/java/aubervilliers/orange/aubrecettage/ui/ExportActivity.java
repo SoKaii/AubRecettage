@@ -18,7 +18,9 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.itextpdf.text.Document;
@@ -48,6 +50,9 @@ public class ExportActivity extends Activity {
     private EditText mailObject;
     private EditText mailTo;
     private EditText editText;
+    private LinearLayout linearMail;
+    private CheckBox cbSave;
+    private CheckBox cbSend;
 
     Document document = new Document();
 
@@ -58,6 +63,9 @@ public class ExportActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_export);
 
+        cbSave = findViewById(R.id.CBSave);
+        cbSend = findViewById(R.id.CBSend);
+        linearMail = findViewById(R.id.linearSend);
         mailObject = findViewById(R.id.mailObject);
         mailTo = findViewById(R.id.mailTo);
         editText = findViewById(R.id.nomFichier);
@@ -70,19 +78,19 @@ public class ExportActivity extends Activity {
                     "Intent " + recette.getQuestion1().getCommentary() + " récupéré",
                     Toast.LENGTH_LONG).show();
         }
+        cbSend.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cbSend.isChecked())
+                    linearMail.setVisibility(View.VISIBLE);
+                else
+                    linearMail.setVisibility((View.GONE));
+            }
+        });
 
         findViewById(R.id.exportButton).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (isStoragePermissionGranted())
-                    exportPDFAndSendEmailIfNecessary();
-            }
-        });
-
-        findViewById(R.id.sendMail).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendEmail = true;
                 if (isStoragePermissionGranted())
                     exportPDFAndSendEmailIfNecessary();
             }
@@ -94,10 +102,13 @@ public class ExportActivity extends Activity {
         mailRecipient = mailTo.getText().toString();
         String fileName = editText.getText().toString();
         pdfFileName = Environment.getExternalStorageDirectory() + "/" + fileName + ".pdf";
-        if (isStoragePermissionGranted())
+        if (cbSend.isChecked())
+        {
             exportPDF();
-        if (sendEmail)
             sendMail();
+        }
+        else if (cbSave.isChecked())
+            exportPDF();
     }
 
     public void exportPDF() {
@@ -196,24 +207,8 @@ public class ExportActivity extends Activity {
         SystemClock.sleep(10000);
         hideKeyboard(ExportActivity.this);
 
-        AlertDialog.Builder savePDF = new AlertDialog.Builder(ExportActivity.this);
-        savePDF.setMessage("Voulez vous enregistrer le PDF sur le téléphone ? ")
-                .setPositiveButton("OUI", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                    }
-                })
-                .setNegativeButton("NON", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.dismiss();
-                        file.delete();
-                    }
-                })
-                .setTitle("Enregistrer PDF")
-                .create();
-        savePDF.show();
+        if(!cbSave.isChecked())
+            file.delete();
     }
 
     public static void hideKeyboard(Activity activity) {
