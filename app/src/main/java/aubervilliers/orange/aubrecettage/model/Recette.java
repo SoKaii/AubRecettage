@@ -11,6 +11,7 @@ public class Recette implements Serializable {
     private String roomName;
     private String baieCall;
     private String equipNumber;
+    private String equipElevation;
 
     private List<Question> tabQuestions;
     private Recap recap;
@@ -22,6 +23,16 @@ public class Recette implements Serializable {
         this.roomName = roomName;
         this.baieCall = baieCall;
         this.equipNumber = equipNumber;
+        this.tabQuestions = tabQuestions;
+        this.recap = null;
+    }
+
+    public Recette(String recetteType, String roomName, String baieCall, String equipNumber, String equipElevation,List<Question> tabQuestions) {
+        this.recetteType = recetteType;
+        this.roomName = roomName;
+        this.baieCall = baieCall;
+        this.equipNumber = equipNumber;
+        this.equipElevation = equipElevation;
         this.tabQuestions = tabQuestions;
         this.recap = null;
     }

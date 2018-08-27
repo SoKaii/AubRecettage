@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fiches.CablageComplexeActivity">
+    tools:context=".ui.fiches.E26Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="Cablâge Complexe"
+            android:text="Recette 26E"
             style="@style/title"
             android:textSize="24sp" />
 
@@ -27,47 +27,6 @@
             android:layout_marginTop="3dp"
             android:background="@color/black">
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="10dp"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="Numéro du ticket : "
-                android:textColor="@color/orange" />
-
-            <TextView
-                android:id="@+id/numTicket"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="Réalisateur du ticket :  "
-                android:textColor="@color/orange" />
-
-            <TextView
-                android:id="@+id/realTicket"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/black" />
         </LinearLayout>
 
         <LinearLayout
@@ -131,10 +90,30 @@
         </LinearLayout>
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elevation de l'équipement :  "
+                android:textColor="@color/orange" />
+
+            <TextView
+                android:id="@+id/elevEquip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:layout_marginTop="7dp"
-            android:background="@color/black">
+            android:background="@color/white">
 
         </LinearLayout>
 
