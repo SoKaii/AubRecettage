@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="J4"
+        android:text="Information J4"
         style="@style/title"
         android:textSize="24sp" />
 

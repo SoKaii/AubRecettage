@@ -13,7 +13,7 @@
         android:layout_marginTop="15dp"
         android:gravity="center"
         style="@style/title"
-        android:text="Incident"
+        android:text="Information Incident"
         android:textSize="24sp" />
 
     <LinearLayout
