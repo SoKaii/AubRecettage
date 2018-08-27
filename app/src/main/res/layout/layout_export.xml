@@ -36,7 +36,7 @@
             android:layout_gravity="left"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="15dp"
-            android:text="Nom du fichier à enregistrer (sans extension .pdf) : \n"
+            android:text="Nom du fichier (sans extension .pdf) : \n"
             android:textColor="@color/orange"
             android:textSize="16sp" />
 
@@ -46,13 +46,55 @@
             android:layout_height="wrap_content"
             android:inputType="text"
             style="@style/edittext"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="15dp"
+            android:text="Type d'exportation : "
+            android:textColor="@color/orange"
+            android:textSize="16sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/CBSave"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:text="Enregistrer"
+            android:textColor="@color/orange"
+            android:textSize="14dp"/>
+        <CheckBox
+            android:id="@+id/CBSend"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
+            android:text="Envoyer par mail"
+            android:textColor="@color/orange"
+            android:textSize="14dp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearSend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="left"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="20dp"
-            android:text="Objet du mail à envoyer (Si envoi par mail) :  \n"
+            android:text="Objet du mail à envoyer :  \n"
             android:textColor="@color/orange"
             android:textSize="16sp" />
 
@@ -69,7 +111,7 @@
             android:layout_gravity="left"
             android:layout_marginEnd="15dp"
             android:layout_marginTop="20dp"
-            android:text="Adresse mail du destinataire (Si envoi par mail) : \n"
+            android:text="Adresse mail du destinataire : \n"
             android:textColor="@color/orange"
             android:textSize="16sp" />
 
@@ -80,14 +122,8 @@
             android:inputType="textEmailAddress"
             style="@style/edittext"/>
 
-        <Button
-            android:id="@+id/sendMail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="30dp"
-            android:text="Envoyer par Mail"
-            style="@style/button"/>
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/exportButton"
@@ -95,7 +131,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="15dp"
-            android:text="Enregistrer le fichier"
+            android:text="Valider"
             style="@style/button"/>
     </LinearLayout>
 </LinearLayout>
