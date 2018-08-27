@@ -56,8 +56,6 @@ public class ExportActivity extends Activity {
 
     Document document = new Document();
 
-    private boolean sendEmail = false;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,13 +100,26 @@ public class ExportActivity extends Activity {
         mailRecipient = mailTo.getText().toString();
         String fileName = editText.getText().toString();
         pdfFileName = Environment.getExternalStorageDirectory() + "/" + fileName + ".pdf";
-        if (cbSend.isChecked())
-        {
+        if (cbSend.isChecked()) {
             exportPDF();
             sendMail();
         }
         else if (cbSave.isChecked())
             exportPDF();
+        else if (!cbSave.isChecked() && !cbSend.isChecked())
+        {
+            AlertDialog.Builder cbEmpty = new AlertDialog.Builder(ExportActivity.this);
+            cbEmpty.setMessage("Aucun choix d'exportation détecté")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setTitle("Erreur")
+                    .create();
+            cbEmpty.show();
+        }
     }
 
     public void exportPDF() {
