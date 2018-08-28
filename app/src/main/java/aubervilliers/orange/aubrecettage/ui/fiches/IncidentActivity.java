@@ -141,7 +141,13 @@ public class IncidentActivity extends AppCompatActivity {
         View questionLayout = View.inflate(this, R.layout.layout_question, null);
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
-        tv.setText(title);
+        if (hasRadioButtons) {
+            title = "* "+ title;
+            tv.setText(title);
+        }
+        else {
+            tv.setText(title);
+        }
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
         noBtList.add((RadioButton) questionLayout.findViewById(R.id.questionNo));
         commentList.add((EditText) questionLayout.findViewById(R.id.questionComment));

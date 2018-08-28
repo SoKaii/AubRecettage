@@ -98,8 +98,7 @@ public class ExportActivity extends Activity {
                 Intent intent1 = new Intent(ExportActivity.this, ConfirmationActivity.class);
                 intent1.putExtra("exportState",extra);
                 intent1.putExtra(ConfirmationActivity.EXTRA_FILE_KEY,file);
-                while
-                startActivity(intent1);
+                startActivityForResult(intent1,1);
             }
         });
     }
