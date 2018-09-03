@@ -95,10 +95,6 @@ public class ExportActivity extends Activity {
                 if (isStoragePermissionGranted())
                     exportPDFAndSendEmailIfNecessary();
 
-                Intent intent1 = new Intent(ExportActivity.this, ConfirmationActivity.class);
-                intent1.putExtra("exportState",extra);
-                intent1.putExtra(ConfirmationActivity.EXTRA_FILE_KEY,file);
-                startActivityForResult(intent1,1);
             }
         });
     }
@@ -209,6 +205,21 @@ public class ExportActivity extends Activity {
             exportPDFAndSendEmailIfNecessary();
         }
     }
+    @Override
+    public void finish() {
+        Intent data = new Intent();
+        setResult(RESULT_OK, data);
+        super.finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Intent intent1 = new Intent(ExportActivity.this, ConfirmationActivity.class);
+        intent1.putExtra("exportState",extra);
+        intent1.putExtra(ConfirmationActivity.EXTRA_FILE_KEY,file);
+        startActivity(intent1);
+    }
 
     private void sendMail() {
         if(!cbSave.isChecked())
@@ -227,8 +238,11 @@ public class ExportActivity extends Activity {
         }
         Uri uri = Uri.fromFile(file);
         emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+
         startActivity(Intent.createChooser(emailIntent, "Pick an Email provider"));
         hideKeyboard(ExportActivity.this);
+
+        startActivityForResult(emailIntent,1);
     }
 
     public static void hideKeyboard(Activity activity) {

@@ -32,5 +32,6 @@ public class ConfirmationActivity extends AppCompatActivity {
             validExport.setText("Fichier PDF enregistré sous " + path);
         else if (exportState == "Send Mail + Save PDF")
             validExport.setText("Mail envoyé & Fichier PDF enregistré sous " + path);
+
     }
 }
