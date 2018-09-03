@@ -46,6 +46,7 @@ public class ExportActivity extends Activity {
     private String objetMail;
     private String mailRecipient;
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
+    static final int PICK_CONTACT_REQUEST = 1;
     private Recette recette;
 
     private EditText mailObject;
@@ -205,20 +206,20 @@ public class ExportActivity extends Activity {
             exportPDFAndSendEmailIfNecessary();
         }
     }
-    @Override
-    public void finish() {
-        Intent data = new Intent();
-        setResult(RESULT_OK, data);
-        super.finish();
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Intent intent1 = new Intent(ExportActivity.this, ConfirmationActivity.class);
-        intent1.putExtra("exportState",extra);
-        intent1.putExtra(ConfirmationActivity.EXTRA_FILE_KEY,file);
-        startActivity(intent1);
+        // super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == PICK_CONTACT_REQUEST)
+        {
+            if (resultCode == RESULT_OK)
+            {
+                Intent intent1 = new Intent(ExportActivity.this, ConfirmationActivity.class);
+                intent1.putExtra("exportState",extra);
+                intent1.putExtra(ConfirmationActivity.EXTRA_FILE_KEY,file);
+                startActivity(intent1);
+            }
+        }
     }
 
     private void sendMail() {
@@ -238,11 +239,10 @@ public class ExportActivity extends Activity {
         }
         Uri uri = Uri.fromFile(file);
         emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
-
-        startActivity(Intent.createChooser(emailIntent, "Pick an Email provider"));
+        startActivityForResult(Intent.createChooser(emailIntent,"Pick an Email provider"),PICK_CONTACT_REQUEST);
         hideKeyboard(ExportActivity.this);
 
-        startActivityForResult(emailIntent,1);
+
     }
 
     public static void hideKeyboard(Activity activity) {
