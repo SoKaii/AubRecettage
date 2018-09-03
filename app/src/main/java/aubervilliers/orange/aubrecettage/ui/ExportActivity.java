@@ -210,15 +210,12 @@ public class ExportActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         // super.onActivityResult(requestCode, resultCode, data);
+        Log.d("PICK_CONTACT_REQUEST3", "pick = " + PICK_CONTACT_REQUEST);
         if (requestCode == PICK_CONTACT_REQUEST)
         {
-            if (resultCode == RESULT_OK)
-            {
-                Intent intent1 = new Intent(ExportActivity.this, ConfirmationActivity.class);
-                intent1.putExtra("exportState",extra);
-                intent1.putExtra(ConfirmationActivity.EXTRA_FILE_KEY,file);
-                startActivity(intent1);
-            }
+            Log.d("PICK_CONTACT_REQUEST4", "pick = " + PICK_CONTACT_REQUEST);
+                Intent confirmation = new Intent(ExportActivity.this, ConfirmationActivity.class);
+                startActivity(confirmation);
         }
     }
 
@@ -239,9 +236,10 @@ public class ExportActivity extends Activity {
         }
         Uri uri = Uri.fromFile(file);
         emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
+        Log.d("PICK_CONTACT_REQUEST1", "pick = " + PICK_CONTACT_REQUEST);
         startActivityForResult(Intent.createChooser(emailIntent,"Pick an Email provider"),PICK_CONTACT_REQUEST);
+        Log.d("PICK_CONTACT_REQUEST2", "pick = " + PICK_CONTACT_REQUEST);
         hideKeyboard(ExportActivity.this);
-
 
     }
 
