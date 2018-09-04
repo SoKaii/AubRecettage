@@ -53,15 +53,14 @@
             android:layout_height="wrap_content"
             android:gravity="center">
 
-            <Button android:textSize="20sp"
+            <Button
                 android:id="@+id/restartApp"
                 style="@style/button"
                 android:layout_marginBottom="10dp"
-
                 android:text="Nouvelle Recette"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
+                android:layout_height="wrap_content"/>
+
         </LinearLayout>
     </RelativeLayout>
 

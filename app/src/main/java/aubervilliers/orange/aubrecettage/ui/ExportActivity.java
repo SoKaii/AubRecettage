@@ -10,7 +10,6 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
@@ -22,22 +21,17 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
-
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
-
 import java.io.File;
 import java.io.FileOutputStream;
-import java.nio.file.Path;
-
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
-import aubervilliers.orange.aubrecettage.ui.fiches.CablageSimpleActivity;
 
 public class ExportActivity extends Activity {
 
@@ -106,13 +100,19 @@ public class ExportActivity extends Activity {
         String fileName = editText.getText().toString();
         pdfFileName = Environment.getExternalStorageDirectory() + "/" + fileName + ".pdf";
         if (cbSend.isChecked()) {
+            extra = "Send Mail";
             exportPDF();
             sendMail();
-            extra = "Send Mail";
         }
         else if (cbSave.isChecked()) {
-            exportPDF();
             extra = "Save PDF";
+            exportPDF();
+            
+            Intent confirmation = new Intent(ExportActivity.this, ConfirmationActivity.class);
+            confirmation.putExtra("exportState", extra);
+            confirmation.putExtra(ConfirmationActivity.EXTRA_FILE_KEY, file);
+            confirmation.putExtra("path", pdfFileName);
+            startActivity(confirmation);
         }
         else if (!cbSave.isChecked() && !cbSend.isChecked())
         {
@@ -209,18 +209,18 @@ public class ExportActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // super.onActivityResult(requestCode, resultCode, data);
-        Log.d("PICK_CONTACT_REQUEST3", "pick = " + PICK_CONTACT_REQUEST);
         if (requestCode == PICK_CONTACT_REQUEST)
         {
-            Log.d("PICK_CONTACT_REQUEST4", "pick = " + PICK_CONTACT_REQUEST);
                 Intent confirmation = new Intent(ExportActivity.this, ConfirmationActivity.class);
+                confirmation.putExtra("exportState", extra);
+                confirmation.putExtra(ConfirmationActivity.EXTRA_FILE_KEY, file);
+                confirmation.putExtra("path", pdfFileName);
                 startActivity(confirmation);
         }
     }
 
     private void sendMail() {
-        if(!cbSave.isChecked())
+        if(cbSave.isChecked())
             extra = "Send Mail + Save PDF";
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
