@@ -21,14 +21,17 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.itextpdf.text.Document;
 import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+
 import java.io.File;
 import java.io.FileOutputStream;
+
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.model.Question;
 import aubervilliers.orange.aubrecettage.model.Recette;
@@ -43,6 +46,11 @@ public class ExportActivity extends Activity {
     static final int PICK_CONTACT_REQUEST = 1;
     private Recette recette;
 
+    public static final String EXTRA_STATE_KEY = "state_key";
+    public static final int EXPORT_STATE_MAIL = 1;
+    public static final int EXPORT_STATE_PDF = 2;
+    public static final int EXPORT_STATE_MAIL_PDF = 3;
+
     private EditText mailObject;
     private EditText mailTo;
     private EditText editText;
@@ -51,7 +59,7 @@ public class ExportActivity extends Activity {
     private CheckBox cbSend;
 
     private File file;
-    private String extra;
+    private int extraState = 1;
     Document document = new Document();
 
     @Override
@@ -100,22 +108,19 @@ public class ExportActivity extends Activity {
         String fileName = editText.getText().toString();
         pdfFileName = Environment.getExternalStorageDirectory() + "/" + fileName + ".pdf";
         if (cbSend.isChecked()) {
-            extra = "Send Mail";
+            extraState = EXPORT_STATE_MAIL;
             exportPDF();
             sendMail();
-        }
-        else if (cbSave.isChecked()) {
-            extra = "Save PDF";
+        } else if (cbSave.isChecked()) {
+            extraState = EXPORT_STATE_PDF;
             exportPDF();
-            
+
             Intent confirmation = new Intent(ExportActivity.this, ConfirmationActivity.class);
-            confirmation.putExtra("exportState", extra);
+            confirmation.putExtra(EXTRA_STATE_KEY, extraState);
             confirmation.putExtra(ConfirmationActivity.EXTRA_FILE_KEY, file);
             confirmation.putExtra("path", pdfFileName);
             startActivity(confirmation);
-        }
-        else if (!cbSave.isChecked() && !cbSend.isChecked())
-        {
+        } else if (!cbSave.isChecked() && !cbSend.isChecked()) {
             AlertDialog.Builder cbEmpty = new AlertDialog.Builder(ExportActivity.this);
             cbEmpty.setMessage("Aucun choix d'exportation détecté")
                     .setPositiveButton("OK", new DialogInterface.OnClickListener() {
@@ -138,25 +143,25 @@ public class ExportActivity extends Activity {
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
             Paragraph titleParagraph = new Paragraph("Recette du ticket n°" + recette.getTicketNumber() + "\n\n\n",
-                    FontFactory.getFont(FontFactory.TIMES_BOLD,18));
+                    FontFactory.getFont(FontFactory.TIMES_BOLD, 18));
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(titleParagraph);
-            
+
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
 
             Paragraph infosTicketParagraph = new Paragraph("\n\nNuméro du ticket : " + recette.getTicketNumber() + "\n" +
-                                                                  "Réalisateur du ticket : " + recette.getTicketWriter() + "\n" +
-                                                                  "Nom de la salle : " + recette.getRoomName() + "\n" +
-                                                                  "Callepinage de l'équipement : " + recette.getBaieCall() + "\n" +
-                                                                  "N° 26E de l'équipement : " + recette.getEquipNumber() + "\n\n");
+                    "Réalisateur du ticket : " + recette.getTicketWriter() + "\n" +
+                    "Nom de la salle : " + recette.getRoomName() + "\n" +
+                    "Callepinage de l'équipement : " + recette.getBaieCall() + "\n" +
+                    "N° 26E de l'équipement : " + recette.getEquipNumber() + "\n\n");
             document.add(infosTicketParagraph);
 
             Paragraph recapParagraph = new Paragraph("Numéro de CI2A du ticket : " + recette.getRecap().getCI2Anum() + "\n" +
-                                                            "Date de recette initiale : " + recette.getRecap().getDateRecetteI() + "\n" +
-                                                            "Date de recette définitive : " + recette.getRecap().getDateRecetteD() + "\n" +
-                                                            "Type de recette : " + recette.getRecap().getTypeRecette() + "\n" +
-                                                            "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
-                                                            "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
+                    "Date de recette initiale : " + recette.getRecap().getDateRecetteI() + "\n" +
+                    "Date de recette définitive : " + recette.getRecap().getDateRecetteD() + "\n" +
+                    "Type de recette : " + recette.getRecap().getTypeRecette() + "\n" +
+                    "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
+                    "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
             document.add(recapParagraph);
             for (Question question : recette.getTabQuestions()) {
                 document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));
@@ -199,7 +204,7 @@ public class ExportActivity extends Activity {
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,@NonNull String[] permissions,@NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
             Log.v(TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
@@ -209,19 +214,19 @@ public class ExportActivity extends Activity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == PICK_CONTACT_REQUEST)
-        {
-                Intent confirmation = new Intent(ExportActivity.this, ConfirmationActivity.class);
-                confirmation.putExtra("exportState", extra);
-                confirmation.putExtra(ConfirmationActivity.EXTRA_FILE_KEY, file);
-                confirmation.putExtra("path", pdfFileName);
-                startActivity(confirmation);
+        if (requestCode == PICK_CONTACT_REQUEST) {
+            Intent confirmation = new Intent(ExportActivity.this, ConfirmationActivity.class);
+            confirmation.putExtra(EXTRA_STATE_KEY, extraState);
+            confirmation.putExtra(ConfirmationActivity.EXTRA_FILE_KEY, file);
+            confirmation.putExtra("path", pdfFileName);
+            startActivity(confirmation);
         }
     }
 
     private void sendMail() {
-        if(cbSave.isChecked())
-            extra = "Send Mail + Save PDF";
+        if (cbSave.isChecked()) {
+            extraState = EXPORT_STATE_MAIL_PDF;
+        }
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
         emailIntent.setType("text/plain");
@@ -237,7 +242,7 @@ public class ExportActivity extends Activity {
         Uri uri = Uri.fromFile(file);
         emailIntent.putExtra(Intent.EXTRA_STREAM, uri);
         Log.d("PICK_CONTACT_REQUEST1", "pick = " + PICK_CONTACT_REQUEST);
-        startActivityForResult(Intent.createChooser(emailIntent,"Pick an Email provider"),PICK_CONTACT_REQUEST);
+        startActivityForResult(Intent.createChooser(emailIntent, "Pick an Email provider"), PICK_CONTACT_REQUEST);
         Log.d("PICK_CONTACT_REQUEST2", "pick = " + PICK_CONTACT_REQUEST);
         hideKeyboard(ExportActivity.this);
 
@@ -254,7 +259,7 @@ public class ExportActivity extends Activity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
         return true;
