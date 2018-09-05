@@ -17,6 +17,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -73,6 +74,8 @@ public class ExportActivity extends Activity {
         mailObject = findViewById(R.id.mailObject);
         mailTo = findViewById(R.id.mailTo);
         editText = findViewById(R.id.nomFichier);
+        final View exportButton = findViewById(R.id.exportButton);
+        exportButton.setVisibility(View.INVISIBLE);
 
         final Intent intent = getIntent();
         if (intent != null) {
@@ -89,10 +92,25 @@ public class ExportActivity extends Activity {
                     linearMail.setVisibility(View.VISIBLE);
                 else
                     linearMail.setVisibility((View.GONE));
+
+                if (cbSave.isChecked() || cbSend.isChecked())
+                    exportButton.setVisibility(View.VISIBLE);
+                else
+                    exportButton.setVisibility(View.GONE);
             }
         });
 
-        findViewById(R.id.exportButton).setOnClickListener(new View.OnClickListener() {
+        cbSave.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (cbSave.isChecked() || cbSend.isChecked())
+                    exportButton.setVisibility(View.VISIBLE);
+                else
+                    exportButton.setVisibility(View.GONE);
+            }
+        });
+
+        exportButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (isStoragePermissionGranted())

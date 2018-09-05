@@ -3,6 +3,8 @@ package aubervilliers.orange.aubrecettage.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.io.File;
@@ -19,6 +21,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_confirmation);
         TextView validExport = findViewById(R.id.confirmationExport);
+        Button restartApp = findViewById(R.id.restartApp);
 
         final Intent intent = getIntent();
         int exportState = intent.getIntExtra(ExportActivity.EXTRA_STATE_KEY, ExportActivity.EXPORT_STATE_MAIL);
@@ -33,5 +36,16 @@ public class ConfirmationActivity extends AppCompatActivity {
         } else if (exportState == ExportActivity.EXPORT_STATE_MAIL_PDF) {
             validExport.setText("Mail envoyé & Fichier PDF enregistré sous " + path);
         }
+
+        restartApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = getBaseContext().getPackageManager().getLaunchIntentForPackage(getBaseContext().getPackageName());
+                i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(i);
+            }
+        });
+
     }
 }
