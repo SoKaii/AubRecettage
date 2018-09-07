@@ -81,13 +81,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
         addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true);
         addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?", true);
         addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?", true);
-        addQuestion("Le câblage physique des liaisons est en cohérence avec le plan de câblage Transplan ?", true);
-        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant sur les toits modulaires ?", true);
         addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?", true);
-        addQuestion("Les longueurs des cordons utilisés pour le CFA est correcte sur les toits modulaires ?", true);
-        addQuestion("L’utilisation des scratchs est correcte sur les toits modulaires ?", true);
-        addQuestion("Le passage des liaisons à l’état «réalisées» est effectif dans l’outil Transplan ?", true);
-        addQuestion("La polarité Rx,Tx ainsi que le type de module SFP sont respectés ?", true);
         addQuestion("L’étiquetage des liaisons est correct ?", true);
         addQuestion("Anomalies à scorriger :", false);
         addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false);

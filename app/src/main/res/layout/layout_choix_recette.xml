@@ -36,7 +36,7 @@
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Câblage simple" />
+            android:text="Visuel Câblage " />
 
         <Button
             android:id="@+id/buttonCableComplexe"
@@ -44,7 +44,7 @@
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Câblage complexe" />
+            android:text="Câblage complet" />
 
     </LinearLayout>
 

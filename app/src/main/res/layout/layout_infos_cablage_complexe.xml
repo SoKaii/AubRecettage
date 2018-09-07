@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        android:text="Information Cablage Complexe"
+        android:text="Informations Cablage Complet"
         style="@style/title"
         android:textSize="24sp" />
 
