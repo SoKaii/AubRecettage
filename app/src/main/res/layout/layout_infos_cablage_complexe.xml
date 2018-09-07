@@ -7,20 +7,19 @@
     tools:context=".ui.infostickets.InfosRackageActivity">
 
     <TextView
+        style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
         android:text="Informations Cablage Complet"
-        style="@style/title"
         android:textSize="24sp" />
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:layout_marginTop="3dp"
-        android:background="@color/black">
-    </LinearLayout>
+        android:background="@color/black"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,8 +43,8 @@
 
         <EditText
             android:id="@+id/nTicket"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
@@ -61,8 +60,8 @@
 
         <EditText
             android:id="@+id/realTicket"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
@@ -79,8 +78,8 @@
 
         <EditText
             android:id="@+id/nomSalle"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
@@ -96,8 +95,8 @@
 
         <EditText
             android:id="@+id/callBaie"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
@@ -113,8 +112,8 @@
 
         <EditText
             android:id="@+id/numEquip"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 

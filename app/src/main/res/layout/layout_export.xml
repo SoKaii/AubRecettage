@@ -7,11 +7,11 @@
     tools:context=".ui.infostickets.InfosCablageSimpleActivity">
 
     <TextView
+        style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:text="Exportation"
-        style="@style/title"/>
+        android:text="Exportation" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -42,10 +42,10 @@
 
         <EditText
             android:id="@+id/nomFichier"
+            style="@style/edittext"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            style="@style/edittext"/>
+            android:inputType="text" />
 
         <TextView
             android:id="@+id/exportType"
@@ -63,23 +63,24 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-        <CheckBox
-            android:id="@+id/CBSave"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="Enregistrer"
-            android:textColor="@color/orange"
-            android:textSize="14dp"/>
-        <CheckBox
-            android:id="@+id/CBSend"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="15dp"
-            android:text="Envoyer par mail"
-            android:textColor="@color/orange"
-            android:textSize="14dp"/>
+            <CheckBox
+                android:id="@+id/CBSave"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Enregistrer"
+                android:textColor="@color/orange"
+                android:textSize="14dp" />
+
+            <CheckBox
+                android:id="@+id/CBSend"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="5dp"
+                android:text="Envoyer par mail"
+                android:textColor="@color/orange"
+                android:textSize="14dp" />
 
         </LinearLayout>
 
@@ -89,50 +90,51 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:visibility="gone">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="20dp"
-            android:text="Objet du mail à envoyer :  \n"
-            android:textColor="@color/orange"
-            android:textSize="16sp" />
 
-        <EditText
-            android:id="@+id/mailObject"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailSubject"
-            style="@style/edittext"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Objet du mail à envoyer :  \n"
+                android:textColor="@color/orange"
+                android:textSize="16sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:layout_marginEnd="15dp"
-            android:layout_marginTop="20dp"
-            android:text="Adresse mail du destinataire : \n"
-            android:textColor="@color/orange"
-            android:textSize="16sp" />
+            <EditText
+                android:id="@+id/mailObject"
+                style="@style/edittext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailSubject" />
 
-        <EditText
-            android:id="@+id/mailTo"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            style="@style/edittext"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_marginEnd="15dp"
+                android:layout_marginTop="20dp"
+                android:text="Adresse mail du destinataire : \n"
+                android:textColor="@color/orange"
+                android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/mailTo"
+                style="@style/edittext"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
 
         </LinearLayout>
 
 
         <Button
             android:id="@+id/exportButton"
+            style="@style/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:layout_marginTop="15dp"
-            android:text="Valider"
-            style="@style/button"/>
+            android:text="Valider" />
     </LinearLayout>
 </LinearLayout>

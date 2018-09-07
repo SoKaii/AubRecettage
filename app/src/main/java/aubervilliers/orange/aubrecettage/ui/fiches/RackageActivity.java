@@ -3,9 +3,9 @@ package aubervilliers.orange.aubrecettage.ui.fiches;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -44,6 +44,7 @@ public class RackageActivity extends AppCompatActivity {
     private List<Boolean> isOpenQuestionList = new ArrayList<>();
     private List<Boolean> isObligatoryQuestionList = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,9 +82,9 @@ public class RackageActivity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("L'équipement est bien présent dans la 26E ? (26E)", true,true);
-        addQuestion("Le commentaire UO est présent dans le ticket ? (Ticket)", true,true);
-        addQuestion("Les informations équipement/constructeur/modèle sont en cohérence avec la demande ? (En Salle/Ticket)", true,true);
+        addQuestion("L'équipement est bien présent dans la 26E ? (26E)", true, true);
+        addQuestion("Le commentaire UO est présent dans le ticket ? (Ticket)", true, true);
+        addQuestion("Les informations équipement/constructeur/modèle sont en cohérence avec la demande ? (En Salle/Ticket)", true, true);
         addQuestion("La localisation Salle/Baie/U est en cohérence avec la demande ? (En Salle/Ticket)", true, false);
         addQuestion("L'étiquettage de l'équipement est correctement réalisé ? (En Salle)", true, false);
         addQuestion("Le numéro de série de l'équipement est en cohérence avec la demande ? (En Salle/Ticket)", true, false);
@@ -136,10 +137,9 @@ public class RackageActivity extends AppCompatActivity {
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
         if (obligatoryQuestion) {
-            title = "* "+ title;
+            title = "* " + title;
             tv.setText(title);
-        }
-        else {
+        } else {
             tv.setText(title);
         }
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
@@ -181,9 +181,10 @@ public class RackageActivity extends AppCompatActivity {
         recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
 
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
         return true;

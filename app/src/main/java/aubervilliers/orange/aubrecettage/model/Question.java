@@ -1,11 +1,6 @@
 package aubervilliers.orange.aubrecettage.model;
 
-import android.view.View;
-import android.widget.RadioGroup;
-
 import java.io.Serializable;
-
-import aubervilliers.orange.aubrecettage.R;
 
 public class Question implements Serializable {
 

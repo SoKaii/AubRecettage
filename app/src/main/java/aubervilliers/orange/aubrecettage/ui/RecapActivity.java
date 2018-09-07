@@ -16,8 +16,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
-import org.jetbrains.annotations.Nullable;
-
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -42,6 +40,15 @@ public class RecapActivity extends AppCompatActivity {
     private RadioButton recetteTotale;
     private RadioButton validOrangeYes;
     private RadioButton validOrangeNo;
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +97,7 @@ public class RecapActivity extends AppCompatActivity {
             public void onClick(View view) {
                 hideKeyboard(RecapActivity.this);
                 Log.v(TAG, "dateRecetteI: " + dateRecetteI.getText());
-                setDateMin(dateRecetteI.getText().toString(),datePickerDialogD);
+                setDateMin(dateRecetteI.getText().toString(), datePickerDialogD);
                 datePickerDialogD.show();
             }
         });
@@ -117,30 +124,7 @@ public class RecapActivity extends AppCompatActivity {
         });
     }
 
-    class MyDateSetListener implements DatePickerDialog.OnDateSetListener {
-
-        private Button button;
-        MyDateSetListener(Button button) {
-            this.button = button;
-        }
-        @Override
-        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-            button.setText(new StringBuilder().append(dayOfMonth).append("/")
-                    .append(month + 1).append("/").append(year));
-        }
-    }
-
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        View view = activity.getCurrentFocus();
-        if (view == null) {
-            view = new View(activity);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
-    }
-
-    private void setDateMin(String dateMin,DatePickerDialog dp)
-    {
+    private void setDateMin(String dateMin, DatePickerDialog dp) {
         try {
             dp.getDatePicker().setMinDate(0);
             DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH);
@@ -150,11 +134,27 @@ public class RecapActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
         return true;
+    }
+
+    class MyDateSetListener implements DatePickerDialog.OnDateSetListener {
+
+        private Button button;
+
+        MyDateSetListener(Button button) {
+            this.button = button;
+        }
+
+        @Override
+        public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+            button.setText(new StringBuilder().append(dayOfMonth).append("/")
+                    .append(month + 1).append("/").append(year));
+        }
     }
 }

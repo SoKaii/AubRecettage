@@ -3,9 +3,9 @@ package aubervilliers.orange.aubrecettage.ui.fiches;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -144,10 +144,9 @@ public class CablageComplexeActivity extends AppCompatActivity {
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
         if (obligatoryQuestion) {
-            title = "* "+ title;
+            title = "* " + title;
             tv.setText(title);
-        }
-        else {
+        } else {
             tv.setText(title);
         }
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
@@ -187,12 +186,13 @@ public class CablageComplexeActivity extends AppCompatActivity {
         }
         recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
     }
-        @Override
-        public boolean onTouchEvent(MotionEvent event) {
-            InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.
-                    INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
-            return true;
-        }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
+                INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
+        return true;
     }
+}
 

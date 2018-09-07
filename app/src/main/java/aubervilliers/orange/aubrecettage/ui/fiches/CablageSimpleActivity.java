@@ -130,10 +130,9 @@ public class CablageSimpleActivity extends AppCompatActivity {
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
         if (obligatoryQuestion) {
-            title = "* "+ title;
+            title = "* " + title;
             tv.setText(title);
-        }
-        else {
+        } else {
             tv.setText(title);
         }
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
@@ -171,12 +170,12 @@ public class CablageSimpleActivity extends AppCompatActivity {
             questions.add(question);
             index++;
         }
-        recette = new  Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
+        recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
         //imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);

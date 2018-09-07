@@ -3,9 +3,9 @@ package aubervilliers.orange.aubrecettage.ui.fiches;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -81,8 +81,8 @@ public class IncidentActivity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true,false);
-        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true,true);
+        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true, false);
+        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true, true);
 //        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true);
 //        addQuestion("L'étiquetage des hostname est correct ?", true);
 //        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true);
@@ -143,10 +143,9 @@ public class IncidentActivity extends AppCompatActivity {
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
         if (obligatoryQuestion) {
-            title = "* "+ title;
+            title = "* " + title;
             tv.setText(title);
-        }
-        else {
+        } else {
             tv.setText(title);
         }
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
@@ -188,9 +187,10 @@ public class IncidentActivity extends AppCompatActivity {
         recette = new Recette("Incident", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
 
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
         return true;

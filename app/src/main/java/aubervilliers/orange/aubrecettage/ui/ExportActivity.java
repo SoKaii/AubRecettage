@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -40,28 +39,34 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 public class ExportActivity extends Activity {
 
     public static final String TAG = "ExportActivity";
-    private String pdfFileName;
-    private String objetMail;
-    private String mailRecipient;
     public static final String EXTRA_RECETTE_KEY = "extra-recette-key";
-    static final int PICK_CONTACT_REQUEST = 1;
-    private Recette recette;
-
     public static final String EXTRA_STATE_KEY = "state_key";
     public static final int EXPORT_STATE_MAIL = 1;
     public static final int EXPORT_STATE_PDF = 2;
     public static final int EXPORT_STATE_MAIL_PDF = 3;
-
+    static final int PICK_CONTACT_REQUEST = 1;
+    Document document = new Document();
+    private String pdfFileName;
+    private String objetMail;
+    private String mailRecipient;
+    private Recette recette;
     private EditText mailObject;
     private EditText mailTo;
     private EditText editText;
     private LinearLayout linearMail;
     private CheckBox cbSave;
     private CheckBox cbSend;
-
     private File file;
     private int extraState = 1;
-    Document document = new Document();
+
+    public static void hideKeyboard(Activity activity) {
+        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
+        View view = activity.getCurrentFocus();
+        if (view == null) {
+            view = new View(activity);
+        }
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -185,13 +190,11 @@ public class ExportActivity extends Activity {
                 document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));
 
                 if (!question.isOpenQuestion()) {
-                    if (question.isButtonYesSelected()){
+                    if (question.isButtonYesSelected()) {
                         document.add(new Paragraph("Validation : Oui"));
-                    }
-                    else if(question.isButtonNoSelected()){
+                    } else if (question.isButtonNoSelected()) {
                         document.add(new Paragraph("Validation : Non"));
-                    }
-                    else
+                    } else
                         document.add(new Paragraph("Validation : Non renseignée"));
                 }
 
@@ -268,15 +271,6 @@ public class ExportActivity extends Activity {
         Log.d("PICK_CONTACT_REQUEST2", "pick = " + PICK_CONTACT_REQUEST);
         hideKeyboard(ExportActivity.this);
 
-    }
-
-    public static void hideKeyboard(Activity activity) {
-        InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
-        View view = activity.getCurrentFocus();
-        if (view == null) {
-            view = new View(activity);
-        }
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     @Override

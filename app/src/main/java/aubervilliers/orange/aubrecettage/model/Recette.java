@@ -27,7 +27,7 @@ public class Recette implements Serializable {
         this.recap = null;
     }
 
-    public Recette(String recetteType, String roomName, String baieCall, String equipNumber, String equipElevation,List<Question> tabQuestions) {
+    public Recette(String recetteType, String roomName, String baieCall, String equipNumber, String equipElevation, List<Question> tabQuestions) {
         this.recetteType = recetteType;
         this.roomName = roomName;
         this.baieCall = baieCall;
@@ -93,8 +93,7 @@ public class Recette implements Serializable {
         this.equipNumber = equipNumber;
     }
 
-    public Question getQuestion1()
-    {
+    public Question getQuestion1() {
         return tabQuestions.get(0);
     }
 

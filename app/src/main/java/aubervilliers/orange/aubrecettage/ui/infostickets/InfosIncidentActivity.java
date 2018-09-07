@@ -2,8 +2,8 @@ package aubervilliers.orange.aubrecettage.ui.infostickets;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -43,12 +43,12 @@ public class InfosIncidentActivity extends AppCompatActivity {
                 String callBaie = mCallBaie.getText().toString();
                 String numEquip = mNumEquip.getText().toString();
 
-                Intent intent = new Intent(InfosIncidentActivity.this , IncidentActivity.class);
-                intent.putExtra("nTicket",numeroTicket);
-                intent.putExtra("realTicket",realTicket);
-                intent.putExtra("nomSalle",nomSalle);
-                intent.putExtra("callBaie",callBaie);
-                intent.putExtra("numEquip",numEquip);
+                Intent intent = new Intent(InfosIncidentActivity.this, IncidentActivity.class);
+                intent.putExtra("nTicket", numeroTicket);
+                intent.putExtra("realTicket", realTicket);
+                intent.putExtra("nomSalle", nomSalle);
+                intent.putExtra("callBaie", callBaie);
+                intent.putExtra("numEquip", numEquip);
 
                 startActivity(intent);
             }
@@ -57,7 +57,7 @@ public class InfosIncidentActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager)this.getSystemService(Context.
+        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
         return true;

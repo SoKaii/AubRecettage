@@ -7,11 +7,11 @@
     tools:context=".ui.RecapActivity">
 
     <TextView
+        style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        style="@style/title"
         android:text="Récapitulatif"
         android:textSize="24sp" />
 
@@ -19,8 +19,7 @@
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:layout_marginTop="3dp"
-        android:background="@color/black">
-    </LinearLayout>
+        android:background="@color/black"></LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -28,7 +27,8 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="CI2A - Projet : "
-        android:textColor="@color/orange"/>
+        android:textColor="@color/orange" />
+
     <EditText
         android:id="@+id/nCI2A"
         style="@style/edittext"
@@ -37,26 +37,26 @@
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
         android:layout_marginTop="3dp"
-        android:focusedByDefault="false"/>
+        android:focusedByDefault="false" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Date de recette Initiale : "
-        android:textColor="@color/orange"
-        android:layout_marginStart="5dp"/>
+        android:textColor="@color/orange" />
 
     <Button
         android:id="@+id/dateRecetteI"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:text="appuyer pour choisir une date"
-        android:background="@color/white"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:backgroundTint="@android:color/darker_gray" />
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/white"
+        android:backgroundTint="@android:color/darker_gray"
+        android:text="appuyer pour choisir une date" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -64,18 +64,18 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Date de recette définitive : "
-        android:textColor="@color/orange"/>
+        android:textColor="@color/orange" />
 
     <Button
         android:id="@+id/dateRecetteD"
         android:layout_width="fill_parent"
         android:layout_height="30dp"
-        android:text="appuyer pour choisir une date"
-        android:background="@color/white"
-        android:layout_marginTop="3dp"
-        android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
-        android:backgroundTint="@android:color/darker_gray"/>
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@color/white"
+        android:backgroundTint="@android:color/darker_gray"
+        android:text="appuyer pour choisir une date" />
 
 
     <TextView
@@ -84,8 +84,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Type de recette : "
-        android:textColor="@color/orange"
-        />
+        android:textColor="@color/orange" />
 
     <RadioGroup
         android:layout_width="match_parent"
@@ -128,7 +127,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="5dp"
         android:layout_marginStart="5dp"
-        android:layout_marginTop="3dp"/>
+        android:layout_marginTop="3dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -167,14 +166,14 @@
 
     <Button
         android:id="@+id/SavePDF"
-        android:layout_width="match_parent"
         style="@style/button"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity=""
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_marginTop="50dp"
-        android:text="Exporter"/>
+        android:text="Exporter" />
 
 
 </LinearLayout>

@@ -1,18 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.infostickets.InfosRackageActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.infostickets.InfosRackageActivity">
 
     <TextView
+        style="@style/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:gravity="center"
-        style="@style/title"
         android:text="Information Incident"
         android:textSize="24sp" />
 
@@ -20,8 +19,7 @@
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:layout_marginTop="3dp"
-        android:background="@color/black">
-    </LinearLayout>
+        android:background="@color/black"></LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -45,8 +43,8 @@
 
         <EditText
             android:id="@+id/nTicket"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
@@ -62,8 +60,8 @@
 
         <EditText
             android:id="@+id/realTicket"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
@@ -79,8 +77,8 @@
 
         <EditText
             android:id="@+id/nomSalle"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
@@ -96,8 +94,8 @@
 
         <EditText
             android:id="@+id/callBaie"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
@@ -113,8 +111,8 @@
 
         <EditText
             android:id="@+id/numEquip"
-            android:layout_width="150dp"
             style="@style/edittext"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:layout_gravity="right" />
 
