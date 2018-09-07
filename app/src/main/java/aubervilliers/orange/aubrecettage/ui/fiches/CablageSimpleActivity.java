@@ -89,7 +89,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
         addQuestion("Le passage des liaisons à l’état «réalisées» est effectif dans l’outil Transplan ?", true);
         addQuestion("La polarité Rx,Tx ainsi que le type de module SFP sont respectés ?", true);
         addQuestion("L’étiquetage des liaisons est correct ?", true);
-        addQuestion("Anomalies à corriger :", false);
+        addQuestion("Anomalies à scorriger :", false);
         addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false);
         addQuestion("Anomalies non bloquantes à prendre en compte :", false);
 

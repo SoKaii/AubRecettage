@@ -120,12 +120,13 @@
 
         <Button
             android:id="@+id/start"
+            style="@style/button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="42dp"
             android:layout_marginTop="40dp"
             android:text="@string/commencer_la_recette"
-            android:textColor="@color/orange" />
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </LinearLayout>
