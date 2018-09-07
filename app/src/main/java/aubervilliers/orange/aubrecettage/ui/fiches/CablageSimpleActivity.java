@@ -42,6 +42,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
     private List<RadioButton> noBtList = new ArrayList<>();
     private List<EditText> commentList = new ArrayList<>();
     private List<Boolean> isOpenQuestionList = new ArrayList<>();
+    private List<Boolean> isObligatoryQuestionList = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
 
     @Override
@@ -74,27 +75,29 @@ public class CablageSimpleActivity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true);
-        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true);
-        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true);
-        addQuestion("L'étiquetage des hostname est correct ?", true);
-        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true);
-        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?", true);
-        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?", true);
-        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?", true);
-        addQuestion("L’étiquetage des liaisons est correct ?", true);
-        addQuestion("Anomalies à scorriger :", false);
-        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false);
-        addQuestion("Anomalies non bloquantes à prendre en compte :", false);
+        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true, true);
+        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true, false);
+        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true, false);
+        addQuestion("L'étiquetage des hostname est correct ?", true, false);
+        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true, false);
+        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?", true, false);
+        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?", true, false);
+        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?", true, false);
+        addQuestion("L’étiquetage des liaisons est correct ?", true, false);
+        addQuestion("Anomalies à scorriger :", false, false);
+        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false, false);
+        addQuestion("Anomalies non bloquantes à prendre en compte :", false, false);
 
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                //TODO Look for the Dialog if all the not opened questions are answered
                 getInfos();
                 boolean allAnsweredQuestions = true;
                 for (Question question : questions) {
-                    if (!question.isOpenQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
+                    if (question.isObligatoryQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
                         Log.v(TAG, "Question non répondu: " + question.getQuestionLabel());
                         allAnsweredQuestions = false;
                         break;
@@ -102,7 +105,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
                 }
                 if (!allAnsweredQuestions) {
                     AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageSimpleActivity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -117,15 +120,16 @@ public class CablageSimpleActivity extends AppCompatActivity {
                     intent1.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
                     startActivity(intent1);
                 }
+
             }
         });
     }
 
-    private void addQuestion(String title, boolean hasRadioButtons) {
+    private void addQuestion(String title, boolean hasRadioButtons, boolean obligatoryQuestion) {
         View questionLayout = View.inflate(this, R.layout.layout_question, null);
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
-        if (hasRadioButtons) {
+        if (obligatoryQuestion) {
             title = "* "+ title;
             tv.setText(title);
         }
@@ -140,6 +144,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
             questionLayout.findViewById(R.id.questionCommentTV).setVisibility(View.GONE);
         }
         isOpenQuestionList.add(!hasRadioButtons);
+        isObligatoryQuestionList.add(obligatoryQuestion);
         ll.addView(questionLayout);
     }
 
@@ -151,7 +156,9 @@ public class CablageSimpleActivity extends AppCompatActivity {
             Question question = new Question();
             question.setQuestionLabel(title);
             boolean openQuestion = isOpenQuestionList.get(index);
+            boolean obligatoryQuestion = isObligatoryQuestionList.get(index);
             question.setOpenQuestion(openQuestion);
+            question.setObligatoryQuestion(obligatoryQuestion);
             if (!openQuestion) {
                 RadioButton yesButton = yesBtList.get(index);
                 RadioButton noButton = noBtList.get(index);

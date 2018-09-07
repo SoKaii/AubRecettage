@@ -41,6 +41,7 @@ public class J4Activity extends AppCompatActivity {
     private List<RadioButton> noBtList = new ArrayList<>();
     private List<EditText> commentList = new ArrayList<>();
     private List<Boolean> isOpenQuestionList = new ArrayList<>();
+    private List<Boolean> isObligatoryQuestionList = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
 
     @Override
@@ -80,9 +81,9 @@ public class J4Activity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("question 1 non ouverte", true);
-        addQuestion("question 2 non ouverte", true);
-        addQuestion("question 3 ouverte", false);
+        addQuestion("question 1 non ouverte", true,false);
+        addQuestion("question 2 non ouverte", true,true);
+        addQuestion("question 3 ouverte", false,false);
 
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -93,7 +94,7 @@ public class J4Activity extends AppCompatActivity {
                 getInfos();
                 boolean allAnsweredQuestions = true;
                 for (Question question : questions) {
-                    if (!question.isOpenQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
+                    if (question.isObligatoryQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
                         Log.v(TAG, "Question non répondu: " + question.getQuestionLabel());
                         allAnsweredQuestions = false;
                         break;
@@ -101,7 +102,7 @@ public class J4Activity extends AppCompatActivity {
                 }
                 if (!allAnsweredQuestions) {
                     AlertDialog.Builder notAnswered = new AlertDialog.Builder(J4Activity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -122,11 +123,11 @@ public class J4Activity extends AppCompatActivity {
 
     }
 
-    private void addQuestion(String title, boolean hasRadioButtons) {
+    private void addQuestion(String title, boolean hasRadioButtons, boolean obligatoryQuestion) {
         View questionLayout = View.inflate(this, R.layout.layout_question, null);
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
-        if (hasRadioButtons) {
+        if (obligatoryQuestion) {
             title = "* "+ title;
             tv.setText(title);
         }
@@ -141,11 +142,11 @@ public class J4Activity extends AppCompatActivity {
             questionLayout.findViewById(R.id.questionCommentTV).setVisibility(View.GONE);
         }
         isOpenQuestionList.add(!hasRadioButtons);
+        isObligatoryQuestionList.add(obligatoryQuestion);
         ll.addView(questionLayout);
     }
 
     private void getInfos() {
-
         int index = 0;
         questions = new ArrayList<>();
         Log.v(TAG, "getInfos");
@@ -153,11 +154,12 @@ public class J4Activity extends AppCompatActivity {
             Question question = new Question();
             question.setQuestionLabel(title);
             boolean openQuestion = isOpenQuestionList.get(index);
+            boolean obligatoryQuestion = isObligatoryQuestionList.get(index);
             question.setOpenQuestion(openQuestion);
+            question.setObligatoryQuestion(obligatoryQuestion);
             if (!openQuestion) {
                 RadioButton yesButton = yesBtList.get(index);
                 RadioButton noButton = noBtList.get(index);
-
                 Log.v(TAG, "question: " + title + " button yes selected: " + yesButton.isChecked());
                 question.setButtonYesSelected(yesButton.isChecked());
                 question.setButtonNoSelected(noButton.isChecked());

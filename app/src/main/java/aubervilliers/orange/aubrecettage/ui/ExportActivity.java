@@ -185,10 +185,14 @@ public class ExportActivity extends Activity {
                 document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));
 
                 if (!question.isOpenQuestion()) {
-                    if (question.isButtonYesSelected())
+                    if (question.isButtonYesSelected()){
                         document.add(new Paragraph("Validation : Oui"));
-                    else
+                    }
+                    else if(question.isButtonNoSelected()){
                         document.add(new Paragraph("Validation : Non"));
+                    }
+                    else
+                        document.add(new Paragraph("Validation : Non renseigner"));
                 }
 
                 document.add(new Paragraph("Commentaire : " + question.getCommentary()));

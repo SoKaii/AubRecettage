@@ -42,6 +42,7 @@ public class CablageComplexeActivity extends AppCompatActivity {
     private List<RadioButton> noBtList = new ArrayList<>();
     private List<EditText> commentList = new ArrayList<>();
     private List<Boolean> isOpenQuestionList = new ArrayList<>();
+    private List<Boolean> isObligatoryQuestionList = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
 
     @Override
@@ -81,24 +82,24 @@ public class CablageComplexeActivity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true);
-        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true);
-        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true);
-        addQuestion("L'étiquetage des hostname est correct ?", true);
-        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true);
-        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?", true);
-        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?", true);
-        addQuestion("Le câblage physique des liaisons est en cohérence avec le plan de câblage Transplan ?", true);
-        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant sur les toits modulaires ?", true);
-        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?", true);
-        addQuestion("Les longueurs des cordons utilisés pour le CFA est correcte sur les toits modulaires ?", true);
-        addQuestion("L’utilisation des scratchs est correcte sur les toits modulaires ?", true);
-        addQuestion("Le passage des liaisons à l’état «réalisées» est effectif dans l’outil Transplan ?", true);
-        addQuestion("La polarité Rx,Tx ainsi que le type de module SFP sont respectés ?", true);
-        addQuestion("L’étiquetage des liaisons est correct ?", true);
-        addQuestion("Anomalies à scorriger :", false);
-        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false);
-        addQuestion("Anomalies non bloquantes à prendre en compte :", false);
+        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true, true);
+        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true, false);
+        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true, true);
+        addQuestion("L'étiquetage des hostname est correct ?", true, true);
+        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true, false);
+        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?", true, false);
+        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?", true, false);
+        addQuestion("Le câblage physique des liaisons est en cohérence avec le plan de câblage Transplan ?", true, false);
+        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant sur les toits modulaires ?", true, false);
+        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?", true, false);
+        addQuestion("Les longueurs des cordons utilisés pour le CFA est correcte sur les toits modulaires ?", true, false);
+        addQuestion("L’utilisation des scratchs est correcte sur les toits modulaires ?", true, false);
+        addQuestion("Le passage des liaisons à l’état «réalisées» est effectif dans l’outil Transplan ?", true, false);
+        addQuestion("La polarité Rx,Tx ainsi que le type de module SFP sont respectés ?", true, false);
+        addQuestion("L’étiquetage des liaisons est correct ?", true, false);
+        addQuestion("Anomalies à scorriger :", false, false);
+        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false, false);
+        addQuestion("Anomalies non bloquantes à prendre en compte :", false, false);
 
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -109,7 +110,7 @@ public class CablageComplexeActivity extends AppCompatActivity {
                 getInfos();
                 boolean allAnsweredQuestions = true;
                 for (Question question : questions) {
-                    if (!question.isOpenQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
+                    if (question.isObligatoryQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
                         Log.v(TAG, "Question non répondu: " + question.getQuestionLabel());
                         allAnsweredQuestions = false;
                         break;
@@ -117,7 +118,7 @@ public class CablageComplexeActivity extends AppCompatActivity {
                 }
                 if (!allAnsweredQuestions) {
                     AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageComplexeActivity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -138,11 +139,11 @@ public class CablageComplexeActivity extends AppCompatActivity {
 
     }
 
-    private void addQuestion(String title, boolean hasRadioButtons) {
+    private void addQuestion(String title, boolean hasRadioButtons, boolean obligatoryQuestion) {
         View questionLayout = View.inflate(this, R.layout.layout_question, null);
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
-        if (hasRadioButtons) {
+        if (obligatoryQuestion) {
             title = "* "+ title;
             tv.setText(title);
         }
@@ -157,11 +158,11 @@ public class CablageComplexeActivity extends AppCompatActivity {
             questionLayout.findViewById(R.id.questionCommentTV).setVisibility(View.GONE);
         }
         isOpenQuestionList.add(!hasRadioButtons);
+        isObligatoryQuestionList.add(obligatoryQuestion);
         ll.addView(questionLayout);
     }
 
     private void getInfos() {
-
         int index = 0;
         questions = new ArrayList<>();
         Log.v(TAG, "getInfos");
@@ -169,11 +170,12 @@ public class CablageComplexeActivity extends AppCompatActivity {
             Question question = new Question();
             question.setQuestionLabel(title);
             boolean openQuestion = isOpenQuestionList.get(index);
+            boolean obligatoryQuestion = isObligatoryQuestionList.get(index);
             question.setOpenQuestion(openQuestion);
+            question.setObligatoryQuestion(obligatoryQuestion);
             if (!openQuestion) {
                 RadioButton yesButton = yesBtList.get(index);
                 RadioButton noButton = noBtList.get(index);
-
                 Log.v(TAG, "question: " + title + " button yes selected: " + yesButton.isChecked());
                 question.setButtonYesSelected(yesButton.isChecked());
                 question.setButtonNoSelected(noButton.isChecked());
@@ -183,7 +185,6 @@ public class CablageComplexeActivity extends AppCompatActivity {
             questions.add(question);
             index++;
         }
-
         recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
     }
         @Override

@@ -1,6 +1,11 @@
 package aubervilliers.orange.aubrecettage.model;
 
+import android.view.View;
+import android.widget.RadioGroup;
+
 import java.io.Serializable;
+
+import aubervilliers.orange.aubrecettage.R;
 
 public class Question implements Serializable {
 
@@ -9,6 +14,7 @@ public class Question implements Serializable {
     private boolean buttonNoSelected;
     private String commentary;
     private boolean isOpenQuestion;
+    private boolean isObligatoryQuestion;
 
     public boolean isButtonYesSelected() {
         return buttonYesSelected;
@@ -40,6 +46,14 @@ public class Question implements Serializable {
 
     public void setOpenQuestion(boolean openQuestion) {
         isOpenQuestion = openQuestion;
+    }
+
+    public boolean isObligatoryQuestion() {
+        return isObligatoryQuestion;
+    }
+
+    public void setObligatoryQuestion(boolean obligatoryQuestion) {
+        isObligatoryQuestion = obligatoryQuestion;
     }
 
     public boolean isButtonNoSelected() {

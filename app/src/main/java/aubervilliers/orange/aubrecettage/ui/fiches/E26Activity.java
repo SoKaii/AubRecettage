@@ -41,6 +41,7 @@ public class E26Activity extends AppCompatActivity {
     private List<RadioButton> noBtList = new ArrayList<>();
     private List<EditText> commentList = new ArrayList<>();
     private List<Boolean> isOpenQuestionList = new ArrayList<>();
+    private List<Boolean> isObligatoryQuestionList = new ArrayList<>();
     private List<Question> questions = new ArrayList<>();
 
     @Override
@@ -76,8 +77,8 @@ public class E26Activity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true);
-//        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true);
+        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true, true);
+        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true, false);
 //        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true);
 //        addQuestion("L'étiquetage des hostname est correct ?", true);
 //        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true);
@@ -104,7 +105,7 @@ public class E26Activity extends AppCompatActivity {
                 getInfos();
                 boolean allAnsweredQuestions = true;
                 for (Question question : questions) {
-                    if (!question.isOpenQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
+                    if (question.isObligatoryQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
                         Log.v(TAG, "Question non répondu: " + question.getQuestionLabel());
                         allAnsweredQuestions = false;
                         break;
@@ -112,7 +113,7 @@ public class E26Activity extends AppCompatActivity {
                 }
                 if (!allAnsweredQuestions) {
                     AlertDialog.Builder notAnswered = new AlertDialog.Builder(E26Activity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -133,49 +134,52 @@ public class E26Activity extends AppCompatActivity {
 
     }
 
-        private void addQuestion(String title, boolean hasRadioButtons) {
-            View questionLayout = View.inflate(this, R.layout.layout_question, null);
-            titleList.add(title);
-            TextView tv = questionLayout.findViewById(R.id.questionTitle);
-            if (hasRadioButtons) {
-                title = "* "+ title;
-                tv.setText(title);
-            }
-            else {
-                tv.setText(title);
-            }
-            yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
-            noBtList.add((RadioButton) questionLayout.findViewById(R.id.questionNo));
-            commentList.add((EditText) questionLayout.findViewById(R.id.questionComment));
-            if (!hasRadioButtons) {
-                questionLayout.findViewById(R.id.questionRadioGroup).setVisibility(View.GONE);
-                questionLayout.findViewById(R.id.questionCommentTV).setVisibility(View.GONE);
-            }
-            isOpenQuestionList.add(!hasRadioButtons);
-            ll.addView(questionLayout);
+    private void addQuestion(String title, boolean hasRadioButtons, boolean obligatoryQuestion) {
+        View questionLayout = View.inflate(this, R.layout.layout_question, null);
+        titleList.add(title);
+        TextView tv = questionLayout.findViewById(R.id.questionTitle);
+        if (obligatoryQuestion) {
+            title = "* "+ title;
+            tv.setText(title);
         }
+        else {
+            tv.setText(title);
+        }
+        yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
+        noBtList.add((RadioButton) questionLayout.findViewById(R.id.questionNo));
+        commentList.add((EditText) questionLayout.findViewById(R.id.questionComment));
+        if (!hasRadioButtons) {
+            questionLayout.findViewById(R.id.questionRadioGroup).setVisibility(View.GONE);
+            questionLayout.findViewById(R.id.questionCommentTV).setVisibility(View.GONE);
+        }
+        isOpenQuestionList.add(!hasRadioButtons);
+        isObligatoryQuestionList.add(obligatoryQuestion);
+        ll.addView(questionLayout);
+    }
 
-        private void getInfos() {
-            int index = 0;
-            questions = new ArrayList<>();
-            Log.v(TAG, "getInfos");
-            for (String title : titleList) {
-                Question question = new Question();
-                question.setQuestionLabel(title);
-                boolean openQuestion = isOpenQuestionList.get(index);
-                question.setOpenQuestion(openQuestion);
-                if (!openQuestion) {
-                    RadioButton yesButton = yesBtList.get(index);
-                    RadioButton noButton = noBtList.get(index);
-                    Log.v(TAG, "question: " + title + " button yes selected: " + yesButton.isChecked());
-                    question.setButtonYesSelected(yesButton.isChecked());
-                    question.setButtonNoSelected(noButton.isChecked());
-                }
-                EditText commentEt = commentList.get(index);
-                question.setCommentary(commentEt.getText().toString());
-                questions.add(question);
-                index++;
+    private void getInfos() {
+        int index = 0;
+        questions = new ArrayList<>();
+        Log.v(TAG, "getInfos");
+        for (String title : titleList) {
+            Question question = new Question();
+            question.setQuestionLabel(title);
+            boolean openQuestion = isOpenQuestionList.get(index);
+            boolean obligatoryQuestion = isObligatoryQuestionList.get(index);
+            question.setOpenQuestion(openQuestion);
+            question.setObligatoryQuestion(obligatoryQuestion);
+            if (!openQuestion) {
+                RadioButton yesButton = yesBtList.get(index);
+                RadioButton noButton = noBtList.get(index);
+                Log.v(TAG, "question: " + title + " button yes selected: " + yesButton.isChecked());
+                question.setButtonYesSelected(yesButton.isChecked());
+                question.setButtonNoSelected(noButton.isChecked());
             }
+            EditText commentEt = commentList.get(index);
+            question.setCommentary(commentEt.getText().toString());
+            questions.add(question);
+            index++;
+        }
         recette = new Recette("Câblage 26E", nomSalle, callBaie, numEquip, ElevEquip, questions);
     }
     @Override
