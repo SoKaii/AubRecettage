@@ -152,6 +152,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
+            android:layout_marginBottom="40dp"
             android:text="Enregistrer et Continuer"/>
 
 
