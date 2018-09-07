@@ -192,7 +192,7 @@ public class ExportActivity extends Activity {
                         document.add(new Paragraph("Validation : Non"));
                     }
                     else
-                        document.add(new Paragraph("Validation : Non renseigner"));
+                        document.add(new Paragraph("Validation : Non renseignée"));
                 }
 
                 document.add(new Paragraph("Commentaire : " + question.getCommentary()));
