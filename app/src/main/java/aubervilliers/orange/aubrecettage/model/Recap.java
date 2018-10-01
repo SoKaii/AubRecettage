@@ -69,5 +69,4 @@ public class Recap implements Serializable {
         this.referentOrange = referentOrange;
     }
 
-    //TODO
 }

@@ -81,16 +81,27 @@ public class J4Activity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("question 1 non ouverte", true, false);
-        addQuestion("question 2 non ouverte", true, true);
-        addQuestion("question 3 ouverte", false, false);
+        addQuestion("Le commentaire UO est présent dans le ticket ? (Ticket)", true, false);
+        addQuestion("Le commentaire # est présent dans le ticket ? (Ticket) ", true, true);
+        addQuestion("Le numéro de main courante est présent dans le ticket ? (Ticket) ", false, false);
+        addQuestion("La check-list de décommisionnement est complète ? (Ticket) ", false, false);
+        addQuestion("Le déplug a été réalisé un Mercredi ? (Ticket) ", false, false);
+        addQuestion("Le dérackage a été réalisé un Jeudi ou un Vendredi ? (Ticket) ", false, false);
+        addQuestion("Le décablage a été réalisé un Jeudi ou un Vendredi ? (Ticket) ", false, false);
+        addQuestion("La facturarion a été effectuée ? (SIDC)", false, false);
+        addQuestion("Les caches-U ont été installés ? (En Salle)", false, false);
+        addQuestion("Les équipements sont stockés dans la bonne salle ? (En Salle) ", false, false);
+        addQuestion("Les cables CFO ont été retirés ? (En Salle) ", false, false);
+        addQuestion("Les cables CFA ont été retirés ? (En Salle) ", false, false);
+        addQuestion("La modification Transplan a été réalisée ? (Transplan) ", false, false);
+        addQuestion("La modification 26E a été réalisée ? (26e) ", false, false);
+
+
 
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                //TODO Look for the Dialog if all the not opened questions are answered
                 getInfos();
                 boolean allAnsweredQuestions = true;
                 for (Question question : questions) {

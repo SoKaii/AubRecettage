@@ -42,12 +42,6 @@
             android:name=".ui.fiches.CablageComplexeActivity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
-            android:name=".ui.infostickets.InfosE26Activity"
-            android:windowSoftInputMode="stateUnchanged" />
-        <activity
-            android:name=".ui.infostickets.InfosIncidentActivity"
-            android:windowSoftInputMode="stateUnchanged" />
-        <activity
             android:name=".ui.fiches.CablageSimpleActivity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
@@ -55,12 +49,6 @@
             android:windowSoftInputMode="stateUnchanged" />
         <activity
             android:name=".ui.RecapActivity"
-            android:windowSoftInputMode="stateUnchanged" />
-        <activity
-            android:name=".ui.fiches.E26Activity"
-            android:windowSoftInputMode="stateUnchanged" />
-        <activity
-            android:name=".ui.fiches.IncidentActivity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity android:name=".ui.ConfirmationActivity"></activity>
     </application>

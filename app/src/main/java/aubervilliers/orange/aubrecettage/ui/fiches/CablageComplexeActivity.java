@@ -106,7 +106,6 @@ public class CablageComplexeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //TODO Look for the Dialog if all the not opened questions are answered
                 getInfos();
                 boolean allAnsweredQuestions = true;
                 for (Question question : questions) {

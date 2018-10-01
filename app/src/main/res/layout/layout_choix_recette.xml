@@ -19,7 +19,9 @@
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:layout_marginTop="3dp"
-        android:background="@color/black"></LinearLayout>
+        android:background="@color/black">
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -74,31 +76,6 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonCableComplexe" />
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:gravity="center_vertical|center_horizontal"
-        android:orientation="horizontal">
-
-
-        <Button
-            android:id="@+id/button26e"
-            style="@style/button"
-            android:layout_width="165dp"
-            android:layout_height="wrap_content"
-            android:layout_marginRight="10dp"
-            android:text="26E" />
-
-        <Button
-            android:id="@+id/buttonIncident"
-            style="@style/button"
-            android:layout_width="165dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:text="Incident" />
-
-    </LinearLayout>
 
 </LinearLayout>
 

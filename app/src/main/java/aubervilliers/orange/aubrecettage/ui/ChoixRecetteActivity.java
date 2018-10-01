@@ -9,8 +9,6 @@ import android.widget.Button;
 import aubervilliers.orange.aubrecettage.R;
 import aubervilliers.orange.aubrecettage.ui.infostickets.InfosCablageComplexeActivity;
 import aubervilliers.orange.aubrecettage.ui.infostickets.InfosCablageSimpleActivity;
-import aubervilliers.orange.aubrecettage.ui.infostickets.InfosE26Activity;
-import aubervilliers.orange.aubrecettage.ui.infostickets.InfosIncidentActivity;
 import aubervilliers.orange.aubrecettage.ui.infostickets.InfosJ4Activity;
 import aubervilliers.orange.aubrecettage.ui.infostickets.InfosRackageActivity;
 
@@ -59,21 +57,6 @@ public class ChoixRecetteActivity extends AppCompatActivity {
             }
         });
 
-        mbutton26e.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ChoixRecetteActivity.this, InfosE26Activity.class);
-                startActivity(intent);
-            }
-        });
-
-        mbuttonIncident.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(ChoixRecetteActivity.this, InfosIncidentActivity.class);
-                startActivity(intent);
-            }
-        });
     }
 }
 
