@@ -22,8 +22,6 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         Button mbuttonCableComplexe = findViewById(R.id.buttonCableComplexe);
         Button mbuttonRackage = findViewById(R.id.buttonRackage);
         Button mbuttonJ4 = findViewById(R.id.buttonJ4);
-        Button mbutton26e = findViewById(R.id.button26e);
-        Button mbuttonIncident = findViewById(R.id.buttonIncident);
 
         mbuttonCableSimple.setOnClickListener(new View.OnClickListener() {
             @Override

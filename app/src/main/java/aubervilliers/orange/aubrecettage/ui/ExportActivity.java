@@ -165,14 +165,14 @@ public class ExportActivity extends Activity {
             document.open();
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
-            Paragraph titleParagraph = new Paragraph("Recette du ticket n°" + recette.getTicketNumber() + "\n\n\n",
+            Paragraph titleParagraph = new Paragraph("Recette du ticket n°" + recette.getTicketNumber() + "\n\n",
                     FontFactory.getFont(FontFactory.TIMES_BOLD, 18));
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(titleParagraph);
 
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
 
-            Paragraph infosTicketParagraph = new Paragraph("\n\nNuméro du ticket : " + recette.getTicketNumber() + "\n" +
+            Paragraph infosTicketParagraph = new Paragraph("Numéro du ticket : " + recette.getTicketNumber() + "\n" +
                     "Réalisateur du ticket : " + recette.getTicketWriter() + "\n" +
                     "Nom de la salle : " + recette.getRoomName() + "\n" +
                     "Callepinage de l'équipement : " + recette.getBaieCall() + "\n" +
@@ -187,7 +187,7 @@ public class ExportActivity extends Activity {
                     "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
             document.add(recapParagraph);
             for (Question question : recette.getTabQuestions()) {
-                document.add(new Paragraph("Question : " + question.getQuestionLabel() + "\n\n"));
+                document.add(new Paragraph("Question : " + question.getQuestionLabel() + ""));
 
                 if (!question.isOpenQuestion()) {
                     if (question.isButtonYesSelected()) {
@@ -199,7 +199,7 @@ public class ExportActivity extends Activity {
                 }
 
                 document.add(new Paragraph("Commentaire : " + question.getCommentary()));
-                document.add(new Paragraph("\n \n"));
+                document.add(new Paragraph("\n"));
             }
             document.close();
             Toast.makeText(this, "File has been written to :" + pdfFileName,

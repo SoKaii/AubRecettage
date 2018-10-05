@@ -22,6 +22,7 @@ public class ConfirmationActivity extends AppCompatActivity {
         setContentView(R.layout.layout_confirmation);
         TextView validExport = findViewById(R.id.confirmationExport);
         Button restartApp = findViewById(R.id.restartApp);
+        Button exitApp = findViewById(R.id.exit);
 
         final Intent intent = getIntent();
         int exportState = intent.getIntExtra(ExportActivity.EXTRA_STATE_KEY, ExportActivity.EXPORT_STATE_MAIL);
@@ -47,5 +48,14 @@ public class ConfirmationActivity extends AppCompatActivity {
             }
         });
 
+        exitApp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_HOME);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
 }
