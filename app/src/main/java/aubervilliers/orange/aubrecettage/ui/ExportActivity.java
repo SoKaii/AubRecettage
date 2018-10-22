@@ -186,8 +186,9 @@ public class ExportActivity extends Activity {
                     "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
                     "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
             document.add(recapParagraph);
+            int index = 1;
             for (Question question : recette.getTabQuestions()) {
-                document.add(new Paragraph("Question : " + question.getQuestionLabel() + ""));
+                document.add(new Paragraph(index +") " + question.getQuestionLabel() + ""));
 
                 if (!question.isOpenQuestion()) {
                     if (question.isButtonYesSelected()) {
@@ -200,6 +201,7 @@ public class ExportActivity extends Activity {
 
                 document.add(new Paragraph("Commentaire : " + question.getCommentary()));
                 document.add(new Paragraph("\n"));
+                index ++;
             }
             document.close();
             Toast.makeText(this, "File has been written to :" + pdfFileName,
