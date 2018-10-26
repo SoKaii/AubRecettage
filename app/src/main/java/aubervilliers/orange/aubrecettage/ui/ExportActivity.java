@@ -243,8 +243,8 @@ public class ExportActivity extends Activity {
             for (Question question : recette.getTabQuestions()) {
                 if (!question.getCommentary().equals("")) {
                     document.add(new Paragraph(index + ") " + question.getCommentary()));
-                    index++;
                 }
+                index++;
             }
             document.close();
             Toast.makeText(this, "File has been written to :" + pdfFileName,
