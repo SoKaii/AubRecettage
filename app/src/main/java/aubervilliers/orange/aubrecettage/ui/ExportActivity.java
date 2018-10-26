@@ -161,7 +161,11 @@ public class ExportActivity extends Activity {
     public void exportPDF() {
         try {
             PdfWriter.getInstance(document, new FileOutputStream(pdfFileName));
-
+            int index = 1;
+            boolean spaceQuestion;
+            int compteurYes = 0;
+            int compteurNo = 0;
+            int compteurNoAnswered = 0;
             document.open();
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
@@ -178,7 +182,6 @@ public class ExportActivity extends Activity {
                     "Callepinage de l'équipement : " + recette.getBaieCall() + "\n" +
                     "N° 26E de l'équipement : " + recette.getEquipNumber() + "\n\n");
             document.add(infosTicketParagraph);
-
             Paragraph recapParagraph = new Paragraph("Numéro de CI2A du ticket : " + recette.getRecap().getCI2Anum() + "\n" +
                     "Date de recette initiale : " + recette.getRecap().getDateRecetteI() + "\n" +
                     "Date de recette définitive : " + recette.getRecap().getDateRecetteD() + "\n" +
@@ -186,8 +189,24 @@ public class ExportActivity extends Activity {
                     "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
                     "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
             document.add(recapParagraph);
-            int index = 1;
-            boolean spaceQuestion;
+            for (Question question : recette.getTabQuestions()) {
+                if (!question.isOpenQuestion()) {
+                    if (question.isButtonYesSelected()) {
+                        compteurYes ++;
+                    } else if (question.isButtonNoSelected()) {
+                        compteurNo++;
+                    }
+                    else
+                    {
+                        compteurNoAnswered++;
+                    }
+                }
+            }
+            Paragraph compteurParagraph = new Paragraph(
+                    "Nombre de validation OUI : " + compteurYes + "\n"+
+                            "Nombre de validation NON : " + compteurNo + "\n\n");
+            document.add(compteurParagraph);
+
             for (Question question : recette.getTabQuestions()) {
                 spaceQuestion = false;
                 if (!question.isOpenQuestion()) {
