@@ -187,21 +187,45 @@ public class ExportActivity extends Activity {
                     "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
             document.add(recapParagraph);
             int index = 1;
+            boolean spaceQuestion;
             for (Question question : recette.getTabQuestions()) {
-                document.add(new Paragraph(index +") " + question.getQuestionLabel() + ""));
-
+                spaceQuestion = false;
                 if (!question.isOpenQuestion()) {
                     if (question.isButtonYesSelected()) {
+                        document.add(new Paragraph(index +") " + question.getQuestionLabel() + ""));
                         document.add(new Paragraph("Validation : Oui"));
+                        spaceQuestion = true;
                     } else if (question.isButtonNoSelected()) {
+                        document.add(new Paragraph(index +") " + question.getQuestionLabel() + ""));
                         document.add(new Paragraph("Validation : Non"));
-                    } else
-                        document.add(new Paragraph("Validation : Non renseignée"));
+                        spaceQuestion = true;
+                    }
+                }
+                else
+                {
+                    if (!question.getCommentary().equals("")) {
+                        document.add(new Paragraph(index + ") " + question.getQuestionLabel() + ""));
+                        spaceQuestion = true;
+                    }
                 }
 
+                if (!question.getCommentary().equals("")) {
                 document.add(new Paragraph("Commentaire : " + question.getCommentary()));
-                document.add(new Paragraph("\n"));
+                }
+                if (Boolean.TRUE.equals(spaceQuestion))
+                {
+                    document.add(new Paragraph("\n"));
+                }
+
                 index ++;
+            }
+            document.add(new Paragraph("Synthèse des commentaire"));
+            index = 1;
+            for (Question question : recette.getTabQuestions()) {
+                if (!question.getCommentary().equals("")) {
+                    document.add(new Paragraph(index + ") " + question.getCommentary()));
+                    index++;
+                }
             }
             document.close();
             Toast.makeText(this, "File has been written to :" + pdfFileName,
