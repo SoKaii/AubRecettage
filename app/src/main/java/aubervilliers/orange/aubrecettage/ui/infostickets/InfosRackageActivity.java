@@ -17,7 +17,6 @@ public class InfosRackageActivity extends AppCompatActivity {
 
     private Button mButtonStart;
     private EditText mNTicket;
-    private EditText mRealTicket;
     private EditText mNomSalle;
     private EditText mCallBaie;
     private EditText mNumEquip;
@@ -29,7 +28,6 @@ public class InfosRackageActivity extends AppCompatActivity {
 
         mButtonStart = findViewById(R.id.start);
         mNTicket = findViewById(R.id.nTicket);
-        mRealTicket = findViewById(R.id.realTicket);
         mNomSalle = findViewById(R.id.nomSalle);
         mCallBaie = findViewById(R.id.callBaie);
         mNumEquip = findViewById(R.id.numEquip);
@@ -39,14 +37,12 @@ public class InfosRackageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String numeroTicket = mNTicket.getText().toString();
-                String realTicket = mRealTicket.getText().toString();
                 String nomSalle = mNomSalle.getText().toString();
                 String callBaie = mCallBaie.getText().toString();
                 String numEquip = mNumEquip.getText().toString();
 
                 Intent intent = new Intent(InfosRackageActivity.this, RackageActivity.class);
                 intent.putExtra("nTicket", numeroTicket);
-                intent.putExtra("realTicket", realTicket);
                 intent.putExtra("nomSalle", nomSalle);
                 intent.putExtra("callBaie", callBaie);
                 intent.putExtra("numEquip", numEquip);

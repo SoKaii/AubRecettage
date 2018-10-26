@@ -180,7 +180,7 @@ public class J4Activity extends AppCompatActivity {
             index++;
         }
 
-        recette = new Recette("J4", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
+        recette = new Recette("J4", numTicket, nomSalle, callBaie, numEquip, questions);
 
     }
 

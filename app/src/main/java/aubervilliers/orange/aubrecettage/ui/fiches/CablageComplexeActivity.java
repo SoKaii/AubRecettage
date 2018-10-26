@@ -31,7 +31,6 @@ public class CablageComplexeActivity extends AppCompatActivity {
 
     private Recette recette;
     private String numTicket = null;
-    private String realTicket = null;
     private String nomSalle = null;
     private String callBaie = null;
     private String numEquip = null;
@@ -58,7 +57,6 @@ public class CablageComplexeActivity extends AppCompatActivity {
 
             if (intent.hasExtra("nTicket")) {
                 numTicket = intent.getStringExtra("nTicket");
-                realTicket = intent.getStringExtra("realTicket");
                 nomSalle = intent.getStringExtra("nomSalle");
                 callBaie = intent.getStringExtra("callBaie");
                 numEquip = intent.getStringExtra("numEquip");
@@ -67,9 +65,6 @@ public class CablageComplexeActivity extends AppCompatActivity {
 
             TextView nTicket = findViewById(R.id.numTicket);
             nTicket.setText(numTicket);
-
-            TextView rTicket = findViewById(R.id.realTicket);
-            rTicket.setText(realTicket);
 
             TextView nSalle = findViewById(R.id.nomSalle);
             nSalle.setText(nomSalle);
@@ -82,25 +77,17 @@ public class CablageComplexeActivity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true, true);
-        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true, false);
-        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true, true);
-        addQuestion("L'étiquetage des hostname est correct ?", true, true);
-        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true, false);
-        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?", true, false);
-        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?", true, false);
-        addQuestion("Le câblage physique des liaisons est en cohérence avec le plan de câblage Transplan ?", true, false);
-        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant sur les toits modulaires ?", true, false);
-        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?", true, false);
-        addQuestion("Les longueurs des cordons utilisés pour le CFA est correcte sur les toits modulaires ?", true, false);
-        addQuestion("L’utilisation des scratchs est correcte sur les toits modulaires ?", true, false);
-        addQuestion("Le passage des liaisons à l’état «réalisées» est effectif dans l’outil Transplan ?", true, false);
-        addQuestion("La polarité Rx,Tx ainsi que le type de module SFP sont respectés ?", true, false);
-        addQuestion("L’étiquetage des liaisons est correct ?", true, false);
-        addQuestion("Anomalies à scorriger :", false, false);
-        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false, false);
-        addQuestion("Anomalies non bloquantes à prendre en compte :", false, false);
-
+        addQuestion("Le passage des liaisons à l’état «réalisé» est effectif dans l’outil Transplan ?", true, true);
+        addQuestion("Les informations «type d’équipement/constructeur/modèle» sont en cohérence avec la demande ?",true,true);
+        addQuestion("La localisation «Salle/Baie/U est correcte ?",true,true);
+        addQuestion("La présence de l’étiquetage 26E/ hostname /n°serie / et son emplacement est correct ?",true,true);
+        addQuestion("Le câblage physique (plug) des liaisons est en cohérence avec le plan de câblage (Transplan) ?",true,true);
+        addQuestion("La connexion des cordons sur les bandeaux de renvoi est correcte ?",true,true);
+        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant ?", true, true);
+        addQuestion("Les longueurs des cordons utilisés pour le CFA  sont correctes ?", true, true);
+        addQuestion("L’utilisation des scratchs est correcte ?", true, true);
+        addQuestion("L’étiquetage des liaisons est-il lisible sans manipulation ?", true, false);
+        addQuestion("Autres anomalies constatées :",false,false);
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,12 +129,7 @@ public class CablageComplexeActivity extends AppCompatActivity {
         View questionLayout = View.inflate(this, R.layout.layout_question, null);
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
-        if (obligatoryQuestion) {
-            title = "* " + title;
-            tv.setText(title);
-        } else {
-            tv.setText(title);
-        }
+        tv.setText(title);
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
         noBtList.add((RadioButton) questionLayout.findViewById(R.id.questionNo));
         commentList.add((EditText) questionLayout.findViewById(R.id.questionComment));
@@ -183,7 +165,7 @@ public class CablageComplexeActivity extends AppCompatActivity {
             questions.add(question);
             index++;
         }
-        recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
+        recette = new Recette("Câblage simple", numTicket, nomSalle, callBaie, numEquip, questions);
     }
 
     @Override

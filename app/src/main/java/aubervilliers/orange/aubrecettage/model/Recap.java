@@ -5,18 +5,14 @@ import java.io.Serializable;
 public class Recap implements Serializable {
 
     private String CI2Anum;
-    private String dateRecetteI;
-    private String dateRecetteD;
-    private String typeRecette;
+    private String dateRecette;
     private String validOrange;
     private String referentOrange;
 
-    public Recap(String CI2Anum, String dateRecetteI, String dateRecetteD, String referentOrange) {
+    public Recap(String CI2Anum, String dateRecetteI, String referentOrange) {
 
         this.CI2Anum = CI2Anum;
-        this.dateRecetteI = dateRecetteI;
-        this.dateRecetteD = dateRecetteD;
-        this.typeRecette = null;
+        this.dateRecette = dateRecetteI;
         this.validOrange = null;
         this.referentOrange = referentOrange;
     }
@@ -29,28 +25,12 @@ public class Recap implements Serializable {
         this.CI2Anum = CI2Anum;
     }
 
-    public String getDateRecetteI() {
-        return dateRecetteI;
+    public String getDateRecette() {
+        return dateRecette;
     }
 
-    public void setDateRecetteI(String dateRecetteI) {
-        this.dateRecetteI = dateRecetteI;
-    }
-
-    public String getDateRecetteD() {
-        return dateRecetteD;
-    }
-
-    public void setDateRecetteD(String dateRecetteD) {
-        this.dateRecetteD = dateRecetteD;
-    }
-
-    public String getTypeRecette() {
-        return typeRecette;
-    }
-
-    public void setTypeRecette(String typeRecette) {
-        this.typeRecette = typeRecette;
+    public void setDateRecette(String dateRecetteI) {
+        this.dateRecette = dateRecetteI;
     }
 
     public String getValidOrange() {

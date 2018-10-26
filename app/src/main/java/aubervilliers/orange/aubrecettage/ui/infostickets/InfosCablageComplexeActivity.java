@@ -16,7 +16,6 @@ import aubervilliers.orange.aubrecettage.ui.fiches.CablageComplexeActivity;
 public class InfosCablageComplexeActivity extends AppCompatActivity {
 
     private EditText mNTicket;
-    private EditText mRealTicket;
     private EditText mNomSalle;
     private EditText mCallBaie;
     private EditText mNumEquip;
@@ -27,7 +26,6 @@ public class InfosCablageComplexeActivity extends AppCompatActivity {
         setContentView(R.layout.layout_infos_cablage_complexe);
 
         mNTicket = findViewById(R.id.nTicket);
-        mRealTicket = findViewById(R.id.realTicket);
         mNomSalle = findViewById(R.id.nomSalle);
         mCallBaie = findViewById(R.id.callBaie);
         mNumEquip = findViewById(R.id.numEquip);
@@ -38,14 +36,12 @@ public class InfosCablageComplexeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String numeroTicket = mNTicket.getText().toString();
-                String realTicket = mRealTicket.getText().toString();
                 String nomSalle = mNomSalle.getText().toString();
                 String callBaie = mCallBaie.getText().toString();
                 String numEquip = mNumEquip.getText().toString();
 
                 Intent intent = new Intent(InfosCablageComplexeActivity.this, CablageComplexeActivity.class);
                 intent.putExtra("nTicket", numeroTicket);
-                intent.putExtra("realTicket", realTicket);
                 intent.putExtra("nomSalle", nomSalle);
                 intent.putExtra("callBaie", callBaie);
                 intent.putExtra("numEquip", numEquip);

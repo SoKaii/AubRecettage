@@ -34,10 +34,7 @@ public class RecapActivity extends AppCompatActivity {
     private Recette recette;
     private Recap recap;
 
-    private DatePickerDialog datePickerDialogI;
-    private DatePickerDialog datePickerDialogD;
-    private RadioButton recettePartielle;
-    private RadioButton recetteTotale;
+    private DatePickerDialog datePickerDialog;
     private RadioButton validOrangeYes;
     private RadioButton validOrangeNo;
 
@@ -56,24 +53,18 @@ public class RecapActivity extends AppCompatActivity {
         setContentView(R.layout.layout_recap);
 
         Button mSavePDF = findViewById(R.id.SavePDF);
-        final Button dateRecetteD = findViewById(R.id.dateRecetteD);
-        final Button dateRecetteI = findViewById(R.id.dateRecetteI);
+        final Button dateRecette = findViewById(R.id.dateRecetteI);
         final EditText nCI2A = findViewById(R.id.nCI2A);
         final EditText refOrange = findViewById(R.id.refORange);
-        recettePartielle = findViewById(R.id.recette_partielle);
-        recetteTotale = findViewById(R.id.recette_totale);
         validOrangeYes = findViewById(R.id.valid_orange_yes);
         validOrangeNo = findViewById(R.id.valid_orange_no);
         final Calendar calendar = Calendar.getInstance();
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
-        datePickerDialogI = new DatePickerDialog(this, new MyDateSetListener(dateRecetteI), year, month, day);
-        datePickerDialogD = new DatePickerDialog(this, new MyDateSetListener(dateRecetteD), year, month, day);
+        datePickerDialog = new DatePickerDialog(this, new MyDateSetListener(dateRecette), year, month, day);
 
-
-        dateRecetteD.setText(R.string.click_to_add);
-        dateRecetteI.setText(R.string.click_to_add);
+        dateRecette.setText(R.string.click_to_add);
         Intent intent = getIntent();
 
         if (intent != null) {
@@ -84,34 +75,21 @@ public class RecapActivity extends AppCompatActivity {
                     Toast.LENGTH_LONG).show();
         }
 
-        dateRecetteI.setOnClickListener(new View.OnClickListener() {
+        dateRecette.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 hideKeyboard(RecapActivity.this);
-                datePickerDialogI.show();
+                datePickerDialog.show();
             }
         });
 
-        dateRecetteD.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hideKeyboard(RecapActivity.this);
-                Log.v(TAG, "dateRecetteI: " + dateRecetteI.getText());
-                setDateMin(dateRecetteI.getText().toString(), datePickerDialogD);
-                datePickerDialogD.show();
-            }
-        });
 
         mSavePDF.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RecapActivity.this, ExportActivity.class);
 
-                recap = new Recap(nCI2A.getText().toString(), dateRecetteI.getText().toString(), dateRecetteD.getText().toString(), refOrange.getText().toString());
-                if (recetteTotale.isChecked())
-                    recap.setTypeRecette("Recette Totale");
-                else if (recettePartielle.isChecked())
-                    recap.setTypeRecette("Recette Partielle");
+                recap = new Recap(nCI2A.getText().toString(), dateRecette.getText().toString(), refOrange.getText().toString());
                 if (validOrangeYes.isChecked())
                     recap.setValidOrange("OUI");
                 else if (validOrangeNo.isChecked())
@@ -122,17 +100,6 @@ public class RecapActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    private void setDateMin(String dateMin, DatePickerDialog dp) {
-        try {
-            dp.getDatePicker().setMinDate(0);
-            DateFormat formatter = new SimpleDateFormat("dd/MM/yyyy", Locale.FRENCH);
-            Date date = formatter.parse(dateMin);
-            dp.getDatePicker().setMinDate(date.getTime());
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override

@@ -7,7 +7,6 @@ public class Recette implements Serializable {
 
     private String recetteType;
     private String ticketNumber;
-    private String ticketWriter;
     private String roomName;
     private String baieCall;
     private String equipNumber;
@@ -15,17 +14,6 @@ public class Recette implements Serializable {
 
     private List<Question> tabQuestions;
     private Recap recap;
-
-    public Recette(String recetteType, String ticketNumber, String ticketWriter, String roomName, String baieCall, String equipNumber, List<Question> tabQuestions) {
-        this.recetteType = recetteType;
-        this.ticketNumber = ticketNumber;
-        this.ticketWriter = ticketWriter;
-        this.roomName = roomName;
-        this.baieCall = baieCall;
-        this.equipNumber = equipNumber;
-        this.tabQuestions = tabQuestions;
-        this.recap = null;
-    }
 
     public Recette(String recetteType, String roomName, String baieCall, String equipNumber, String equipElevation, List<Question> tabQuestions) {
         this.recetteType = recetteType;
@@ -51,14 +39,6 @@ public class Recette implements Serializable {
 
     public void setTicketNumber(String ticketNumber) {
         this.ticketNumber = ticketNumber;
-    }
-
-    public String getTicketWriter() {
-        return ticketWriter;
-    }
-
-    public void setTicketWriter(String ticketWriter) {
-        this.ticketWriter = ticketWriter;
     }
 
     public String getRoomName() {

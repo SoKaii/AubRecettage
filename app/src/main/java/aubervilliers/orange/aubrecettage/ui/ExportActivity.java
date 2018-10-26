@@ -177,15 +177,11 @@ public class ExportActivity extends Activity {
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
 
             Paragraph infosTicketParagraph = new Paragraph("Numéro du ticket : " + recette.getTicketNumber() + "\n" +
-                    "Réalisateur du ticket : " + recette.getTicketWriter() + "\n" +
                     "Nom de la salle : " + recette.getRoomName() + "\n" +
                     "Callepinage de l'équipement : " + recette.getBaieCall() + "\n" +
                     "N° 26E de l'équipement : " + recette.getEquipNumber() + "\n\n");
             document.add(infosTicketParagraph);
             Paragraph recapParagraph = new Paragraph("Numéro de CI2A du ticket : " + recette.getRecap().getCI2Anum() + "\n" +
-                    "Date de recette initiale : " + recette.getRecap().getDateRecetteI() + "\n" +
-                    "Date de recette définitive : " + recette.getRecap().getDateRecetteD() + "\n" +
-                    "Type de recette : " + recette.getRecap().getTypeRecette() + "\n" +
                     "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
                     "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
             document.add(recapParagraph);

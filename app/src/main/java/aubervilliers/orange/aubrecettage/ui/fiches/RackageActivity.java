@@ -31,7 +31,6 @@ public class RackageActivity extends AppCompatActivity {
 
     private Recette recette;
     private String numTicket = "";
-    private String realTicket = "";
     private String nomSalle = "";
     private String callBaie = "";
     private String numEquip = "";
@@ -58,7 +57,6 @@ public class RackageActivity extends AppCompatActivity {
 
             if (intent.hasExtra("nTicket")) {
                 numTicket = intent.getStringExtra("nTicket");
-                realTicket = intent.getStringExtra("realTicket");
                 nomSalle = intent.getStringExtra("nomSalle");
                 callBaie = intent.getStringExtra("callBaie");
                 numEquip = intent.getStringExtra("numEquip");
@@ -67,9 +65,6 @@ public class RackageActivity extends AppCompatActivity {
 
             TextView nTicket = findViewById(R.id.numTicket);
             nTicket.setText(numTicket);
-
-            TextView rTicket = findViewById(R.id.realTicket);
-            rTicket.setText(realTicket);
 
             TextView nSalle = findViewById(R.id.nomSalle);
             nSalle.setText(nomSalle);
@@ -82,18 +77,17 @@ public class RackageActivity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("L'équipement est bien présent dans la 26E ? (26E)", true, true);
-        addQuestion("Le commentaire UO est présent dans le ticket ? (Ticket)", true, true);
-        addQuestion("Les informations équipement/constructeur/modèle sont en cohérence avec la demande ? (En Salle/Ticket)", true, true);
-        addQuestion("La localisation Salle/Baie/U est en cohérence avec la demande ? (En Salle/Ticket)", true, false);
-        addQuestion("L'étiquettage de l'équipement est correctement réalisé ? (En Salle)", true, false);
-        addQuestion("Le numéro de série de l'équipement est en cohérence avec la demande ? (En Salle/Ticket)", true, false);
-        addQuestion("La redondance courant fort est correctement réalisée ? (En Salle)", true, false);
-        addQuestion("Les scratchs CFO sont correctement utilisés ? (En Salle)", true, false);
-        addQuestion("Les rails et vis sont correctement utilisés ? (En Salle)", true, false);
-        addQuestion("Anomalies à corriger :", false, false);
-        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false, false);
-        addQuestion("Anomalies non bloquantes à prendre en compte :", false, false);
+        addQuestion("L'équipement est bien présent dans la 26E/Transplan ?", true, true);
+        addQuestion("Les commentaire 'UO' & '#' sont présents dans le ticket ?", true, true);
+        addQuestion("Les informations équipement/constructeur/modèle sont en cohérence avec la demande ?", true, true);
+        addQuestion("La localisation Salle/Baie/U est en cohérence avec la demande ?", true, true);
+        addQuestion("La présence de l’étiquetage 26E/ hostname /n° serie / et son emplacement est correct ?", true, true);
+        addQuestion("Le n°26E/hostname/n°serie  des équipements décrits dans le document de référence est en cohérence avec la demande ?", true, true);
+        addQuestion("La redondance courant fort est correctement réalisée ?", true, true);
+        addQuestion("Les câbles CFO sont-ils correctement installés ?", true, true);
+        addQuestion("Les rails et vis sont correctement installés ?", true, true);
+        addQuestion("Le rackage respecte t-il le sens de soufflage  en cohérence  avec les consignes aéraulique ?",true,true);
+        addQuestion("Autres anomalies constatées : ", false, false);
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,7 +104,7 @@ public class RackageActivity extends AppCompatActivity {
                 }
                 if (!allAnsweredQuestions) {
                     AlertDialog.Builder notAnswered = new AlertDialog.Builder(RackageActivity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -135,12 +129,7 @@ public class RackageActivity extends AppCompatActivity {
         View questionLayout = View.inflate(this, R.layout.layout_question, null);
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
-        if (obligatoryQuestion) {
-            title = "* " + title;
-            tv.setText(title);
-        } else {
-            tv.setText(title);
-        }
+        tv.setText(title);
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
         noBtList.add((RadioButton) questionLayout.findViewById(R.id.questionNo));
         commentList.add((EditText) questionLayout.findViewById(R.id.questionComment));
@@ -177,7 +166,7 @@ public class RackageActivity extends AppCompatActivity {
             index++;
         }
 
-        recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
+        recette = new Recette("Câblage simple", numTicket, nomSalle, callBaie, numEquip, questions);
 
     }
 

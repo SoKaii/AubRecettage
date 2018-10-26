@@ -104,7 +104,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
                 }
                 if (!allAnsweredQuestions) {
                     AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageSimpleActivity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -128,12 +128,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
         View questionLayout = View.inflate(this, R.layout.layout_question, null);
         titleList.add(title);
         TextView tv = questionLayout.findViewById(R.id.questionTitle);
-        if (obligatoryQuestion) {
-            title = "* " + title;
-            tv.setText(title);
-        } else {
-            tv.setText(title);
-        }
+        tv.setText(title);
         yesBtList.add((RadioButton) questionLayout.findViewById(R.id.questionYes));
         noBtList.add((RadioButton) questionLayout.findViewById(R.id.questionNo));
         commentList.add((EditText) questionLayout.findViewById(R.id.questionComment));
@@ -169,7 +164,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
             questions.add(question);
             index++;
         }
-        recette = new Recette("Câblage simple", numTicket, realTicket, nomSalle, callBaie, numEquip, questions);
+        recette = new Recette("Câblage simple", numTicket, nomSalle, callBaie, numEquip, questions);
     }
 
     @Override
