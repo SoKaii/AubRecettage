@@ -10,17 +10,15 @@ public class Recette implements Serializable {
     private String roomName;
     private String baieCall;
     private String equipNumber;
-    private String equipElevation;
 
     private List<Question> tabQuestions;
     private Recap recap;
 
-    public Recette(String recetteType, String roomName, String baieCall, String equipNumber, String equipElevation, List<Question> tabQuestions) {
+    public Recette(String recetteType, String ticketNumber, String roomName, String baieCall, String equipNumber, List<Question> tabQuestions) {
         this.recetteType = recetteType;
         this.roomName = roomName;
         this.baieCall = baieCall;
         this.equipNumber = equipNumber;
-        this.equipElevation = equipElevation;
         this.tabQuestions = tabQuestions;
         this.recap = null;
     }
