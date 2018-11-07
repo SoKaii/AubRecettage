@@ -25,13 +25,12 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 import aubervilliers.orange.aubrecettage.ui.ExportActivity;
 import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
-public class CablageSimpleActivity extends AppCompatActivity {
+public class CablageActivity extends AppCompatActivity {
 
-    private static final String TAG = "CablageSimpleActivity";
+    private static final String TAG = "CablageActivity";
 
     private Recette recette;
     private String numTicket = null;
-    private String realTicket = null;
     private String nomSalle = null;
     private String callBaie = null;
     private String numEquip = null;
@@ -48,46 +47,47 @@ public class CablageSimpleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_cablage_simple);
+        setContentView(R.layout.layout_cablage);
 
         Button buttonNext = findViewById(R.id.saveNext);
 
         final Intent intent = getIntent();
 
         if (intent != null) {
+
             if (intent.hasExtra("nTicket")) {
                 numTicket = intent.getStringExtra("nTicket");
-                realTicket = intent.getStringExtra("realTicket");
                 nomSalle = intent.getStringExtra("nomSalle");
                 callBaie = intent.getStringExtra("callBaie");
                 numEquip = intent.getStringExtra("numEquip");
+
             }
+
             TextView nTicket = findViewById(R.id.numTicket);
             nTicket.setText(numTicket);
-            TextView rTicket = findViewById(R.id.realTicket);
-            rTicket.setText(realTicket);
+
             TextView nSalle = findViewById(R.id.nomSalle);
             nSalle.setText(nomSalle);
+
             TextView cBaie = findViewById(R.id.callBaie);
             cBaie.setText(callBaie);
+
             TextView nEquip = findViewById(R.id.numEquip);
             nEquip.setText(numEquip);
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("Les informations «équipement/constructeur/modèle» sont en cohérence avec le Terrain?", true, true);
-        addQuestion("La localisation «Salle/Baie» est en cohérence avec le «Terrain»?", true, false);
-        addQuestion("Le hostname des équipements décrits dans le document de référence sont en cohérence avec le terrain ?", true, false);
-        addQuestion("L'étiquetage des hostname est correct ?", true, false);
-        addQuestion("La présence de l’étiquetage 26E et son emplacement est correct ?", true, false);
-        addQuestion("Le n°26e indiqué sur l’équipement est en cohérence avec le document de référence ?", true, false);
-        addQuestion("Le n° de série de l’équipement est en cohérence avec le document de référence?", true, false);
-        addQuestion("La connexion des cordons sur les bandeaux et équipements est correcte ?", true, false);
-        addQuestion("L’étiquetage des liaisons est correct ?", true, false);
-        addQuestion("Anomalies à scorriger :", false, false);
-        addQuestion("Anomalies constatées lors de la recette initiale,correctifs apportés :", false, false);
-        addQuestion("Anomalies non bloquantes à prendre en compte :", false, false);
-
+        addQuestion("Le passage des liaisons à l’état «réalisé» est effectif dans l’outil Transplan ?", true, true);
+        addQuestion("Les informations «type d’équipement/constructeur/modèle» sont en cohérence avec la demande ?",true,true);
+        addQuestion("La localisation «Salle/Baie/U est correcte ?",true,true);
+        addQuestion("La présence de l’étiquetage 26E/ hostname /n°serie / et son emplacement est correct ?",true,true);
+        addQuestion("Le câblage physique (plug) des liaisons est en cohérence avec le plan de câblage (Transplan) ?",true,true);
+        addQuestion("La connexion des cordons sur les bandeaux de renvoi est correcte ?",true,true);
+        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant ?", true, true);
+        addQuestion("Les longueurs des cordons utilisés pour le CFA  sont correctes ?", true, true);
+        addQuestion("L’utilisation des scratchs est correcte ?", true, true);
+        addQuestion("L’étiquetage des liaisons est-il lisible sans manipulation ?", true, false);
+        addQuestion("Autres anomalies constatées :",false,false);
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +103,8 @@ public class CablageSimpleActivity extends AppCompatActivity {
                     }
                 }
                 if (!allAnsweredQuestions) {
-                    AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageSimpleActivity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
+                    AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageActivity.this);
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -115,13 +115,14 @@ public class CablageSimpleActivity extends AppCompatActivity {
                             .create();
                     notAnswered.show();
                 } else {
-                    Intent intent1 = new Intent(CablageSimpleActivity.this, RecapActivity.class);
+                    Intent intent1 = new Intent(CablageActivity.this, RecapActivity.class);
                     intent1.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
                     startActivity(intent1);
                 }
 
             }
         });
+
     }
 
     private void addQuestion(String title, boolean hasRadioButtons, boolean obligatoryQuestion) {
@@ -172,7 +173,7 @@ public class CablageSimpleActivity extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
-        //imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
         return true;
     }
 }
+

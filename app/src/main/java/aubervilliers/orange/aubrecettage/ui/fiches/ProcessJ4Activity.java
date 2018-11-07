@@ -25,9 +25,9 @@ import aubervilliers.orange.aubrecettage.model.Recette;
 import aubervilliers.orange.aubrecettage.ui.ExportActivity;
 import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
-public class CablageComplexeActivity extends AppCompatActivity {
+public class ProcessJ4Activity extends AppCompatActivity {
 
-    private static final String TAG = "CablageComplexeActivity";
+    private static final String TAG = "ProcessJ4Activity";
 
     private Recette recette;
     private String numTicket = null;
@@ -47,47 +47,43 @@ public class CablageComplexeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_cablage_complexe);
+        setContentView(R.layout.layout_process_j4);
 
         Button buttonNext = findViewById(R.id.saveNext);
 
         final Intent intent = getIntent();
 
         if (intent != null) {
-
             if (intent.hasExtra("nTicket")) {
                 numTicket = intent.getStringExtra("nTicket");
                 nomSalle = intent.getStringExtra("nomSalle");
                 callBaie = intent.getStringExtra("callBaie");
                 numEquip = intent.getStringExtra("numEquip");
-
             }
-
             TextView nTicket = findViewById(R.id.numTicket);
             nTicket.setText(numTicket);
-
             TextView nSalle = findViewById(R.id.nomSalle);
             nSalle.setText(nomSalle);
-
             TextView cBaie = findViewById(R.id.callBaie);
             cBaie.setText(callBaie);
-
             TextView nEquip = findViewById(R.id.numEquip);
             nEquip.setText(numEquip);
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("Le passage des liaisons à l’état «réalisé» est effectif dans l’outil Transplan ?", true, true);
-        addQuestion("Les informations «type d’équipement/constructeur/modèle» sont en cohérence avec la demande ?",true,true);
-        addQuestion("La localisation «Salle/Baie/U est correcte ?",true,true);
-        addQuestion("La présence de l’étiquetage 26E/ hostname /n°serie / et son emplacement est correct ?",true,true);
-        addQuestion("Le câblage physique (plug) des liaisons est en cohérence avec le plan de câblage (Transplan) ?",true,true);
-        addQuestion("La connexion des cordons sur les bandeaux de renvoi est correcte ?",true,true);
-        addQuestion("Les passages de câbles présentent un rayon de courbure suffisant ?", true, true);
-        addQuestion("Les longueurs des cordons utilisés pour le CFA  sont correctes ?", true, true);
-        addQuestion("L’utilisation des scratchs est correcte ?", true, true);
-        addQuestion("L’étiquetage des liaisons est-il lisible sans manipulation ?", true, false);
+        addQuestion("Le numéro de main courante est présent dans le ticket ? ",true,true);
+        addQuestion("La check-list de décomissionnement est présente dans le ticket ? ",true,true);
+        addQuestion("La check-list de décomissionnement est complète ? ",true,true);
+        addQuestion("Le déplug a été réalisé à date ? ",true,true);
+        addQuestion("Le décâblage a été réalisé à date ? ",true,true);
+        addQuestion("Le dérackage a été réalisé à date ? ",true,true);
+        addQuestion("Les liaisons ont bien été retirées de Transpan ? ",true,true);
+        addQuestion("Le commentaire UO est conforme à la réalisation ? ",true,true);
+        addQuestion("Les données ont été transmises au réseau pour la mise à jour des ports ? ",true,true);
+        addQuestion("Le technicien a respecté les consignes indiquées dans le commentaire du ticket ?",true,true);
+        addQuestion("Le process a été respecté ? ",true,true);
         addQuestion("Autres anomalies constatées :",false,false);
+
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -103,8 +99,8 @@ public class CablageComplexeActivity extends AppCompatActivity {
                     }
                 }
                 if (!allAnsweredQuestions) {
-                    AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageComplexeActivity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
+                    AlertDialog.Builder notAnswered = new AlertDialog.Builder(ProcessJ4Activity.this);
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -115,14 +111,13 @@ public class CablageComplexeActivity extends AppCompatActivity {
                             .create();
                     notAnswered.show();
                 } else {
-                    Intent intent1 = new Intent(CablageComplexeActivity.this, RecapActivity.class);
+                    Intent intent1 = new Intent(ProcessJ4Activity.this, RecapActivity.class);
                     intent1.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
                     startActivity(intent1);
                 }
 
             }
         });
-
     }
 
     private void addQuestion(String title, boolean hasRadioButtons, boolean obligatoryQuestion) {
@@ -173,7 +168,7 @@ public class CablageComplexeActivity extends AppCompatActivity {
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.
                 INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
+        //imm.hideSoftInputFromWindow(this.getWindow().getDecorView().getRootView().getWindowToken(), 0);
         return true;
     }
 }
-

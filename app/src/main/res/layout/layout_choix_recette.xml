@@ -30,14 +30,13 @@
         android:gravity="center_horizontal|center_vertical"
         android:orientation="horizontal">
 
-
         <Button
-            android:id="@+id/buttonCableSimple"
+            android:id="@+id/buttonRackage"
             style="@style/button"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Câblage simple" />
+            android:text="Rackage" />
 
         <Button
             android:id="@+id/buttonCableComplexe"
@@ -45,7 +44,7 @@
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Câblage complet" />
+            android:text="Câblage" />
 
     </LinearLayout>
 
@@ -57,13 +56,14 @@
         android:orientation="horizontal">
 
 
+
         <Button
-            android:id="@+id/buttonRackage"
+            android:id="@+id/buttonCableSimple"
             style="@style/button"
             android:layout_width="165dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
-            android:text="Rackage" />
+            android:text="Process J4" />
 
         <Button
             android:id="@+id/buttonJ4"

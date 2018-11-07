@@ -11,12 +11,11 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import aubervilliers.orange.aubrecettage.R;
-import aubervilliers.orange.aubrecettage.ui.fiches.CablageSimpleActivity;
+import aubervilliers.orange.aubrecettage.ui.fiches.ProcessJ4Activity;
 
-public class InfosCablageSimpleActivity extends AppCompatActivity {
+public class InfosProcessJ4Activity extends AppCompatActivity {
 
     private EditText mNTicket;
-    private EditText mRealTicket;
     private EditText mNomSalle;
     private EditText mCallBaie;
     private EditText mNumEquip;
@@ -24,10 +23,9 @@ public class InfosCablageSimpleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_infos_cablage_simple);
+        setContentView(R.layout.layout_infos_process_j4);
 
         mNTicket = findViewById(R.id.nTicket);
-        mRealTicket = findViewById(R.id.realTicket);
         mNomSalle = findViewById(R.id.nomSalle);
         mCallBaie = findViewById(R.id.callBaie);
         mNumEquip = findViewById(R.id.numEquip);
@@ -38,14 +36,12 @@ public class InfosCablageSimpleActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String numeroTicket = mNTicket.getText().toString();
-                String realTicket = mRealTicket.getText().toString();
                 String nomSalle = mNomSalle.getText().toString();
                 String callBaie = mCallBaie.getText().toString();
                 String numEquip = mNumEquip.getText().toString();
 
-                Intent intent = new Intent(InfosCablageSimpleActivity.this, CablageSimpleActivity.class);
+                Intent intent = new Intent(InfosProcessJ4Activity.this, ProcessJ4Activity.class);
                 intent.putExtra("nTicket", numeroTicket);
-                intent.putExtra("realTicket", realTicket);
                 intent.putExtra("nomSalle", nomSalle);
                 intent.putExtra("callBaie", callBaie);
                 intent.putExtra("numEquip", numEquip);

@@ -11,9 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import aubervilliers.orange.aubrecettage.R;
-import aubervilliers.orange.aubrecettage.ui.fiches.CablageComplexeActivity;
+import aubervilliers.orange.aubrecettage.ui.fiches.CablageActivity;
 
-public class InfosCablageComplexeActivity extends AppCompatActivity {
+public class InfosCablageActivity extends AppCompatActivity {
 
     private EditText mNTicket;
     private EditText mNomSalle;
@@ -23,7 +23,7 @@ public class InfosCablageComplexeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_infos_cablage_complexe);
+        setContentView(R.layout.layout_infos_cablage);
 
         mNTicket = findViewById(R.id.nTicket);
         mNomSalle = findViewById(R.id.nomSalle);
@@ -40,7 +40,7 @@ public class InfosCablageComplexeActivity extends AppCompatActivity {
                 String callBaie = mCallBaie.getText().toString();
                 String numEquip = mNumEquip.getText().toString();
 
-                Intent intent = new Intent(InfosCablageComplexeActivity.this, CablageComplexeActivity.class);
+                Intent intent = new Intent(InfosCablageActivity.this, CablageActivity.class);
                 intent.putExtra("nTicket", numeroTicket);
                 intent.putExtra("nomSalle", nomSalle);
                 intent.putExtra("callBaie", callBaie);

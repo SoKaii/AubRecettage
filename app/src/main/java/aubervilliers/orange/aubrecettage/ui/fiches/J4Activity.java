@@ -67,9 +67,6 @@ public class J4Activity extends AppCompatActivity {
             TextView nTicket = findViewById(R.id.numTicket);
             nTicket.setText(numTicket);
 
-            TextView rTicket = findViewById(R.id.realTicket);
-            rTicket.setText(realTicket);
-
             TextView nSalle = findViewById(R.id.nomSalle);
             nSalle.setText(nomSalle);
 
@@ -81,23 +78,16 @@ public class J4Activity extends AppCompatActivity {
         }
 
         ll = findViewById(R.id.questions);
-        addQuestion("Le commentaire UO est présent dans le ticket ? (Ticket)", true, false);
-        addQuestion("Le commentaire # est présent dans le ticket ? (Ticket) ", true, true);
-        addQuestion("Le numéro de main courante est présent dans le ticket ? (Ticket) ", false, false);
-        addQuestion("La check-list de décommisionnement est complète ? (Ticket) ", false, false);
-        addQuestion("Le déplug a été réalisé un Mercredi ? (Ticket) ", false, false);
-        addQuestion("Le dérackage a été réalisé un Jeudi ou un Vendredi ? (Ticket) ", false, false);
-        addQuestion("Le décablage a été réalisé un Jeudi ou un Vendredi ? (Ticket) ", false, false);
-        addQuestion("La facturarion a été effectuée ? (SIDC)", false, false);
-        addQuestion("Les caches-U ont été installés ? (En Salle)", false, false);
-        addQuestion("Les équipements sont stockés dans la bonne salle ? (En Salle) ", false, false);
-        addQuestion("Les cables CFO ont été retirés ? (En Salle) ", false, false);
-        addQuestion("Les cables CFA ont été retirés ? (En Salle) ", false, false);
-        addQuestion("La modification Transplan a été réalisée ? (Transplan) ", false, false);
-        addQuestion("La modification 26E a été réalisée ? (26e) ", false, false);
-
-
-
+        addQuestion("La 26E a été mise à jour ? ",true,true);
+        addQuestion("Les liaisons ont bien été retirées de Transplan ? ",true,false);
+        addQuestion("Le commentaire # est présent dans le ticket ? ",true,false);
+        addQuestion("Le dérackage des équipements et des composants a été réalisé correctement ? ",true,true);
+        addQuestion("Les caches-U ont été installés à la place des équipements retirés ? ",true,true);
+        addQuestion("Les cables CFO ont été retirés ? ",true,true);
+        addQuestion("Les cables CFA ont été retirés ? ",true,true);
+        addQuestion("Les disques ont été retirés et stockés au bon endroit ? ",true,true);
+        addQuestion("Les équipements sont stockés dans la bonne salle ? ",true,true);
+        addQuestion("Autres anomalies constatées :",false,false);
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
             @Override

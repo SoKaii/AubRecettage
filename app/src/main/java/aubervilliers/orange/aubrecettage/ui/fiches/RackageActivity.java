@@ -27,7 +27,7 @@ import aubervilliers.orange.aubrecettage.ui.RecapActivity;
 
 public class RackageActivity extends AppCompatActivity {
 
-    private static final String TAG = "CablageComplexeActivity";
+    private static final String TAG = "CablageActivity";
 
     private Recette recette;
     private String numTicket = "";

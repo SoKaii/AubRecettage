@@ -16,6 +16,7 @@ public class Recette implements Serializable {
 
     public Recette(String recetteType, String ticketNumber, String roomName, String baieCall, String equipNumber, List<Question> tabQuestions) {
         this.recetteType = recetteType;
+        this.ticketNumber = ticketNumber;
         this.roomName = roomName;
         this.baieCall = baieCall;
         this.equipNumber = equipNumber;

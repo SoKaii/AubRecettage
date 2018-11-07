@@ -21,7 +21,7 @@
         </activity>
         <activity android:name=".ui.HomeActivity" />
         <activity
-            android:name=".ui.infostickets.InfosCablageSimpleActivity"
+            android:name=".ui.infostickets.InfosProcessJ4Activity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
             android:name=".ui.infostickets.InfosJ4Activity"
@@ -30,7 +30,7 @@
             android:name=".ui.infostickets.InfosRackageActivity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
-            android:name=".ui.infostickets.InfosCablageComplexeActivity"
+            android:name=".ui.infostickets.InfosCablageActivity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
             android:name=".ui.ExportActivity"
@@ -39,10 +39,10 @@
             android:name=".ui.fiches.J4Activity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
-            android:name=".ui.fiches.CablageComplexeActivity"
+            android:name=".ui.fiches.CablageActivity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
-            android:name=".ui.fiches.CablageSimpleActivity"
+            android:name=".ui.fiches.ProcessJ4Activity"
             android:windowSoftInputMode="stateUnchanged" />
         <activity
             android:name=".ui.fiches.RackageActivity"

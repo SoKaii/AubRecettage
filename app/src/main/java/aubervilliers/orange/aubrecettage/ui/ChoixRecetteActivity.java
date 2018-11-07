@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 
 import aubervilliers.orange.aubrecettage.R;
-import aubervilliers.orange.aubrecettage.ui.infostickets.InfosCablageComplexeActivity;
-import aubervilliers.orange.aubrecettage.ui.infostickets.InfosCablageSimpleActivity;
+import aubervilliers.orange.aubrecettage.ui.infostickets.InfosCablageActivity;
+import aubervilliers.orange.aubrecettage.ui.infostickets.InfosProcessJ4Activity;
 import aubervilliers.orange.aubrecettage.ui.infostickets.InfosJ4Activity;
 import aubervilliers.orange.aubrecettage.ui.infostickets.InfosRackageActivity;
 
@@ -26,7 +26,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         mbuttonCableSimple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(ChoixRecetteActivity.this, InfosCablageSimpleActivity.class);
+                Intent intent = new Intent(ChoixRecetteActivity.this, InfosProcessJ4Activity.class);
                 startActivity(intent);
             }
         });
@@ -50,7 +50,7 @@ public class ChoixRecetteActivity extends AppCompatActivity {
         mbuttonCableComplexe.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ChoixRecetteActivity.this, InfosCablageComplexeActivity.class);
+                Intent intent = new Intent(ChoixRecetteActivity.this, InfosCablageActivity.class);
                 startActivity(intent);
             }
         });

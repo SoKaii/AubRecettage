@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fiches.CablageSimpleActivity">
+    tools:context=".ui.fiches.ProcessJ4Activity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,26 +44,6 @@
 
             <TextView
                 android:id="@+id/numTicket"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=""
-                android:textColor="@color/black" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:text="Réalisateur du ticket :  "
-                android:textColor="@color/orange" />
-
-            <TextView
-                android:id="@+id/realTicket"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text=""

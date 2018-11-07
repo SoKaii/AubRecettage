@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fiches.CablageComplexeActivity">
+    tools:context=".ui.fiches.CablageActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="center"
-            android:text="Recette Cablâge Complet"
+            android:text="Recette Cablage"
             android:textSize="24sp" />
 
         <LinearLayout
