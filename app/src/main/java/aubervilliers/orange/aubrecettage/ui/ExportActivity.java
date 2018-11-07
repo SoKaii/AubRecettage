@@ -28,6 +28,8 @@ import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
+import com.itextpdf.text.Chunk;
+import com.itextpdf.text.Image;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -165,12 +167,16 @@ public class ExportActivity extends Activity {
             boolean spaceQuestion;
             int compteurYes = 0;
             int compteurNo = 0;
-            int compteurNoAnswered = 0;
             document.open();
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
-            Paragraph titleParagraph = new Paragraph("Recette du ticket n°" + recette.getTicketNumber() + "\n\n",
+
+            Paragraph titleParagraph = new Paragraph();
+            Chunk title = new Chunk("Recette du ticket n°" + recette.getTicketNumber(),
                     FontFactory.getFont(FontFactory.TIMES_BOLD, 18));
+            title.setUnderline(0.2f, -2f);
+            titleParagraph.add(title);
+            titleParagraph.add("\n\n");
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(titleParagraph);
 
@@ -191,10 +197,6 @@ public class ExportActivity extends Activity {
                         compteurYes ++;
                     } else if (question.isButtonNoSelected()) {
                         compteurNo++;
-                    }
-                    else
-                    {
-                        compteurNoAnswered++;
                     }
                 }
             }
@@ -225,7 +227,7 @@ public class ExportActivity extends Activity {
                 }
 
                 if (!question.getCommentary().equals("")) {
-                document.add(new Paragraph("Commentaire : " + question.getCommentary()));
+                    document.add(new Paragraph("Commentaire : " + question.getCommentary()));
                 }
                 if (Boolean.TRUE.equals(spaceQuestion))
                 {
@@ -234,7 +236,10 @@ public class ExportActivity extends Activity {
 
                 index ++;
             }
-            document.add(new Paragraph("Synthèse des commentaire"));
+            Chunk synthese = new Chunk("Synthèse des commentaires");
+            synthese.setUnderline(0.1f, -2f);
+            document.add(synthese);
+
             index = 1;
             for (Question question : recette.getTabQuestions()) {
                 if (!question.getCommentary().equals("")) {
