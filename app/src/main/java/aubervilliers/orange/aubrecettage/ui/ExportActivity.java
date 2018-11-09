@@ -30,6 +30,7 @@ import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Image;
+import com.itextpdf.text.BaseColor;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -173,12 +174,17 @@ public class ExportActivity extends Activity {
 
             Paragraph titleParagraph = new Paragraph();
             Chunk title = new Chunk("Recette du ticket n°" + recette.getTicketNumber(),
-                    FontFactory.getFont(FontFactory.TIMES_BOLD, 18));
+                    FontFactory.getFont(FontFactory.TIMES_BOLD, 18, BaseColor.RED));
             title.setUnderline(0.2f, -2f);
             titleParagraph.add(title);
             titleParagraph.add("\n\n");
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(titleParagraph);
+            
+            //ca ne marche pas !!!!
+            //Image image = Image.getInstance("aubervilliers/orange/aubrecettage/ui/orange.png");
+            //Chunk c = new Chunk(image, 0, -24);
+            //titleParagraph.add(c);
 
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
 
@@ -209,11 +215,15 @@ public class ExportActivity extends Activity {
                 spaceQuestion = false;
                 if (!question.isOpenQuestion()) {
                     if (question.isButtonYesSelected()) {
-                        document.add(new Paragraph(index +") " + question.getQuestionLabel() + ""));
+                        Chunk questions = new Chunk(index +") " + question.getQuestionLabel() + "");
+                        questions.setUnderline(0.1f, -2f);
+                        document.add(questions);
                         document.add(new Paragraph("Validation : Oui"));
                         spaceQuestion = true;
                     } else if (question.isButtonNoSelected()) {
-                        document.add(new Paragraph(index +") " + question.getQuestionLabel() + ""));
+                        Chunk questions = new Chunk(index +") " + question.getQuestionLabel() + "");
+                        questions.setUnderline(0.1f, -2f);
+                        document.add(questions);
                         document.add(new Paragraph("Validation : Non"));
                         spaceQuestion = true;
                     }
@@ -221,7 +231,9 @@ public class ExportActivity extends Activity {
                 else
                 {
                     if (!question.getCommentary().equals("")) {
-                        document.add(new Paragraph(index + ") " + question.getQuestionLabel() + ""));
+                        Chunk questions = new Chunk(index +") " + question.getQuestionLabel() + "");
+                        questions.setUnderline(0.1f, -2f);
+                        document.add(questions);
                         spaceQuestion = true;
                     }
                 }
