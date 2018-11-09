@@ -180,11 +180,11 @@ public class ExportActivity extends Activity {
             titleParagraph.add("\n\n");
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
             document.add(titleParagraph);
-            
+
             //ca ne marche pas !!!!
-            //Image image = Image.getInstance("aubervilliers/orange/aubrecettage/ui/orange.png");
-            //Chunk c = new Chunk(image, 0, -24);
-            //titleParagraph.add(c);
+            Image image = Image.getInstance("orange.png");
+            Chunk c = new Chunk(image, 0, -24);
+            titleParagraph.add(c);
 
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
 
