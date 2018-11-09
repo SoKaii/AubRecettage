@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -32,6 +34,7 @@ import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Image;
 import com.itextpdf.text.BaseColor;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
@@ -171,10 +174,19 @@ public class ExportActivity extends Activity {
             document.open();
             document.addAuthor("AubRecettage");
             document.addCreator("AubRecettage");
+            BaseColor orange = new BaseColor(255,102,0);
+
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            Bitmap bitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.littleorange);
+            bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
+            Image img = Image.getInstance(stream.toByteArray());
+            img.setAlignment(Image.ALIGN_RIGHT);
+            img.scaleAbsolute(50,50);
+            document.add(img);
 
             Paragraph titleParagraph = new Paragraph();
             Chunk title = new Chunk("Recette du ticket n°" + recette.getTicketNumber(),
-                    FontFactory.getFont(FontFactory.TIMES_BOLD, 18, BaseColor.RED));
+                    FontFactory.getFont(FontFactory.TIMES_BOLD, 18,orange));
             title.setUnderline(0.2f, -2f);
             titleParagraph.add(title);
             titleParagraph.add("\n\n");
@@ -182,9 +194,10 @@ public class ExportActivity extends Activity {
             document.add(titleParagraph);
 
             //ca ne marche pas !!!!
-            Image image = Image.getInstance("orange.png");
-            Chunk c = new Chunk(image, 0, -24);
-            titleParagraph.add(c);
+            //String imagepath = "file:///app/res/drawable/logoorange.jpg";
+            //Image image = Image.getInstance(imagepath);
+            //Chunk c = new Chunk(image, 0, -24);
+            //titleParagraph.add(c);
 
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
 
@@ -267,6 +280,18 @@ public class ExportActivity extends Activity {
             Toast.makeText(this,
                     "Error, unable to write to file\n" + e.getMessage(),
                     Toast.LENGTH_LONG).show();
+
+            AlertDialog.Builder notAnswered = new AlertDialog.Builder(ExportActivity.this);
+            notAnswered.setMessage(e.getMessage())
+                    .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                        }
+                    })
+                    .setTitle("Erreur")
+                    .create();
+            notAnswered.show();
         }
     }
 
