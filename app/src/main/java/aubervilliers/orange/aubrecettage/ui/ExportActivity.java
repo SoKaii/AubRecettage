@@ -29,6 +29,8 @@ import com.itextpdf.text.Element;
 import com.itextpdf.text.Font;
 import com.itextpdf.text.FontFactory;
 import com.itextpdf.text.Paragraph;
+import com.itextpdf.text.pdf.PdfPCell;
+import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
 import com.itextpdf.text.Chunk;
 import com.itextpdf.text.Image;
@@ -180,9 +182,8 @@ public class ExportActivity extends Activity {
             Bitmap bitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.littleorange);
             bitmap.compress(Bitmap.CompressFormat.JPEG,100,stream);
             Image img = Image.getInstance(stream.toByteArray());
-            img.setAlignment(Image.ALIGN_RIGHT);
             img.scaleAbsolute(50,50);
-            document.add(img);
+            img.setAlignment(Image.ALIGN_RIGHT);
 
             Paragraph titleParagraph = new Paragraph();
             Chunk title = new Chunk("Recette du ticket n°" + recette.getTicketNumber(),
@@ -191,8 +192,31 @@ public class ExportActivity extends Activity {
             titleParagraph.add(title);
             titleParagraph.add("\n\n");
             titleParagraph.setAlignment(Element.ALIGN_CENTER);
-            document.add(titleParagraph);
 
+            PdfPTable tableTitle = new PdfPTable(3);
+            tableTitle.setWidthPercentage(100);
+
+            PdfPCell logo2Cell = new PdfPCell();
+            logo2Cell.setVerticalAlignment(Image.ALIGN_RIGHT);
+            logo2Cell.addElement(img);
+            logo2Cell.setBorderColor(BaseColor.WHITE);
+
+            PdfPCell titleCell = new PdfPCell();
+            titleCell.setMinimumHeight(80);
+            titleCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            titleCell.addElement(titleParagraph);
+            titleCell.setBorderColor(BaseColor.WHITE);
+
+            PdfPCell logoCell = new PdfPCell();
+            logoCell.setVerticalAlignment(Element.ALIGN_RIGHT);
+            logoCell.addElement(img);
+            logoCell.setBorderColor(BaseColor.WHITE);
+
+            tableTitle.addCell(logo2Cell);
+            tableTitle.addCell(titleCell);
+            tableTitle.addCell(logoCell);
+            document.add(tableTitle);
+            
             //ca ne marche pas !!!!
             //String imagepath = "file:///app/res/drawable/logoorange.jpg";
             //Image image = Image.getInstance(imagepath);
@@ -205,11 +229,29 @@ public class ExportActivity extends Activity {
                     "Nom de la salle : " + recette.getRoomName() + "\n" +
                     "Callepinage de l'équipement : " + recette.getBaieCall() + "\n" +
                     "N° 26E de l'équipement : " + recette.getEquipNumber() + "\n\n");
-            document.add(infosTicketParagraph);
+            //document.add(infosTicketParagraph);
             Paragraph recapParagraph = new Paragraph("Numéro de CI2A du ticket : " + recette.getRecap().getCI2Anum() + "\n" +
                     "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
                     "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
-            document.add(recapParagraph);
+            //document.add(recapParagraph);
+
+            PdfPTable tableInfo = new PdfPTable(2);
+            tableInfo.setWidthPercentage(100);
+
+            PdfPCell infosTicketCell = new PdfPCell();
+            infosTicketCell.setMinimumHeight(50);
+            infosTicketCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            infosTicketCell.addElement(infosTicketParagraph);
+
+            PdfPCell recapCell = new PdfPCell();
+            recapCell.setMinimumHeight(50);
+            recapCell.setVerticalAlignment(Element.ALIGN_MIDDLE);
+            recapCell.addElement(recapParagraph);
+
+            tableInfo.addCell(infosTicketCell);
+            tableInfo.addCell(recapCell);
+            document.add(tableInfo);
+
             for (Question question : recette.getTabQuestions()) {
                 if (!question.isOpenQuestion()) {
                     if (question.isButtonYesSelected()) {
@@ -272,6 +314,7 @@ public class ExportActivity extends Activity {
                 }
                 index++;
             }
+
             document.close();
             Toast.makeText(this, "File has been written to :" + pdfFileName,
                     Toast.LENGTH_LONG).show();
