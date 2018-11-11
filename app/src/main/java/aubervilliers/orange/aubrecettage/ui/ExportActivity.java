@@ -195,10 +195,9 @@ public class ExportActivity extends Activity {
 
             PdfPTable tableTitle = new PdfPTable(3);
             tableTitle.setWidthPercentage(100);
+            tableTitle.setWidths(new int[]{15,70,15});
 
             PdfPCell logo2Cell = new PdfPCell();
-            logo2Cell.setVerticalAlignment(Image.ALIGN_RIGHT);
-            logo2Cell.addElement(img);
             logo2Cell.setBorderColor(BaseColor.WHITE);
 
             PdfPCell titleCell = new PdfPCell();
@@ -215,6 +214,7 @@ public class ExportActivity extends Activity {
             tableTitle.addCell(logo2Cell);
             tableTitle.addCell(titleCell);
             tableTitle.addCell(logoCell);
+
             document.add(tableTitle);
             
             //ca ne marche pas !!!!
@@ -224,16 +224,38 @@ public class ExportActivity extends Activity {
             //titleParagraph.add(c);
 
             new Font(Font.FontFamily.TIMES_ROMAN, 12);
+            Font intituler = new Font(Font.FontFamily.TIMES_ROMAN, 12, Font.BOLD,orange);
+            Paragraph infosTicketParagraph = new Paragraph();
+            Chunk numeroTicket = new Chunk("Numéro du ticket : ", intituler);
+            Chunk numeroTicketInfo = new Chunk(recette.getTicketNumber() + "\n" );
+            Chunk nomSalle = new Chunk("Nom de la salle : ", intituler);
+            Chunk nomSalleInfo = new Chunk(recette.getRoomName() + "\n" );
+            Chunk CallepinageEquipement = new Chunk("Callepinage de l'équipement : ", intituler);
+            Chunk CallepinageEquipementInfo = new Chunk( recette.getBaieCall() + "\n");
+            Chunk numero26e = new Chunk("N° 26E de l'équipement : ", intituler);
+            Chunk numero26eInfo = new Chunk( recette.getEquipNumber() + "\n\n");
+            infosTicketParagraph.add(numeroTicket);
+            infosTicketParagraph.add(numeroTicketInfo);
+            infosTicketParagraph.add(nomSalle);
+            infosTicketParagraph.add(nomSalleInfo);
+            infosTicketParagraph.add(CallepinageEquipement);
+            infosTicketParagraph.add(CallepinageEquipementInfo);
+            infosTicketParagraph.add(numero26e);
+            infosTicketParagraph.add(numero26eInfo);
 
-            Paragraph infosTicketParagraph = new Paragraph("Numéro du ticket : " + recette.getTicketNumber() + "\n" +
-                    "Nom de la salle : " + recette.getRoomName() + "\n" +
-                    "Callepinage de l'équipement : " + recette.getBaieCall() + "\n" +
-                    "N° 26E de l'équipement : " + recette.getEquipNumber() + "\n\n");
-            //document.add(infosTicketParagraph);
-            Paragraph recapParagraph = new Paragraph("Numéro de CI2A du ticket : " + recette.getRecap().getCI2Anum() + "\n" +
-                    "Validation orange : " + recette.getRecap().getValidOrange() + "\n" +
-                    "Référent Orange : " + recette.getRecap().getReferentOrange() + "\n\n");
-            //document.add(recapParagraph);
+            Paragraph recapParagraph = new Paragraph();
+            Chunk ci2a = new Chunk("Numéro de CI2A du ticket : ", intituler);
+            Chunk ci2aInfo = new Chunk( recette.getRecap().getCI2Anum() + "\n");
+            Chunk validation = new Chunk("Validation orange : ", intituler);
+            Chunk validationInfo = new Chunk(recette.getRecap().getValidOrange() + "\n");
+            Chunk referent = new Chunk("Référent Orange : ", intituler);
+            Chunk referentInfo = new Chunk(recette.getRecap().getReferentOrange() + "\n\n");
+            recapParagraph.add(ci2a);
+            recapParagraph.add(ci2aInfo);
+            recapParagraph.add(validation);
+            recapParagraph.add(validationInfo);
+            recapParagraph.add(referent);
+            recapParagraph.add(referentInfo);
 
             PdfPTable tableInfo = new PdfPTable(2);
             tableInfo.setWidthPercentage(100);
@@ -251,6 +273,8 @@ public class ExportActivity extends Activity {
             tableInfo.addCell(infosTicketCell);
             tableInfo.addCell(recapCell);
             document.add(tableInfo);
+            Paragraph spaces = new Paragraph("\n");
+            document.add(spaces);
 
             for (Question question : recette.getTabQuestions()) {
                 if (!question.isOpenQuestion()) {
@@ -261,10 +285,71 @@ public class ExportActivity extends Activity {
                     }
                 }
             }
-            Paragraph compteurParagraph = new Paragraph(
-                    "Nombre de validation OUI : " + compteurYes + "\n"+
-                            "Nombre de validation NON : " + compteurNo + "\n\n");
-            document.add(compteurParagraph);
+
+            ByteArrayOutputStream checkStream = new ByteArrayOutputStream();
+            Bitmap checkBitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.check_img);
+            checkBitmap.compress(Bitmap.CompressFormat.JPEG,100,checkStream);
+            Image imgCheck = Image.getInstance(checkStream.toByteArray());
+            imgCheck.scaleAbsolute(20,20);
+            imgCheck.setAlignment(Image.ALIGN_RIGHT);
+
+            ByteArrayOutputStream uncheckStream = new ByteArrayOutputStream();
+            Bitmap uncheckBitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.uncheck_img);
+            uncheckBitmap.compress(Bitmap.CompressFormat.JPEG,100,uncheckStream);
+            Image imgUncheck = Image.getInstance(uncheckStream.toByteArray());
+            imgUncheck.scaleAbsolute(20,20);
+            imgUncheck.setAlignment(Image.ALIGN_RIGHT);
+
+            //check table
+            PdfPTable tableCheck = new PdfPTable(2);
+            tableCheck.setWidthPercentage(18);
+            tableCheck.setWidths(new int[]{4,14});
+            tableCheck.setHorizontalAlignment(50);
+            Paragraph checkParagraphe = new Paragraph();
+            Chunk checkText = new Chunk(": " + compteurYes);
+            checkParagraphe.add(checkText);
+
+            PdfPCell imgCheckCell = new PdfPCell();
+            imgCheckCell.setMinimumHeight(30);
+            imgCheckCell.setVerticalAlignment(Element.ALIGN_RIGHT);
+            imgCheckCell.addElement(imgCheck);
+            imgCheckCell.setBorderColor(BaseColor.WHITE);
+
+            PdfPCell textCheckCell = new PdfPCell();
+            textCheckCell.setMinimumHeight(30);
+            textCheckCell.setVerticalAlignment(Element.ALIGN_LEFT);
+            textCheckCell.addElement(checkParagraphe);
+            textCheckCell.setBorderColor(BaseColor.WHITE);
+
+            tableCheck.addCell(imgCheckCell);
+            tableCheck.addCell(textCheckCell);
+            document.add(tableCheck);
+
+            //uncheck table
+            PdfPTable tableUncheck = new PdfPTable(2);
+            tableUncheck.setWidthPercentage(18);
+            tableUncheck.setWidths(new int[]{4,14});
+            tableUncheck.setHorizontalAlignment(50);
+            Paragraph uncheckParagraphe = new Paragraph();
+            Chunk uncheck = new Chunk(": " + compteurNo);
+            uncheckParagraphe.add(uncheck);
+
+            PdfPCell imgUncheckCell = new PdfPCell();
+            imgUncheckCell.setMinimumHeight(30);
+            imgUncheckCell.setVerticalAlignment(Element.ALIGN_RIGHT);
+            imgUncheckCell.addElement(imgUncheck);
+            imgUncheckCell.setBorderColor(BaseColor.WHITE);
+
+            PdfPCell textUncheckCell = new PdfPCell();
+            textUncheckCell.setMinimumHeight(30);
+            textUncheckCell.setVerticalAlignment(Element.ALIGN_LEFT);
+            textUncheckCell.addElement(uncheckParagraphe);
+            textUncheckCell.setBorderColor(BaseColor.WHITE);
+
+            tableUncheck.addCell(imgUncheckCell);
+            tableUncheck.addCell(textUncheckCell);
+            document.add(tableUncheck);
+            document.add(spaces);
 
             for (Question question : recette.getTabQuestions()) {
                 spaceQuestion = false;
