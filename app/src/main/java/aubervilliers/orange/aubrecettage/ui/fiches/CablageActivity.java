@@ -97,14 +97,14 @@ public class CablageActivity extends AppCompatActivity {
                 boolean allAnsweredQuestions = true;
                 for (Question question : questions) {
                     if (question.isObligatoryQuestion() && !question.isButtonYesSelected() && !question.isButtonNoSelected()) {
-                        Log.v(TAG, "Question non répondu: " + question.getQuestionLabel());
+                        Log.v(TAG, "Question non répondue : " + question.getQuestionLabel());
                         allAnsweredQuestions = false;
                         break;
                     }
                 }
                 if (!allAnsweredQuestions) {
                     AlertDialog.Builder notAnswered = new AlertDialog.Builder(CablageActivity.this);
-                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquer d'une astérix *")
+                    notAnswered.setMessage("Vous n'avez pas complété toutes les questions obligatoire, elles sont marquées d'une astérix *")
                             .setPositiveButton("FERMER", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
@@ -119,7 +119,6 @@ public class CablageActivity extends AppCompatActivity {
                     intent1.putExtra(ExportActivity.EXTRA_RECETTE_KEY, recette);
                     startActivity(intent1);
                 }
-
             }
         });
 

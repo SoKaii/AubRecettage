@@ -287,14 +287,14 @@ public class ExportActivity extends Activity {
             }
 
             ByteArrayOutputStream checkStream = new ByteArrayOutputStream();
-            Bitmap checkBitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.check_img);
+            Bitmap checkBitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.tic);
             checkBitmap.compress(Bitmap.CompressFormat.JPEG,100,checkStream);
             Image imgCheck = Image.getInstance(checkStream.toByteArray());
             imgCheck.scaleAbsolute(20,20);
             imgCheck.setAlignment(Image.ALIGN_RIGHT);
 
             ByteArrayOutputStream uncheckStream = new ByteArrayOutputStream();
-            Bitmap uncheckBitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.uncheck_img);
+            Bitmap uncheckBitmap = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.no);
             uncheckBitmap.compress(Bitmap.CompressFormat.JPEG,100,uncheckStream);
             Image imgUncheck = Image.getInstance(uncheckStream.toByteArray());
             imgUncheck.scaleAbsolute(20,20);

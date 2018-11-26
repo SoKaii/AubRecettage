@@ -19,7 +19,8 @@
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:layout_marginTop="3dp"
-        android:background="@color/black"></LinearLayout>
+        android:background="@color/black">
+    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
-        android:text="Validation Orange : "
+        android:text="Validation : "
         android:textColor="@color/orange" />
 
     <RadioGroup
@@ -91,21 +92,21 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/valid_orange_yes"
+            android:id="@+id/valid_yes"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="00dp"
             android:buttonTint="@color/black"
-            android:text="OUI"
+            android:text="Validé"
             android:textColor="@color/orange" />
 
         <RadioButton
-            android:id="@+id/valid_orange_no"
+            android:id="@+id/valid_no"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:buttonTint="@color/black"
-            android:text="NON"
+            android:text="Non validé"
             android:textColor="@color/orange" />
     </RadioGroup>
 
